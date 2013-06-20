@@ -43,6 +43,8 @@
 
 > * Hosts are assigned a unique IP number used for all communication and routing
     - 128.111.220.7
+* Each IP Address can be used to communicate over various "ports"
+    - Allows multiple applications to communicate with a host without mixing up traffic
 
 * IP numbers can be difficult to remember, so also assign hostnames
     - Handled through the Global Domain Name system
