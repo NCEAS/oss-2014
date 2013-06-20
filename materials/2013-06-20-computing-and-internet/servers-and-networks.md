@@ -47,8 +47,11 @@
     - Allows multiple applications to communicate with a host without mixing up traffic
 
 * IP numbers can be difficult to remember, so also assign hostnames
-    - Handled through the Global Domain Name system
-    - isis.nceas.ucsb.edu -> i128.111.220.46
+    - Handled through the global Domain Name System (DNS)
+    - Clients first look up a hostname in DNS to find the IP Number
+    - isis.nceas.ucsb.edu -> 128.111.220.46
+    - Then they open a connection to the IP Number
+    - Routers maintain tables listing the paths to use for IP addresses
 
 # Peer to Peer networking
 
