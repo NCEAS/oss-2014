@@ -99,6 +99,7 @@
 * Web documents connected using hyperlinked HTML documents
 * Other document types common (images, other media)
 
+![](images/img_HTTP_request.png)
 
 # Secure Shell
 
@@ -106,7 +107,7 @@
 * Tremendously simplifies remote computing
 * Supported out-of-the-box on Linux and Macs
 
-## Try this:
+## We will try this:
 
 > * ssh isis.nceas.ucsb.edu
 
