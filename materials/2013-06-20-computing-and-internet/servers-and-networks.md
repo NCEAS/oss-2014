@@ -39,6 +39,14 @@
 
 ![](images/client-server.png)
 
+# IP Numbers and Hostnames
+
+> * Hosts are assigned a unique IP number used for all communication and routing
+    - 128.111.220.7
+
+* IP numbers can be difficult to remember, so also assign hostnames
+    - Handled through the Global Domain Name system
+    - isis.nceas.ucsb.edu -> i128.111.220.46
 
 # Peer to Peer networking
 
