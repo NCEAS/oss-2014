@@ -35,10 +35,6 @@
 > * Mechanism to connect networks together via forwarding data along routing paths
 
 
-# Client-Server and the Internet
-
-![](images/client-server.png)
-
 # IP Numbers and Hostnames
 
 > * Hosts are assigned a unique IP number used for all communication and routing
@@ -51,7 +47,11 @@
     - Clients first look up a hostname in DNS to find the IP Number
     - isis.nceas.ucsb.edu -> 128.111.220.46
     - Then they open a connection to the IP Number
-    - Routers maintain tables listing the paths to use for IP addresses
+
+
+# Client-Server and the Internet
+
+![](images/client-server.png)
 
 # Peer to Peer networking
 
@@ -110,7 +110,7 @@
 * Tremendously simplifies remote computing
 * Supported out-of-the-box on Linux and Macs
 
-## We will try this:
+## We will use this later today:
 
 > * ssh isis.nceas.ucsb.edu
 
