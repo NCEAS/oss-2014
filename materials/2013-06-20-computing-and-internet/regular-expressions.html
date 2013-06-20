@@ -44,8 +44,18 @@
 </dd>
 </dl>
 </div>
-<div class="section slide level1" id="places-you-might-encounter-them">
-<h1>Places you might encounter them</h1>
+<div class="section slide level1" id="why-is-this-useful">
+<h1>Why is this useful?</h1>
+<h2>Matching patterns to text lets you...</h2>
+<ul class="incremental">
+<li>Find data</li>
+<li>Filter data</li>
+<li>Validate data</li>
+<li>Sanitize data</li>
+</ul>
+</div>
+<div class="section slide level1" id="places-you-might-encounter-regexes">
+<h1>Places you might encounter regexes</h1>
 <dl class="incremental">
 <dt>Editors</dt>
 <dd>vim, emacs, TextMate, Notepad++, ...
@@ -69,25 +79,45 @@
 <div class="section slide level1" id="regular-expression-patterns">
 <h1>Regular expression: patterns</h1>
 <ul class="incremental">
-<li>Characters</li>
+<li>Characters
+<ul class="incremental">
+<li><code>a</code>, <code>Z</code>, <code>5</code>, <code>@</code></li>
+</ul></li>
 <li>Character sets
 <ul class="incremental">
 <li><code>[aeiou]</code> some set of characters</li>
-<li><code>[a-zA-Z]</code> ...or a pattern</li>
+<li><code>[^aeiou]</code> ...or not those characters!</li>
+<li><code>[a-zA-Z]</code> ...or a range</li>
 <li><code>[[:alpha:]]</code> ...or a POSIX character class</li>
+</ul></li>
+<li>Any character
+<ul class="incremental">
+<li><code>.</code></li>
+</ul></li>
+</ul>
+</div>
+<div class="section slide level1" id="regular-expression-patterns-1">
+<h1>Regular expression: patterns</h1>
+<ul class="incremental">
+<li>Anchors
+<ul class="incremental">
+<li><code>^stuff</code> at start of line</li>
+<li><code>stuff$</code> at end of line</li>
+<li><code>\&lt;stuff\&gt;</code> as its own word</li>
+</ul></li>
+<li>Quantifiers
+<ul class="incremental">
+<li><code>?</code> zero or one</li>
+<li><code>*</code> zero or more (any)</li>
+<li><code>+</code> one or more (at least one)</li>
+<li><code>{n}</code> exactly <em>n</em></li>
+<li><code>{,n}</code> no more than <em>n</em></li>
+<li><code>{n,}</code> at least <em>n</em></li>
 </ul></li>
 <li>Alternation
 <ul class="incremental">
 <li><code>foo|bar</code> ...one of two possible patterns</li>
 </ul></li>
-<li>Wildcards</li>
-<li>Quantifiers
-<ul class="incremental">
-<li>[<code>?</code>] zero or one</li>
-<li>[<code>*</code>] zero or more (any)</li>
-<li>[<code>+</code>] one or more (at least one)</li>
-</ul></li>
-<li>Anchors</li>
 </ul>
 </div>
 <div class="section slide level1" id="escaping">
@@ -119,9 +149,6 @@
 <li>Grouping</li>
 <li>Backreferences</li>
 </ul>
-</div>
-<div class="section slide level1" id="perl-vs-posix">
-<h1>Perl vs POSIX</h1>
 </div>
 <div class="section slide level1" id="links">
 <h1>Links</h1>

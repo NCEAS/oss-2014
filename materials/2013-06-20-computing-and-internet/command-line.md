@@ -130,11 +130,29 @@ CLI
 #### `$ sudo vi /etc/postgresql/9.1/main/postgresql.conf`
 -->
 
-# Text files rule!
+# Text editing
 
-* `cat`, `less`, `head`, `tail`
-* `grep`, `sed`, `wc`
-* `vim`, `emacs`, `nano`, etc
+#### (Text rules!)
+
+## Some editors
+
+> * `vim`
+* `emacs`
+* `nano`
+
+### `$ nano .bashrc`
+
+# Let's look at our text file
+
+`cat`
+ ~  print file(s)
+`head`
+ ~  print first few lines of file(s)
+`tail`
+ ~  print last few lines of file(s)
+`less`
+ ~  "pager" -- view file interactively
+  
 
 # A sampling of simple commands
 
@@ -226,7 +244,7 @@ CLI
 # Getting things done
 
 * Process management
-    * Like Windoes Task Manager, OSX Activity Monitor
+    * Like Windows Task Manager, OSX Activity Monitor
     * `top`, `ps`, `jobs`
 * Foreground and background
 * Stay persistent with `screen`
