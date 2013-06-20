@@ -10,6 +10,9 @@
 
 > * Provide basic background on computer networking to lay groundwork for later work on collaboration techniques that use the Internet
 
+# Make me a sandwich
+
+![](images/xkcd-149-sandwich.png)
 
 # Basic networking
 
