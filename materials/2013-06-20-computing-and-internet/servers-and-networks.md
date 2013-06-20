@@ -6,7 +6,7 @@
 
 > * Facilitated by computing and networking
 
-## Or goal is to:
+## Our goal is to:
 
 > * Provide basic background on computer networking to lay groundwork for later work on collaboration techniques that use the Internet
 
