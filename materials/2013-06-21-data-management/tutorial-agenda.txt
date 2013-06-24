@@ -1,0 +1,52 @@
+NCEAS SI Training planning
+--------------------------
+
+Overview of session activities
+
+Intro to Data Management (35/10)
+	-- Custom databases vs. data collection approaches
+	-- Data heterogeneity challenges
+	-- Metadata (EML, FGDC, ISO, etc)
+	-- Federation, sharing, reproducibility, citation
+		-- DataONE
+	-- KNB solutions and user communities (PISCO, NRS, DataONE, etc.)
+		-- Metacat, skins, etc.			
+		-- Morpho
+
+Data registry and discovery hands-on (60)
+	-- Give them a CSV (download from web site)
+	-- Create accounts
+	-- Document it on the PARC skin
+		-- Custom title for each person
+		-- Upload data via form
+	-- Search, find, and display their entries
+		-- https://cn.dataone.org
+
+Morpho installation (15)
+	-- http://knb.ecoinformatics.org/morphoportal.jsp
+	-- Morpho Version 1.10
+
+Break (15)
+
+Hands-on training with Morpho (60)
+	
+	-- Create profile with account info
+	-- Change URL to test Metacat
+	-- Show user guide 
+	-- Overview of menus and UI
+	-- Open the package they created (describe icons, etc.)
+	-- Change a title, edit abstract, and a few other metadata edits, save version
+	-- Convert otherEntity to dataTable, enter attribute Metadata, save version
+	-- Access control for metadata and data
+	-- Save to Network
+	-- Explain data menu
+	-- Save duplicate, replace data; template metadata
+	-- Search
+	-- Create new data package from scratch with own data or sample data
+
+Broader landscape of tools and usage (15 minutes)
+	-- MetaVist
+	-- Scripts for creating metadata
+	-- Future changes
+	-- Conclusion
+
