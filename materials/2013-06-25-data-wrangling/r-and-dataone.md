@@ -31,6 +31,7 @@
 > * Requires Java is already installed
 * install.packages("dataone")
     - May see dependency errors on XML and rJava; we will work those out
+	- May need to run: "sudo R CMD javareconf"
 
 # Searching DataONE
 
