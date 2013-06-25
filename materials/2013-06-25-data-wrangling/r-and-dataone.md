@@ -13,12 +13,24 @@
 
 # Data Packages
 
+![](images/data-package.png)
+
+# Displaying a package
+
+![](images/web-package.png)
+
 # R "dataone" library functions
 
 > * Search DataONE for data of interest
 * Download individual data files and associated metadata
 * Download complete data packages (data and metadata)
 * Create new data packages on Member Nodes
+
+# Installing the dataone package
+
+> * Requires Java is already installed
+* install.packages("dataone")
+    - May see dependency errors on XML and rJava; we will work those out
 
 # Searching DataONE
 
@@ -32,3 +44,22 @@
 # Search results
 
 ![](images/search-results.png)
+
+# Downloading data and packages
+
+> * getD1Object()
+* getDataPackage()
+
+# Authentication using CILogon
+
+> * Allows access to restricted objects
+* Allows creation of content on appropriate nodes
+* CILogon provides authentication through a many current University partners
+* https://cilogon.org/?skin=DataONE
+* Saves a certificate on your hard drive that the R dataone library finds
+
+# Writing data to DataONE Member Nodes
+
+> * Write data to nodes that provide write service
+    - e.g., KNB
+* createD1Object()
