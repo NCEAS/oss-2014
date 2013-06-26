@@ -1,9 +1,9 @@
 SQL tutorial notes
 ==================
 
-# Create postgres user accounts for all students
-    - createuser -d -e -E -l -r -s <username>
-    - for un in `cat ~jones/nceasSI-accounts`; do echo "Creating $un..."; createuser -d -e -E -l -r -s $un; echo "Done with $un."; done
+# Create postgres user accounts for all participants
+    # createuser -d -e -E -l -r -s <username>
+    for un in `cat ~jones/nceasSI-accounts`; do echo "Creating $un..."; createuser -d -e -E -l -r -s $un; echo "Done with $un."; done
 
 # Create a database for yourself and connect to it
 	createdb testdb_jones
@@ -48,10 +48,10 @@ SQL tutorial notes
 	SELECT * from site where habitat = 'scrub' AND altitude > 500;
 
 # SELECT with an aggregation function using group by
-	SELECT habitat, count(*) as cnt from site group by habitat order by habitat;
+	SELECT habitat, count(*) from site group by habitat order by habitat;
 
 # INTEGRITY CONSTRAINTS: PRIMARY KEY ENFORCEMENT
-	INSERT INTO site (siteid, altitude, habitat) VALUES (8, 131, 'forest');
+	INSERT INTO site (siteid, altitude, habitat) VALUES (1, 721, 'scrub');
 
 # UPDATE
 	UPDATE site set altitude=721 where siteid=1;
@@ -70,6 +70,12 @@ SQL tutorial notes
 	ROLLBACK;
 	SELECT * from site order by siteid;
     
+	# Try again to delete the right set of rows
+	START TRANSACTION;
+    DELETE FROM site WHERE siteid > 8;
+	SELECT * from site order by siteid;
+	COMMIT;
+
 # NULL values
 	
 
