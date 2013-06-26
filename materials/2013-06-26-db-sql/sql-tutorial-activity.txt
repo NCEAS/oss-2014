@@ -1,0 +1,78 @@
+SQL tutorial notes
+==================
+
+# Create postgres user accounts for all students
+    - createuser -d -e -E -l -r -s <username>
+    - for un in `cat ~jones/nceasSI-accounts`; do echo "Creating $un..."; createuser -d -e -E -l -r -s $un; echo "Done with $un."; done
+
+# Create a database for yourself and connect to it
+	createdb testdb_jones
+	psql testdb_jones
+	\?
+	\d
+
+# Create a table and insert data
+# CREATE TABLE
+    CREATE TABLE site (
+		siteid INT8,
+		altitude INT8, 
+		habitat VARCHAR(25), 
+		CONSTRAINT site_pk PRIMARY KEY (siteid)
+	);
+
+# INSPECT THE TABLE THAT WAS CREATED
+	\d
+	\d site
+	SELECT * FROM site;
+
+# INSERT
+    INSERT INTO site (siteid, altitude, habitat) VALUES (1, 722, 'scrub');
+    INSERT INTO site (siteid, altitude, habitat) VALUES (2, 805, 'scrub');
+    INSERT INTO site (siteid, altitude, habitat) VALUES (3, 887, 'grass');
+    INSERT INTO site (siteid, altitude, habitat) VALUES (4, 920, 'grass');
+    INSERT INTO site (siteid, altitude, habitat) VALUES (5, 110, 'forest');
+    INSERT INTO site (siteid, altitude, habitat) VALUES (6, 192, 'scrub');
+    INSERT INTO site (siteid, altitude, habitat) VALUES (7, 121, 'forest');
+    INSERT INTO site (siteid, altitude, habitat) VALUES (8, 108, 'grass');
+
+# SIMPLE SELECTs
+	SELECT * from site;
+	SELECT habitat from site;
+	SELECT habitat from site order by habitat;
+
+# SELECT with a constraint
+	SELECT * from site where altitude > 500;
+	SELECT * from site where habitat = 'scrub';
+
+# SELECT with a more complex constraint
+	SELECT * from site where habitat = 'scrub' AND altitude > 500;
+
+# SELECT with an aggregation function using group by
+	SELECT habitat, count(*) as cnt from site group by habitat order by habitat;
+
+# INTEGRITY CONSTRAINTS: PRIMARY KEY ENFORCEMENT
+	INSERT INTO site (siteid, altitude, habitat) VALUES (8, 131, 'forest');
+
+# UPDATE
+	UPDATE site set altitude=721 where siteid=1;
+
+# DELETE
+	INSERT INTO site (siteid, altitude, habitat) VALUES (9, 121, 'forest');
+	SELECT count(*) from site;
+	DELETE from site where siteid=9;
+
+# TRANSACTIONS
+	INSERT INTO site (siteid, altitude, habitat) VALUES (9, 121, 'forest');
+	START TRANSACTION;
+    DELETE FROM site WHERE siteid > 7;
+	SELECT * from site order by siteid;
+	# Oh Crap!
+	ROLLBACK;
+	SELECT * from site order by siteid;
+    
+# NULL values
+	
+
+# ACID
+# CRUD
+
