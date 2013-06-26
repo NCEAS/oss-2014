@@ -22,15 +22,15 @@ sessionInfo()
 ## Platform: i686-pc-linux-gnu (32-bit)
 ## 
 ## locale:
-##  [1] LC_CTYPE=en_CA.utf8       LC_NUMERIC=C             
-##  [3] LC_TIME=en_CA.utf8        LC_COLLATE=en_CA.utf8    
-##  [5] LC_MONETARY=en_CA.utf8    LC_MESSAGES=en_CA.utf8   
-##  [7] LC_PAPER=C                LC_NAME=C                
-##  [9] LC_ADDRESS=C              LC_TELEPHONE=C           
-## [11] LC_MEASUREMENT=en_CA.utf8 LC_IDENTIFICATION=C      
+##  [1] LC_CTYPE=en_CA.UTF-8       LC_NUMERIC=C              
+##  [3] LC_TIME=en_CA.UTF-8        LC_COLLATE=en_CA.UTF-8    
+##  [5] LC_MONETARY=en_CA.UTF-8    LC_MESSAGES=en_CA.UTF-8   
+##  [7] LC_PAPER=C                 LC_NAME=C                 
+##  [9] LC_ADDRESS=C               LC_TELEPHONE=C            
+## [11] LC_MEASUREMENT=en_CA.UTF-8 LC_IDENTIFICATION=C       
 ## 
 ## attached base packages:
-## [1] stats     graphics  grDevices utils     datasets  base     
+## [1] stats     graphics  grDevices utils     datasets  methods   base     
 ## 
 ## other attached packages:
 ## [1] stringr_0.6.2  reshape2_1.2.2 knitr_1.2     
@@ -101,14 +101,10 @@ dat <- dat[1:(ncol(dat)-1)]  ## drop last column (row totals)
 
 
 ```r
-mdat1 <- melt(dat)
+mdat1 <- melt(dat,id.var="interval")
 ```
 
-```
-## Using as id variables
-```
-
-Message (not a warning) means that `melt` has guessed that you only want to preserve the first column (rules: first column, *or* all factors (?))
+We need to tell `melt` that we want to preserve the first column (the default rule is to use *all factors* as ID variables)
 
 
 ```r
@@ -116,30 +112,36 @@ head(mdat1)
 ```
 
 ```
-##   variable value
-## 1 interval     5
-## 2 interval     6
-## 3 interval     7
-## 4 interval     8
-## 5 interval     9
-## 6 interval    10
+##   interval variable value
+## 1        5    X1971     0
+## 2        6    X1971     0
+## 3        7    X1971     0
+## 4        8    X1971     0
+## 5        9    X1971     4
+## 6       10    X1971    36
 ```
 
 
 
 ```r
-dcast(interval~variable)
+dcast(mdat1,interval~variable)
 ```
 
 
 
 ```
-## Error: object 'interval' not found
+## 'data.frame':	61 obs. of  23 variables:
+##  $ interval: int  5 6 7 8 9 10 11 12 13 14 ...
+##  $ X1971   : int  0 0 0 0 4 36 57 54 36 26 ...
+##  $ X1972   : int  1 4 4 0 2 38 155 193 112 47 ...
+##  $ X1973   : int  1 2 0 1 18 58 98 71 33 18 ...
+##  $ X1974   : int  0 0 0 0 0 15 16 35 37 12 ...
+## ...
 ```
 
 
 * `dcast(mdat1,variable~interval)` casts the other way (we've transposed the original data)
-* `acast()` recasts the variable as an *array*
+* `acast()` recasts the variable as an *array* (possibly multidimensional)
 
 Formula magic: `~.` means "no variable"
 
@@ -153,12 +155,12 @@ head(dcast(mdat1,variable~.))
 
 ```
 ##   variable NA
-## 1 interval 61
-## 2    X1971 61
-## 3    X1972 61
-## 4    X1973 61
-## 5    X1974 61
-## 6    X1975 61
+## 1    X1971 61
+## 2    X1972 61
+## 3    X1973 61
+## 4    X1974 61
+## 5    X1975 61
+## 6    X1976 61
 ```
 
 Warning means that we have more than one datum per casting combination, so we have to do something with them ... specify `fun.aggregate`. (Sometimes we actually *want* to count -- this is a roundabout way to replicate the functionality of `table()` -- but if we want `length()` as the aggregation function, we should use it.)
@@ -172,12 +174,12 @@ head(mdat1B)
 
 ```
 ##   variable     NA
-## 1 interval 35.000
-## 2    X1971  5.787
-## 3    X1972 14.492
-## 4    X1973  7.738
-## 5    X1974  3.311
-## 6    X1975  4.131
+## 1    X1971  5.787
+## 2    X1972 14.492
+## 3    X1973  7.738
+## 4    X1974  3.311
+## 5    X1975  4.131
+## 6    X1976 18.836
 ```
 
 

@@ -48,16 +48,16 @@ dat <- dat[1:(ncol(dat)-1)]  ## drop last column (row totals)
 (Could use `grep("^X[0-9]{4}",names(dat))` to pull out the correct columns)
 
 ```{r}
-mdat1 <- melt(dat)
+mdat1 <- melt(dat,id.var="interval")
 ```
-Message (not a warning) means that `melt` has guessed that you only want to preserve the first column (rules: first column, *or* all factors (?))
+We need to tell `melt` that we want to preserve the first column (the default rule is to use *all factors* as ID variables)
 
 ```{r}
 head(mdat1)
 ```
 
 ```{r eval=FALSE}
-dcast(interval~variable)
+dcast(mdat1,interval~variable)
 ```
 
 ```{r echo=FALSE}
@@ -66,7 +66,7 @@ cat(c(head(capture.output(str(dcast(mdat1,interval~variable)))),"..."),sep="\n")
 ```
 
 * `dcast(mdat1,variable~interval)` casts the other way (we've transposed the original data)
-* `acast()` recasts the variable as an *array*
+* `acast()` recasts the variable as an *array* (possibly multidimensional)
 
 Formula magic: `~.` means "no variable"
 ```{r}
