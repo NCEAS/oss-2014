@@ -116,6 +116,8 @@ SQL tutorial notes
 -- Batch load data from a CSV file
 	COPY plotobs FROM '/home/jones/plotobs.csv' DELIMITER ',' CSV HEADER;
 
+-- ANOTHER AGGREGATION QUERY
+	SELECT sciname, avg(diameter) from plotobs group by sciname order by sciname;
 	
 
 -- ACID
