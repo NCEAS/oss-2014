@@ -78,7 +78,7 @@ SQL tutorial notes
 	INSERT INTO sites (siteid, altitude, habitat) VALUES (1, 721, 'scrub');
 
 -- UPDATE
-	UPDATE sites set altitude=721 where siteid=1;
+	UPDATE sites SET altitude=721 where siteid=1;
 
 -- DELETE
 	INSERT INTO sites (siteid, altitude, habitat) VALUES (33, 121, 'forest');
@@ -117,9 +117,20 @@ SQL tutorial notes
 	COPY plotobs FROM '/home/jones/plotobs.csv' DELIMITER ',' CSV HEADER;
 
 -- ANOTHER AGGREGATION QUERY
-	SELECT sciname, avg(diameter) from plotobs group by sciname order by sciname;
+	SELECT sciname, avg(diameter) FROM plotobs GROUP BY sciname ORDER BY sciname;
 	
+-- SIMPLE INNER JOIN
+	SELECT s.siteid, s.altitude, p.obsid, p.plot, p.sciname, p.diameter FROM sites s, plotobs p WHERE p.siteid = s.siteid;
 
--- ACID
--- CRUD
+-- UNION for concatenating results of two queries
+SELECT * FROM plotobs WHERE diameter > 30
+UNION
+SELECT * FROM plotobs WHERE diameter < 10;
+
+-- INTERSECT for finding common results between two queries
+SELECT * FROM plotobs WHERE diameter > 30
+INTERSECT
+SELECT * FROM plotobs WHERE diameter < 35;
+
+-- NOT COVERING OUTER JOINS
 
