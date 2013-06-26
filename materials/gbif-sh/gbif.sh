@@ -14,12 +14,12 @@ echo $COUNT
 
 # Loop over blocks of those records, extracting the fields of interest into a CSV
 COUNTER=0
-while [  $COUNTER -lt 1 ]; do
+while [  $COUNTER -lt $COUNT ]; do
+    let COUNTER=COUNTER+1000 
     echo The counter is $COUNTER
     echo $URLL
 	curl $URLL > $CURRENT
     cat $CURRENT | xmlstarlet sel -t -m "//to:TaxonOccurrence" -v "concat(to:institutionCode, ',', to:collectionCode, ',', to:catalogNumber, ',', //tn:nameComplete, '~')" | tr '~' "\n" >> $OUT
     URLL=`cat $CURRENT | xmlstarlet sel -t -v "//gbif:nextRequestUrl"`
     echo "New Endpoint is: $URLL"
-    let COUNTER=COUNTER+1000 
 done
