@@ -20,6 +20,7 @@ while [  $COUNTER -lt $COUNT ]; do
     echo $URLL
 	curl $URLL > $CURRENT
     cat $CURRENT | xmlstarlet sel -t -m "//to:TaxonOccurrence" -v "concat(to:institutionCode, ',', to:collectionCode, ',', to:catalogNumber, ',', //tn:nameComplete, '~')" | tr '~' "\n" >> $OUT
-    URLL=`cat $CURRENT | xmlstarlet sel -t -v "//gbif:nextRequestUrl"`
+	export URLL=$URLL\&startindex=${COUNTER}
+    #URLL=`cat $CURRENT | xmlstarlet sel -t -v "//gbif:nextRequestUrl"`
     echo "New Endpoint is: $URLL"
 done
