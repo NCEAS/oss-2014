@@ -1,5 +1,5 @@
 #!/bin/bash
-#
+# Matt Jones, NCEAS
 # The query to be run
 SEARCH="Puma+concolor"
 
