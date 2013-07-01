@@ -1,0 +1,82 @@
+# A very quick PostGIS intro, in the form of command line statements and
+# SQL statements
+#
+# Official PostGIS documentation:
+#   http://postgis.net/docs/manual-2.0/
+#
+# If you want to learn more...
+#   http://workshops.opengeo.org/postgis-intro/
+#
+# For shapefile loading/dumping utilities, see cheatsheet here:
+#  http://www.bostongis.com/pgsql2shp_shp2pgsql_quickguide_20.bqg
+#
+# Note that the core geospatial operations use GEOS, which is itself a
+# translation (from Java to C++) of JTS:
+#   http://www.vividsolutions.com/jts/discussion.htm
+
+# postgis-enable db using my postgis script on isis
+postgis testdb_regetz
+
+# load a custom projection into the database
+psql -f ~regetz/toads/srs.sql testdb_regetz
+
+# load points, lines, and polygons shapefiles
+shp2pgsql -s 100001 -I ~regetz/toads/naamp/naamp.shp naamp | psql -d testdb_regetz
+shp2pgsql -s 100001 -I ~regetz/toads/nwi/nwi.shp | psql -d testdb_regetz
+shp2pgsql -s 100001 -I ~regetz/toads/osm/osmhw.shp | psql -d testdb_regetz
+
+# select all points within 1km of site 9472
+SELECT *
+  FROM naamp
+  WHERE ST_DWithin(geom,
+      (SELECT geom FROM naamp WHERE siteid=9472), 1000);
+
+# select all points located within a wetland area
+SELECT siteid, wetland_ty
+  FROM naamp, nwi
+  WHERE ST_Within(naamp.geom, nwi.geom);
+
+# select all points within 100m of a wetland area
+SELECT siteid AS site_id, wetland_ty,
+       ST_Distance(naamp.geom, nwi.geom) as distance
+  FROM naamp, nwi
+  WHERE ST_DWithin(naamp.geom, nwi.geom, 100);
+
+# calculate total length of each road type
+SELECT highway AS road_type,
+       SUM(ST_Length(geom))/1000 AS length_km
+  FROM osmhw
+  GROUP BY highway
+  ORDER BY length_km DESC;
+
+# calculate total area of each wetland type
+SELECT wetland_ty, SUM(ST_Area(geom))/(1000*1000) as total_area
+  FROM nwi
+  GROUP BY wetland_ty;
+
+# for each road type, calculate total length of road lying within a
+# wetland area
+SELECT osm.highway AS road_type, nwi.wetland_ty,
+       SUM(ST_Length(ST_Intersection(osm.geom, nwi.geom)))/1000 AS length_km
+  FROM osmhw AS osm, nwi AS nwi
+  WHERE ST_Intersects(osm.geom, nwi.geom)
+  GROUP BY road_type, wetland_ty
+  ORDER BY length_km DESC;
+
+# create new table
+CREATE TABLE naamp_1km AS
+  SELECT siteid, ST_Buffer(geom, 1000) as geom
+    FROM naamp;
+
+#
+# connect from qgis
+#
+
+# live demo
+
+#
+# dumping data out to shapefile
+#
+
+# using the dump utility...
+pgsql2shp -f naamp_1km.shp testdb_regetz naamp_1km
