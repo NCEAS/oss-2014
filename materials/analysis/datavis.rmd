@@ -1,0 +1,213 @@
+% Ben Bolker
+% `r date()`
+
+# Data visualization, focusing on `ggplot` and mixed models
+
+![cc](pix/cc-attrib-nc.png)
+Licensed under the 
+[Creative Commons attribution-noncommercial license](http://creativecommons.org/licenses/by-nc/3.0/).
+Please share \& remix noncommercially, mentioning its origin.
+
+```{r setup, echo=FALSE,message=FALSE}
+opts_knit$set(fig.align="center",fig.width=7,fig.height=5,
+               out.width="0.7\\textwidth",tidy=FALSE,use.highlight=TRUE)
+knit_hooks$set(basefig=function(before, options, envir) {
+                   if (before) {
+                       par(bty="l",las=1)
+                   } else { }
+               })
+library("ggplot2")
+theme_set(theme_bw())
+``` 
+
+
+## Goals/contexts of data visualization
+
+### Exploration
+* want *nonparametric*/*robust* approaches: impose as few assumptions as possible
+ * boxplots instead of mean/standard deviation (generally base locations on medians rather than means)
+ * loess/GAM instead of linear/polynomial regression
+* need *speed*: quick and dirty
+* canned routines for standard tasks, flexibility for non-standard tasks
+* manipulation in the context of visualization: need to summarize on the fly
+
+### Diagnostics
+* attempt to determine fitting problems graphically: looking for absence of patterns in residuals
+* e.g. scale-location plot, Q-Q plot; `plot.lm`
+* plot methods: generic (e.g. residuals vs fitted) vs specific (e.g. residuals vs predictors)
+* plotting predictions (intuitive) vs plotting residuals (amplifies/zooms in on discrepancies)
+* plotting unmodeled characteristics (e.g. spatial, temporal autocorrelation): much easier to draw a picture than fit a model
+* code contrasts for visual simplicity (e.g. deviations from linearity: Q-Q plots, signed square-root profiles)
+
+```{r echo=FALSE,warning=FALSE,message=FALSE}
+## from profile.mle2
+library(bbmle)
+x <- 0:10
+y <- c(26, 17, 13, 12, 20, 5, 9, 8, 5, 4, 8)
+d <- data.frame(x,y)
+fit1 <- mle2(y~dpois(lambda=ymax/(1+x/xhalf)),
+     start=list(ymax=1,xhalf=1),
+     data=d)
+pp <- profile(fit1)
+dd <- as.data.frame(pp)
+```
+
+Compare (negative) log-likelihood profiles ...
+
+```{r echo=FALSE,fig.height=3,fig.width=8}
+g0 <- ggplot(dd,aes(x=focal))+
+  facet_wrap(~param,scale="free")
+g0 + geom_line(aes(y=z))+ylab("Log-likelihood")
+```
+
+... with signed square-root LL profiles ...
+
+```{r echo=FALSE,fig.height=3,fig.width=8}
+## g0 + geom_line(aes(y=abs(z)))
+g0 + geom_line(aes(y=z^2))
+```
+
+### Presentation
+
+* how closely should one match analyses with graphs?  "Let the data speak for themselves" vs "Tell a story"
+* display data (e.g. boxplots, standard deviations) or inferences from data (confidence intervals)
+* superimposing model fits (`geom_smooth`)
+* avoid excessive cleverness/data density
+* coefficient plots vs parameter tables (Gelman)
+* tradeoff between visual design (tweaking) and reproducibility: learning to futz with label positioning etc. may pay off in the long run (a few tools exist for automatic placement)
+* order factors in a sensible order (i.e *not* alphabetical or numerical unless (1) the labels have some intrinsic meaning or (2) you expect that readers will be interested in looking up particular levels in the plot).  This is sometimes called the "what's so special about Alabama?" problem, although the Canadian version would substitute "Alberta".
+
+## Basic criteria for data presentation
+
+![cleveland](pix/cleveland.jpg)
+
+* visual perception of quantitative information: [Cleveland hierarchy](http://processtrends.com/toc_data_visualization.htm)
+
+![cleveland](pix/data_vis_1.gif)
+
+### Data presentation scales with data size
+
+* **small** show all points, possibly dodged/jittered, with some summary statistics: dotplot, beeswarm. Simple trends (linear/GLM)
+* **medium** boxplots, loess, histograms, GAM (or linear regression)
+* **large** modern nonparametrics: violin plots, hexbin plots, kernel densities: computational burden, and display overlapping problems, relevant
+* combinations or overlays where appropriate (beanplot)
+
+### Rules of thumb
+
+* (Continuous) response on the $y$-axis, most salient (continuous) predictor on the $x$-axis
+* Put most salient comparisons within the same subplot (distinguished by color/shape), and nearby within the subplot when grouping bars/points
+* Facet rows > facet columns
+* Use transparency to include important but potentially distracting detail
+* Do category levels need to be *identified* or just *distinguished*?
+* Order categorical variables meaningfully
+* Display *population variation* (standard deviations, boxplots) vs. *estimate variation* (standard errors, mean $\pm$ 2 SE, boxplot notches)
+* Try to match graphics to statistical analysis, but not at all costs
+* Choose colors carefully (`RColorBrewer`/[ColorBrewer](colorbrewer2.org/), [IWantHue](http://tools.medialab.sciences-po.fr/iwanthue/): respect dichromats and B&W printouts
+
+## Challenges
+
+### high-dimensional data (esp continuous)
+
+Possible solutions:
+* use color, shape for discrete predictor variables (up to ~10 categories); text plots
+* small multiples, conditioning plots (shingles/facets); i.e. discretize continuous plots
+* contour plots (worse)
+* perspective plots (worst?)
+
+###  large data sets
+
+* problems with computation, file size, presentation
+* file size: raster (PNG) instead of vector (PS/PDF), `pch="."`
+* overplotting (alpha), kernel density estimation, hexagonal binning
+* summarize (quantiles, kernel densities, etc.)
+
+### discrete data
+* lots of point overlap; jittering OK for exploratory analysis but ugly.  Need to summarize/bin appropriately (`stat_sum`); beeswarm plots
+
+### Spatial data
+* the best parts of the Cleveland hierarchy ($x$ and $y$ axes) are already taken, usually have to resort to color/size/pie charts. Representing uncertainty is a big challenge, usually must be done separately (transparency/saturation?)
+
+### compositional data 
+* would like to display "sum to 1.0" constraint but also allow accurate comparison of magnitudes: stacked bars vs grouped bars (or dotplots)?
+* harder if also need to represent uncertainty (would like to show correlations among components)
+* *ternary diagrams*: nice but don't generalize past 3 elements
+
+### Multilevel data
+* often hard (or messy) to represent all levels of variation
+
+### next generation tools 
+
+* dynamic/exploratory graphics: [ggobi](http://www.ggobi.org), [Mondrian](http://rosuda.org/mondrian/Mondrian.html), [latticist] (http://code.google.com/p/latticist), JMP, [Shiny](http://www.rstudio.com/shiny/), [Gapminder](http://www.gapminder.org/), [googleVis](http://code.google.com/p/google-motion-charts-with-r/), [rCharts](http://rcharts.io/)
+* GUI frameworks: JMP, [R Commander](http://socserv.mcmaster.ca/jfox/Misc/Rcmdr/), [Deducer](cran.r-project.org/web/packages/Deducer/index.html), [Rattle](rattle.togaware.com/), [web interface to ggplot2](http://www.yeroon.net/ggplot2/)
+* presentation technologies: [JCGS editorial](http://pubs.amstat.org/doi/pdfplus/10.1198/jcgs.2010.191ed) with
+[supplementary materials](http://pubs.amstat.org/doi/suppl/10.1198/jcgs.2010.191ed)
+* computational frameworks: lattice, ggplot, [http://d3js.org/](http://vis.stanford.edu/protovis/)
+
+## Graphics culture 
+
+* the gods: Cleveland (hierarchy), Tufte ("chartjunk", minimizing non-data-ink, sparklines)
+* the demi-gods: Wilkinson (Grammar of Graphics), Wickham (ggplot *et al*), [Stephen Few](http://www.perceptualedge.com/), Kaiser Fung [Junk Charts](http://junkcharts.typepad.com/junk_charts/)
+* dionysians (infoviz) vs. apollonians (statistical graphics) (Gelman)
+* graphics nazis: [dynamite plots](http://emdbolker.wikidot.com/blog:dynamite), pie charts (esp. 3D), dual-axis figures ...
+
+## Data visualization in R
+
+### Base graphics 
+* simple 'canvas' approach
+* straightforward, easy to customize
+* most plot methods written in base graphics
+
+### Lattice
+* newer
+* documented in a book (Sarkar: see below)
+* based on `grid` graphics package
+* faceting, conditioning plots
+* much more automatic, better graphical defaults
+* implements banking, other aspect ratio control
+* more 'magic', harder to customize
+* some plot methods (nlme package)
+* `latticeExtra`, `directlabels` packages may be handy
+
+### ggplot 
+* newest
+* based on Wilkinson's ''Grammar of Graphics''
+* documented in a book (see below) and on a [web site](http://had.co.nz/ggplot2), as well as an active [mailing list](http://groups.google.com/group/ggplot2)
+* explicit mapping from variables to ''aesthetics'': x, y, colour, size, shape
+* implements faceting (not quite as flexibly as lattice: no aspect ratio control)
+* some data summaries etc. built in
+* easier to overlay multiple data sets, data summaries, model predictions etc.
+* no 3D plots
+* rendering can be slow
+* `gridExtra`, `ggExtra`, `directlabels` package may be handy
+
+## ggplot intro
+
+mappings + geoms
+
+### Data
+
+Specified explicitly as part of a `ggplot` call:
+
+```{r ggplot1,message=FALSE}
+library(mlmRev)
+head(Oxboys)
+library(ggplot2)
+ggplot(Oxboys)
+```
+
+But that isn't quite enough: we need to specify a *mapping* between variables (columns in the data set) and *aesthetics* (elements of the graphical display: x-location, y-location, colour, size, shape ...)
+
+```{r ggplot2}
+ggplot(Oxboys,aes(x=age,y=height))
+```
+but (as you can see) that's still not quite enough.  We need to specify some geometric objects (called `geom`s) such as points, lines, etc., that will embody these aesthetics.  The weirdest thing about `ggplot` syntax is that these `geom`s get *added* to the existing `ggplot` object that specifies the data and aesthetics; unless you explicitly specify other aesthetics, they are inherited from the initial `ggplot` call.
+```{r ggplot3}
+ggplot(Oxboys,aes(x=age,y=height))+geom_point()
+```
+
+* many more geoms (lines, bars, etc.)
+* summarizers: smooth lines and summaries (`geom_smooth`, `stat_sum`)
+* control of scales (e.g. log transforms, colors, etc.)
+* faceting (grid and wrap)
+
+See [Karthik's ggplot intro](https://github.com/karthikram/ggplot-lecture) or [my intro for disease ecologists](http://ms.mcmaster.ca/~bolker/eeid/ecology/ggplot.pdf), among many others.
