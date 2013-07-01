@@ -145,6 +145,7 @@ Models are *always* simplified versions of reality: otherwise they they don't he
 * modern nonparametrics
     * generalized additive models (technically still 'linear models', with attendant advantages)
     * kernel density estimators (*smoothing*)
+    * quantile regression
     * great for description, but difficult for decomposing descriptions (interpretability)
     * interactions possible (tensor product splines, multidimensional KDEs) but comp. intensive
 * classification and regression trees (plus extensions: random forests/bagging/boosting etc.)
