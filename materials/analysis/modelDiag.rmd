@@ -1,0 +1,192 @@
+Model diagnostics
+============================================
+
+In this exercise we'll fit a simple model and apply a variety of model diagnostics to it.  Some may be
+very familiar ...
+
+```{r opts,echo=FALSE}
+opts_chunk$set(tidy=FALSE,fig.width=5,fig.height=5)
+knit_hooks$set(basefig=function(before, options, envir) {
+                   if (before) {
+                       par(bty="l",las=1)
+                   } else { }
+               })
+```
+
+```{r pkgs,message=FALSE,warning=FALSE}
+library(armlite) ## for sim(): you can use arm() instead
+library(descr)  ## for LogRegR2
+require("reshape2")
+## graphics prettiness
+library("ggplot2")
+theme_set(theme_bw()) 
+library("grid")
+zmargin <- theme(panel.margin=unit(0,"lines"))
+```
+
+Data on lizard perching behaviour, from the `brglm` package (and before that from McCullagh and Nelder [@mccullagh_generalized_1989], ultimately from Schoener [-@schoener_nonsynchronous_1970]).
+
+```{r liz0,echo=FALSE,message=FALSE}
+if (!file.exists("lizards.csv")) {
+   require("brglm")
+   data(lizards)
+   lizards <- transform(lizards,N=grahami+opalinus,
+                     gfrac=grahami/(grahami+opalinus))
+   write.csv(lizards,file="data/lizards.csv")
+}
+```
+
+```{r fakelizards}
+lizards <- read.csv("data/lizards.csv")
+lizards$time <- factor(lizards$time,
+                       levels=c("early","midday","late"))
+```
+
+A quick look at the data: response is fraction of *Anolis grahami* lizards found on perches in particular conditions.  Plot univariate responses:
+```{r firstlook,echo=FALSE,message=FALSE,fig.height=4}
+mvars <- c("height","diameter","light","time")
+mliz <- melt(lizards,id.vars="gfrac",
+     measure.vars=mvars)
+ggplot(mliz,aes(x=value,y=gfrac))+
+  geom_boxplot(fill="lightgray")+
+  facet_wrap(~variable,scale="free_x",nrow=1)+
+  zmargin
+```
+
+```{r lizfig2}
+(g1 <- ggplot(lizards,
+    aes(x=time,y=gfrac,colour=height))+
+  geom_point(aes(size=N))+
+  geom_line(aes(group=height))+
+  facet_grid(diameter~light,labeller=label_both)+zmargin)
+```
+
+```{r glmfit1}
+m1 <- glm(gfrac~time+height+light+diameter,
+    weights=N,
+    family="binomial",
+    data=lizards)
+```
+
+```{r glmdiag1,fig.height=6,fig.width=6}
+op <- par(mfrow=c(2,2))
+plot(m1)
+par(op) ## restore original parameters
+```
+
+test: [@augustin_quantile_2012]
+
+An improved Q-Q plot, from Augustin et al. [@augustin_quantile_2012] by way of the `mgcv` package:
+```{r glmdiag2,message=FALSE,basefig=TRUE}
+library(mgcv)
+qq.gam(m1,pch=16)
+```
+
+Check for overdispersion:
+```{r overdisp}
+resid.ssq <- sum(residuals(m1,type="pearson")^2)
+resid.df <- nrow(lizards)-length(coef(m1))
+resid.ssq/resid.df
+```
+Not overdispersed, apparently.
+
+```{r sumstats}
+LogRegR2(m1)
+```
+
+Use `fortify(model_fit)` to add the standard diagnostics (fitted values,
+residuals, standardized residuals, ...) to the data from a model
+```{r fortify}
+m1F <- fortify(m1)
+ggplot(m1F,aes(x=time,y=.resid))+geom_boxplot()+
+    geom_point(size=3,alpha=0.5)+
+    facet_grid(diameter~light)+zmargin
+```
+Uh-oh ...
+
+Other tests of distribution are a bit harder.
+
+Or we can plot predicted values.
+```{r pred}
+lPred <- predict(m1,se.fit=TRUE)
+lizardsX <- transform(lizards,pred=plogis(lPred$fit),
+              lwr=plogis(lPred$fit-2*lPred$se.fit),
+              upr=plogis(lPred$fit+2*lPred$se.fit))
+g1 + geom_pointrange(data=lizardsX,shape=2,
+            aes(y=pred,ymin=lwr,ymax=upr))
+```
+
+When you have continuous predictors or more complicated/unbalanced
+situations you will often want to construct your own data frame
+for predictions, e.g.
+```{r predframe,eval=FALSE}
+predframe <- with(lizards,
+                  expand.grid(light=levels(light),
+                              time=levels(time),
+                              diameter="<=2in"))
+predict(m1,newdata=predframe)
+```
+
+Warning signs of two problems:
+
+* *complete separation*: all-zero or all-one in some categories (bias-reduced regression via `logistf` or `brglm`, or regularization via Bayesian (`arm::bayesglm`) or other approaches)
+* failure of the Wald approximation (*Hauck-Donner effect*, @hauck_walds_1977)
+
+## Posterior predictive simulation
+```{r postpred}
+betasim <- sim(m1,n.sims=500)
+X <- model.matrix(m1)
+simpreds <- plogis(X %*% t(betasim$coef))
+subset(lizards,gfrac==1.0)
+hist(simpreds[4,],breaks=50,col="gray",
+     main="Posterior pred sim")
+```
+
+## Bootstrapping
+```{r loadboot}
+bootfun <- function() {
+  
+  bsamp <- sample(nrow(lizards),
+                   size=nrow(lizards),
+                 replace=FALSE)
+  bmodel <- update(m1,data=lizards[bsamp,])
+  bpred <- predict(bmodel,type="response")
+}
+bootpred <- replicate(500,bootfun())
+hist(bootpred[4,],breaks=20,col="gray")
+``` 
+
+## Cross-validation
+```{r boot,message=FALSE}
+library(boot)
+```
+Need to define
+a *cost function* `cost(observed, fitted)`; default is avg squared error
+```{r cv1}
+cost <- function(r, pi = 0) mean(abs(r-pi)) ## use mean abs dev
+cv1 <- cv.glm(lizards,m1)
+str(cv1)
+cv1$delta
+```
+
+Or do it by hand:
+```{r cv2}
+cverr <- numeric(nrow(lizards))
+for (i in 1:nrow(lizards)) {
+  cvdata <- lizards[-i,]
+  cvmodel <- update(m1,data=cvdata)
+  predval <- predict(cvmodel,newdata=lizards[i,],
+                     type="response")
+  cverr[i] <- cost(lizards$gfrac,predval)
+}
+hist(cverr,breaks=10,col="gray")
+mean(cverr)
+```
+
+This is *leave-one-out* cross-validation: $K$-fold is usually
+better (but maybe worth using `cv.glm` instead)
+
+## Exercises
+
+* Change the model to incorporate two-way interactions (`m2 <- update(m1,.~.^2)`) and see if that seems to fix any problems we found in the model.  Compare this with the statistical significance of the added terms (`summary(m2)` or `drop1(m2,test="Chisq")`)
+
