@@ -19,6 +19,7 @@ opts_chunk$set(tidy=FALSE)
 ^[Harrell has a nice (somewhat more concrete) discussion of analytical goals in the context of model reduction [@harrell_regression_2001]] ^[the relative clarity of prediction and decision-making helps to explain scientific philosophies such as logical positivism (compare with the real-life messiness of Lakatos and Feyerabend ...)]
 
 In a slightly narrower framework where we can isolate particular effects that we are interested in ... do we want to know
+
 * if they are different from zero?
 * whether they are positive or negative?
 * what their magnitude (*point estimate*) is?
@@ -68,9 +69,8 @@ text(0.5,mvec[1],pos=1,"Analytical methods")
 * analytical tools
 * computational power
 * conceptual framework (vague *or* misguided)
-* independence (political pressure, academic or real-world)
+* independence (political pressure, academic or real-world; avoiding [statistical machismo](http://dynamicecology.wordpress.com/2012/09/11/statistical-machismo/))
 * conformity (unwillingness to use prior art)
-* common sense (i.e., avoiding [statistical machismo](http://dynamicecology.wordpress.com/2012/09/11/statistical-machismo/))
 
 ## Discussion
 
@@ -110,6 +110,7 @@ Breiman (2001)
 
 ### Paradigm conflict across fields
 
+* Platonists vs (?) Aristotelians; e.g. [constructive empiricists](http://plato.stanford.edu/entries/constructive-empiricism/)
 * Biology/ecology: Strong inference [@Platt1964]; Peters [-@Peters:1991] *Critique for Ecology*
 * linguistics: [Norvig vs Chomsky](http://norvig.com/chomsky.html)
 * arguments about [microfoundations](http://mainlymacro.blogspot.com/2012/08/arguments-for-ending-microfoundations.html) in economics; Big Data in econometrics
@@ -119,11 +120,11 @@ Breiman (2001)
 
 Models are *always* simplified versions of reality: otherwise they they don't help us understand, or predict, reality ([Borges](https://notes.utk.edu/bio/greenberg.nsf/0/f2d03252295e0d0585256e120009adab?OpenDocument))
 
-* Constancy
-* Linearity
-* Independence
-* Smoothness
-* Discrete classes
+* constancy
+* linearity
+* independence
+* smoothness
+* discrete classes
 
 #### Classical
 

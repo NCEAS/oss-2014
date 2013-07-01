@@ -10,7 +10,7 @@
 </head>
 <body>
 <h1 id="analysis-the-big-picture">Analysis: the big picture</h1>
-<p>2013-07-01 10:51:06</p>
+<p>2013-07-01 11:41:40</p>
 <h2 id="what-are-we-trying-to-do-when-we-analyze-model-data">What are we trying to do when we analyze (model) data?</h2>
 <ul>
 <li>&quot;learn from the data&quot;; &quot;answer scientific and management questions&quot; (vague!)</li>
@@ -21,7 +21,13 @@
 <li>make a decision (ditto)</li>
 </ul>
 <p><sup><a href="#fn1" class="footnoteRef" id="fnref1">1</a></sup><sup><a href="#fn2" class="footnoteRef" id="fnref2">2</a></sup></p>
-<p>In a slightly narrower framework where we can isolate particular effects that we are interested in ... do we want to know * if they are different from zero? * whether they are positive or negative? * what their magnitude (<em>point estimate</em>) is? * how uncertain they are, or what their <em>interval estimate</em> is? (How do these more specific questions fit in with the bigger questions listed above?)</p>
+<p>In a slightly narrower framework where we can isolate particular effects that we are interested in ... do we want to know</p>
+<ul>
+<li>if they are different from zero?</li>
+<li>whether they are positive or negative?</li>
+<li>what their magnitude (<em>point estimate</em>) is?</li>
+<li>how uncertain they are, or what their <em>interval estimate</em> is? (How do these more specific questions fit in with the bigger questions listed above?)</li>
+</ul>
 <p>In this context Gelman <span class="citation">(2000)</span> talks about &quot;type S&quot; errors (we estimated the wrong sign) and &quot;type M&quot; errors (we estimated the wrong magnitude), in contrast to the classical &quot;type I/type II&quot; (we incorrectly rejected/failed to reject the null hypothesis).</p>
 <p>All of the technical methods we often think about (model selection, parameter estimation, <span class="math"><em>p</em></span>-value estimation, statistical inference) ... are all <em>means, not ends</em>.</p>
 <h3 id="the-statistical-message-box">The statistical Message Box</h3>
@@ -56,9 +62,8 @@
 <li>analytical tools</li>
 <li>computational power</li>
 <li>conceptual framework (vague <em>or</em> misguided)</li>
-<li>independence (political pressure, academic or real-world)</li>
+<li>independence (political pressure, academic or real-world; avoiding <a href="http://dynamicecology.wordpress.com/2012/09/11/statistical-machismo/">statistical machismo</a>)</li>
 <li>conformity (unwillingness to use prior art)</li>
-<li>common sense (i.e., avoiding <a href="http://dynamicecology.wordpress.com/2012/09/11/statistical-machismo/">statistical machismo</a>)</li>
 </ul>
 <h2 id="discussion">Discussion</h2>
 <p>In groups:</p>
@@ -125,6 +130,7 @@
 </blockquote>
 <h3 id="paradigm-conflict-across-fields">Paradigm conflict across fields</h3>
 <ul>
+<li>Platonists vs (?) Aristotelians; e.g. <a href="http://plato.stanford.edu/entries/constructive-empiricism/">constructive empiricists</a></li>
 <li>Biology/ecology: Strong inference <span class="citation">(Platt 1964)</span>; Peters <span class="citation">(1991)</span> <em>Critique for Ecology</em></li>
 <li>linguistics: <a href="http://norvig.com/chomsky.html">Norvig vs Chomsky</a></li>
 <li>arguments about <a href="http://mainlymacro.blogspot.com/2012/08/arguments-for-ending-microfoundations.html">microfoundations</a> in economics; Big Data in econometrics</li>
@@ -133,11 +139,11 @@
 <h3 id="methods">Methods</h3>
 <p>Models are <em>always</em> simplified versions of reality: otherwise they they don't help us understand, or predict, reality (<a href="https://notes.utk.edu/bio/greenberg.nsf/0/f2d03252295e0d0585256e120009adab?OpenDocument">Borges</a>)</p>
 <ul>
-<li>Constancy</li>
-<li>Linearity</li>
-<li>Independence</li>
-<li>Smoothness</li>
-<li>Discrete classes</li>
+<li>constancy</li>
+<li>linearity</li>
+<li>independence</li>
+<li>smoothness</li>
+<li>discrete classes</li>
 </ul>
 <h4 id="classical">Classical</h4>
 <ul>

@@ -24,6 +24,7 @@ theme_set(theme_bw())
 ## Goals/contexts of data visualization
 
 ### Exploration
+
 * want *nonparametric*/*robust* approaches: impose as few assumptions as possible
  * boxplots instead of mean/standard deviation (generally base locations on medians rather than means)
  * loess/GAM instead of linear/polynomial regression
@@ -73,15 +74,13 @@ g0 + geom_line(aes(y=z^2))
 * display data (e.g. boxplots, standard deviations) or inferences from data (confidence intervals)
 * superimposing model fits (`geom_smooth`)
 * avoid excessive cleverness/data density
-* coefficient plots vs parameter tables (Gelman)
+* coefficient plots vs parameter tables [@gelman_lets_2002]
 * tradeoff between visual design (tweaking) and reproducibility: learning to futz with label positioning etc. may pay off in the long run (a few tools exist for automatic placement)
 * order factors in a sensible order (i.e *not* alphabetical or numerical unless (1) the labels have some intrinsic meaning or (2) you expect that readers will be interested in looking up particular levels in the plot).  This is sometimes called the "what's so special about Alabama?" problem, although the Canadian version would substitute "Alberta".
 
 ## Basic criteria for data presentation
 
-![cleveland](pix/cleveland.jpg)
-
-* visual perception of quantitative information: [Cleveland hierarchy](http://processtrends.com/toc_data_visualization.htm)
+Visual perception of quantitative information: [Cleveland hierarchy](http://processtrends.com/toc_data_visualization.htm) [@cleveland_graphical_1984,@cleveland_graphical_1987,@cleveland_visualizing_1993]
 
 ![cleveland](pix/data_vis_1.gif)
 
@@ -109,6 +108,7 @@ g0 + geom_line(aes(y=z^2))
 ### high-dimensional data (esp continuous)
 
 Possible solutions:
+
 * use color, shape for discrete predictor variables (up to ~10 categories); text plots
 * small multiples, conditioning plots (shingles/facets); i.e. discretize continuous plots
 * contour plots (worse)
@@ -145,21 +145,23 @@ Possible solutions:
 
 ## Graphics culture 
 
-* the gods: Cleveland (hierarchy), Tufte ("chartjunk", minimizing non-data-ink, sparklines)
-* the demi-gods: Wilkinson (Grammar of Graphics), Wickham (ggplot *et al*), [Stephen Few](http://www.perceptualedge.com/), Kaiser Fung [Junk Charts](http://junkcharts.typepad.com/junk_charts/)
-* dionysians (infoviz) vs. apollonians (statistical graphics) (Gelman)
+* the gods: Cleveland (hierarchy), Tufte [-@Tufte2001,-@tufte_envisioning_1995,-@tufte_visual_1997,-@tufte_beautiful_2006] ("chartjunk", minimizing non-data-ink, sparklines)
+* the demi-gods: Wilkinson (Grammar of Graphics) [-@Wilkinson1999], Wickham (ggplot *et al*) [@wickham_ggplot2:_2009], [Stephen Few](http://www.perceptualedge.com/), Kaiser Fung [Junk Charts](http://junkcharts.typepad.com/junk_charts/)
+* dionysians (infovis) vs. apollonians (statistical graphics) [@gelman_infovis_2013]
 * graphics nazis: [dynamite plots](http://emdbolker.wikidot.com/blog:dynamite), pie charts (esp. 3D), dual-axis figures ...
 
 ## Data visualization in R
 
 ### Base graphics 
+
 * simple 'canvas' approach
 * straightforward, easy to customize
 * most plot methods written in base graphics
 
 ### Lattice
+
 * newer
-* documented in a book (Sarkar: see below)
+* documented in a book [@sarkar_lattice_2008]
 * based on `grid` graphics package
 * faceting, conditioning plots
 * much more automatic, better graphical defaults
@@ -169,6 +171,7 @@ Possible solutions:
 * `latticeExtra`, `directlabels` packages may be handy
 
 ### ggplot 
+
 * newest
 * based on Wilkinson's ''Grammar of Graphics''
 * documented in a book (see below) and on a [web site](http://had.co.nz/ggplot2), as well as an active [mailing list](http://groups.google.com/group/ggplot2)
@@ -211,3 +214,5 @@ ggplot(Oxboys,aes(x=age,y=height))+geom_point()
 * faceting (grid and wrap)
 
 See [Karthik's ggplot intro](https://github.com/karthikram/ggplot-lecture) or [my intro for disease ecologists](http://ms.mcmaster.ca/~bolker/eeid/ecology/ggplot.pdf), among many others.
+
+## References
