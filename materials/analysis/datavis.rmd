@@ -82,7 +82,7 @@ g0 + geom_line(aes(y=z^2))
 
 Visual perception of quantitative information: [Cleveland hierarchy](http://processtrends.com/toc_data_visualization.htm) [@cleveland_graphical_1984,@cleveland_graphical_1987,@cleveland_visualizing_1993]
 
-![cleveland](pix/data_vis_1.gif)
+![cleveland](pix/data_vis_1.png)
 
 ### Data presentation scales with data size
 
