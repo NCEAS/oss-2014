@@ -2,6 +2,7 @@ Classification and Regression Tree Example
 ----------------------------------------------
 
 ```{r opts,echo=FALSE}
+## internal bookkeeping: you may ignore this
 opts_chunk$set(results="hide",tidy=FALSE,fig.height=4,
               fig.width=6)
 knit_hooks$set(treefig=function(before, options, envir) {
@@ -21,6 +22,8 @@ print(i1[usedpkgs,"Version"],quote=FALSE)
 library(rpart)
 summary(cu.summary)
 ```
+
+(note: be careful *not* to load the `mvpart` package in this section -- it will load a different version of the `rpart()` function)
 
 ## Grow tree
 

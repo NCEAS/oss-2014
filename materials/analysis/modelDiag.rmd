@@ -74,9 +74,7 @@ plot(m1)
 par(op) ## restore original parameters
 ```
 
-test: [@augustin_quantile_2012]
-
-An improved Q-Q plot, from Augustin et al. [@augustin_quantile_2012] by way of the `mgcv` package:
+An improved Q-Q plot, from Augustin et al. [-@augustin_quantil_2012] by way of the `mgcv` package:
 ```{r glmdiag2,message=FALSE,basefig=TRUE}
 library(mgcv)
 qq.gam(m1,pch=16)

@@ -43,15 +43,20 @@ allpdf: datavis.pdf datavis_lab.pdf mixedlab1.pdf mixed1.pdf mixed2.pdf mixed3.p
 	pandoc -f "markdown-implicit_figures" -s --bibliography=analysis.bib -o $*.tex $*.md; ./svhack $*.tex >tmp.tex; pdflatex tmp.tex; mv tmp.pdf $*.pdf
 
 %.html: %.md
-	pandoc -f "markdown-implicit_figures" -s -o $*.html -c ${CSS} $*.md --self-contained --bibliography analysis.bib
+	pandoc -f "markdown-implicit_figures" -s -o $*.html -c ${CSS} $*.md --self-contained --bibliography analysis.bib --mathml
 ##	pandoc --bibliography=glmm.bib -o $*.html $*.md
 ##	$(RSCRIPT) -e "library(markdown); markdownToHTML(\"$*.md\",output=\"$*.html\")"
 
 ## Pandoc vs Sundown markdown differences:
-##  citations, footnotes (NA in Sundown)
+##  citations, footnotes (N/A in Sundown)
 ##  nested list (4 spaces for Pandoc, 1 space for Sundown)
 ##  blank line before blockquotes, bulleted lists in Pandoc
-## citation tags with colons problematic?
+##  citation tags with special characters (:,+) problematic?
+##  why is @augustin_quantile_2012 still problematic???
+##     @augustin_quantil_2012 seems to works.  21-char length limit??
+##     need to test from scratch
+##  math rendering: no mathjax with self-contained; latexmathml screws up ...
+##   jsmath not self-contained; mathml seems OK
 
 %.tex: %.Rnw
 ##	$(RSCRIPT) -e "library(cacheSweave); Sweave(\"$*.Rnw\",driver=cacheSweaveDriver);"
