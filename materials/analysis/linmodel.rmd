@@ -27,7 +27,7 @@ Y & \sim \text{Normal}(\mu,\sigma^2) \\
     * input variables measured without error
 * even when assumptions are violated, they're often OK *asymptotically* and/or the results may still be *unbiased* (just less efficient)
 * transformations can help (Box-Cox) (but see @ohara_not_2010, @warton_arcsine_2011 )
-* random-variable format ($\sim$) and matrix format (with the *design matrix* $X$) may be unfamiliar, but are extremely useful
+* random-variable format ($\sim$) and matrix format (with the *design matrix* $X$) may be unfamiliar, but are extremely useful (see also [this presentation by Gary White](http://warnercnr.colostate.edu/~gwhite/fw663/lecture6.pdf))
 * the model can be solved computationally in a few very standard linear algebra steps. This means it can be solved very efficiently by standard libraries (e.g. [optimized BLAS](http://cran.r-project.org/web/packages/gcbd/vignettes/gcbd.pdf)); it can also be decomposed and solved out-of-memory (e.g. the [biglm package](http://cran.r-project.org/web/packages/biglm/index.html))
 * expected responses are a linear function of the *predictor variables* (which may or may not be the same as the *input variables*)
 * you can use `model.matrix()` to create the design matrix by specifying the formula and the data

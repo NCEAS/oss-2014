@@ -5,6 +5,7 @@ In this exercise we'll fit a simple model and apply a variety of model diagnosti
 very familiar ...
 
 ```{r opts,echo=FALSE}
+## ignore: knitr options
 opts_chunk$set(tidy=FALSE,fig.width=5,fig.height=5)
 knit_hooks$set(basefig=function(before, options, envir) {
                    if (before) {
@@ -30,6 +31,7 @@ Data on lizard perching behaviour, from the `brglm` package (and before that fro
 if (!file.exists("lizards.csv")) {
    require("brglm")
    data(lizards)
+   ## compute total samples and fraction grahami for each observation
    lizards <- transform(lizards,N=grahami+opalinus,
                      gfrac=grahami/(grahami+opalinus))
    write.csv(lizards,file="data/lizards.csv")
@@ -38,6 +40,7 @@ if (!file.exists("lizards.csv")) {
 
 ```{r fakelizards}
 lizards <- read.csv("data/lizards.csv")
+## adjust factor levels to a sensible order
 lizards$time <- factor(lizards$time,
                        levels=c("early","midday","late"))
 ```
@@ -45,6 +48,7 @@ lizards$time <- factor(lizards$time,
 A quick look at the data: response is fraction of *Anolis grahami* lizards found on perches in particular conditions.  Plot univariate responses:
 ```{r firstlook,echo=FALSE,message=FALSE,fig.height=4}
 mvars <- c("height","diameter","light","time")
+## reshape data: 4 copies of each observation, one for each predictor variable
 mliz <- melt(lizards,id.vars="gfrac",
      measure.vars=mvars)
 ggplot(mliz,aes(x=value,y=gfrac))+
@@ -53,6 +57,7 @@ ggplot(mliz,aes(x=value,y=gfrac))+
   zmargin
 ```
 
+A more conventional plot:
 ```{r lizfig2}
 (g1 <- ggplot(lizards,
     aes(x=time,y=gfrac,colour=height))+
@@ -61,6 +66,7 @@ ggplot(mliz,aes(x=value,y=gfrac))+
   facet_grid(diameter~light,labeller=label_both)+zmargin)
 ```
 
+Fit a basic (additive: no interactions) binomial GLM:
 ```{r glmfit1}
 m1 <- glm(gfrac~time+height+light+diameter,
     weights=N,
@@ -68,8 +74,10 @@ m1 <- glm(gfrac~time+height+light+diameter,
     data=lizards)
 ```
 
+Standard R diagnostic plots (fitted vs. residual, scale-location,
+Q-Q, influence):
 ```{r glmdiag1,fig.height=6,fig.width=6}
-op <- par(mfrow=c(2,2))
+op <- par(mfrow=c(2,2))  ## 2x2 subplot grid
 plot(m1)
 par(op) ## restore original parameters
 ```
@@ -82,13 +90,15 @@ qq.gam(m1,pch=16)
 
 Check for overdispersion:
 ```{r overdisp}
-resid.ssq <- sum(residuals(m1,type="pearson")^2)
-resid.df <- nrow(lizards)-length(coef(m1))
-resid.ssq/resid.df
+resid.ssq <- sum(residuals(m1,type="pearson")^2)  ## sum of squares of Pearson resids
+resid.df <- nrow(lizards)-length(coef(m1))        ## estimated resid df (N-p)
+resid.ssq/resid.df                                ## ratio should be approx 1
 ```
 Not overdispersed, apparently.
 
+Compute various pseudo-$R^2$ measures:
 ```{r sumstats}
+library(descr)
 LogRegR2(m1)
 ```
 
@@ -106,22 +116,26 @@ Other tests of distribution are a bit harder.
 
 Or we can plot predicted values.
 ```{r pred}
-lPred <- predict(m1,se.fit=TRUE)
+lPred <- predict(m1,se.fit=TRUE)  ## gives predictions on logit scale
+## compute back-transformed predictions and confidence intervals
 lizardsX <- transform(lizards,pred=plogis(lPred$fit),
               lwr=plogis(lPred$fit-2*lPred$se.fit),
               upr=plogis(lPred$fit+2*lPred$se.fit))
+## add predictions/CIs to previous plot
 g1 + geom_pointrange(data=lizardsX,shape=2,
             aes(y=pred,ymin=lwr,ymax=upr))
 ```
 
 When you have continuous predictors or more complicated/unbalanced
 situations you will often want to construct your own data frame
-for predictions, e.g.
+for predictions.  For example, to get predictions for all 
+light:time combinations for a specified diameter and height category:
 ```{r predframe,eval=FALSE}
 predframe <- with(lizards,
                   expand.grid(light=levels(light),
                               time=levels(time),
-                              diameter="<=2in"))
+                              diameter="<=2in",
+                              height="<5ft"))
 predict(m1,newdata=predframe)
 ```
 

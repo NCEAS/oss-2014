@@ -31,6 +31,10 @@ Licensed under the
 [Creative Commons attribution-noncommercial license](http://creativecommons.org/licenses/by-nc-sa/2.5/ca/).
 Please share \& remix noncommercially, mentioning its origin.
 
+### Key references
+
+[@pinheiro_mixed-effects_2000;@bolker_generalized_2009;@QuinnKeough2002;@murtaugh_simplicity_2007]
+
 ## Examples
 
 ### *Glycera*
@@ -159,7 +163,7 @@ print(stripplot(jltf ~ amd|nutrient,
 
 ### Singing mouse
 
-Response of [singing mice](https://www.youtube.com/watch?v=Cwjjxj6ambY) to conspecific and heterospecific playback experiments [@pasch_interspecific_IP]
+Response of [singing mice](https://www.youtube.com/watch?v=Cwjjxj6ambY) to conspecific and heterospecific playback experiments [@pasch_intersp]
 
 ```{r singingmouse,echo=FALSE,warning=FALSE}
 dat <- read.csv("data/singingmouse_playback.csv")
@@ -313,10 +317,10 @@ $$
 $$
 with $Y$ and $u$ defined as above.
 
-Because random effects are random variables, the likelihood (or more precisely the *marginal likelihood*) of a set of parameters balances the probability of the data ($x$) given the fixed parameters $\beta$ and a *particular* value of the random effect ($u$) with the probability of that value of the random effect given the variance of the random effects ($\sigma$), integrated over all possible values of $\sigma$:
+Because random effects are random variables, the likelihood (or more precisely the *marginal likelihood*) of a set of parameters balances the probability of the data ($x$) given the fixed parameters $\beta$ and a *particular* value of the random effect ($u$) with the probability of that value of the random effect given the variance of the random effects ($\sigma$), integrated over all possible values of $u$:
 
 $$
-L(x|\beta,\sigma) = \int L(x|\beta,u) \cdot L(u|\sigma) \, d\sigma
+L(x|\beta,\sigma) = \int L(x|\beta,u) \cdot L(u|\sigma) \, du
 $$
 
 The Bayesian posterior distribution is basically the same, except that we include a prior distribution (and we rarely have to worry about the doing the integral explicitly)

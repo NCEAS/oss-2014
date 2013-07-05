@@ -75,7 +75,11 @@ library(nlme)
 lme1 <- lme(stmass~mnth*roostsitu,
   random=~1|subject/mnth,data=dataf)
 ```
-The variance components apparently make sense: look at `VarCorr(lme1)`.  However, if we try to get the approximate confidence intervals via `intervals(lme1,which="var-cov")` we get an error: `cannot get confidence intervals on var-cov components: Non-positive definite approximate variance-covariance`.  This is a **bad sign**.
+The variance components apparently make sense: look at `VarCorr(lme1)`.  However, if we try to get the approximate confidence intervals via 
+```{r intervals,eval=FALSE}
+intervals(lme1,which="var-cov")
+```
+we get an error: `cannot get confidence intervals on var-cov components: Non-positive definite approximate variance-covariance`.  This is a **bad sign**.
 
 ```{r lme2}
 lme2 <- lme(stmass~mnth*roostsitu,random=~1|subject,data=dataf)
@@ -114,7 +118,7 @@ cat(lme2out[39:41],sep="\n")
 ```
 * the distribution of standardized residuals should be reasonably consistent with
 a sample from the standard normal of the appropriate size (median near zero,
-quartiles around $\pm `r round(qnorm(0.75),2)`$, min/max appropriate for the sample size)
+quartiles around $\pm `r round(qnorm(0.75),2)`, min/max appropriate for the sample size)
 ```{r echo=FALSE}
 cat(lme2out[43:44],sep="\n")
 ```
