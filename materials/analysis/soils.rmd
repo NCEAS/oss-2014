@@ -1,0 +1,107 @@
+Soil example
+========================================================
+
+```{r}
+library(RandomFields)
+library(reshape2)
+library(ggplot2)
+theme_set(theme_bw())
+data(soil)
+pts <- soil[,c(1,2)]
+d <- soil$moisture
+```
+
+Define some graphical parameters first
+```{r}
+ggplot(soil,aes(x=x.coord,y=y.coord,colour=moisture))+
+  geom_point(size=4,alpha=0.7)+
+  scale_colour_gradient(low="blue",high="red")
+```
+
+Quick look at $x$-$y$ trends:
+```{r}
+m1 <- melt(subset(soil,select=c(x.coord,y.coord,moisture)),
+     id.var="moisture")
+ggplot(m1,aes(x=value,y=moisture))+
+  geom_point()+geom_smooth(method="loess")
+```
+
+Exploring the trend in $y$ a bit more:
+```{r}
+ggplot(soil,aes(x=y.coord,y=moisture))+
+  geom_point()+
+  geom_smooth(method="loess")+
+  geom_smooth(method="gam",colour="red")+
+  geom_smooth(method="lm",formula=y~poly(x,2),
+              colour="orange")+
+  stat_summary(fun.y=mean,geom="line",colour="purple")
+```
+
+## empirical variogram
+```{r}
+maxbin <- max(dist(pts)) / 2
+ev <- EmpiricalVariogram(pts, data=d, grid=FALSE,
+                         bin=c(-1,seq(0,maxbin,l=30)))
+(g0 <- ggplot(data.frame(ev),aes(x=centers,y=emp.vario))+
+  geom_point(aes(size=n.bin),alpha=0.5))
+```
+
+```{r}
+g0 + geom_ribbon(aes(ymin=emp.vario-2*sd,ymax=emp.vario+2*sd),alpha=0.2)
+```
+
+Fit parameters of the Whittle-Matérn model (a family that includes exponential and Gaussian models) by MLE:
+
+```{r}
+fit <- fitvario(x=pts, data=d, model="whittle",
+  par=rep(NA,5),
+  mle.m="ml", cross.m=NULL)
+str(fit)
+```
+## plot the fitted model and the empirical variogram
+
+```{r}
+plot(ev$c, ev$emp.var, ylim=c(0,11), ylab="variogram", xlab="lag")
+gx <- seq(0.001, max(ev$c), l=100)
+if(!is.null(by.eye)) lines(gx, Variogram(gx, model=by.eye)) 
+lines(gx, Variogram(gx, model=fit$ml$model), col=2)
+lines(gx, Variogram(gx, model=fit$plain$model), col=3)
+lines(gx, Variogram(gx, model=fit$sqrt.nr$model), col=4)
+lines(gx, Variogram(gx, model=fit$sd.inv$model), col=6, lty=2)
+legend(120, 4, c("empirical", "by eye", "ML", "lsq", "sqrt(n) lsq",
+               "sd^-1 lsq"),
+       lty=c(-1, rep(1, 5)), pch=c(1, rep(-1, 5)),
+       col=c(1, 1, 2, 3, 4, 6), cex=1.4)
+```
+
+## map of expected values
+
+```{r}
+k <- Kriging("O", x=x, y=y, grid=TRUE, model=fit$ml$model, given=pts, data=d)
+par(mfrow=c(1,2))
+plot(pts, col=colour[1+(cn-1)*((d-zlim[1])/diff(zlim))],
+     pch=16, xlab="x [cm]", ylab="y [cm]")
+my.legend(lu.x, lu.y, zlim=zlim, col=colour, cex=1)
+image(x, y, k, col=colour, zlim=zlim, xlab="x [cm]", ylab="y [cm]")
+par(bg="white")
+```
+
+
+## what is the probability that at no point of the
+## grid given by x and y the moisture is greater than 24 percent?
+
+```{r}
+RFparameters(Print=1, CE.force=FALSE, CE.trials=3, CE.useprimes=TRUE)
+cs <- CondSimu("O", x=x, y=y, grid=TRUE, model=fit$ml$model, given=pts,
+               data=d, n=10) # better n=100 or n=1000
+par(mfcol=c(2,3))
+plot(pts, col=colour[1+(cn-1)*((d-zlim[1])/diff(zlim))], pch=16,
+     xlab="x [cm]", ylab="y [cm]", cex.axis=1.5, cex.lab=1.5)
+my.legend(lu.x, lu.y, zlim=zlim, col=colour, cex=0.5)
+image(x, y, k, col=colour, zlim=zlim, xlab="x [cm]", ylab="y [cm]")
+for (i in 1:4)
+  image(x, y, cs[, , i], col=colour, zlim=zlim,
+        xlab="x [cm]", ylab="y [cm]") 
+
+mean(apply(cs<=24, 3, all)) ## about 40 percent ...
+```
