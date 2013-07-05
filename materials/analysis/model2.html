@@ -1,0 +1,210 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; }
+code > span.dt { color: #902000; }
+code > span.dv { color: #40a070; }
+code > span.bn { color: #40a070; }
+code > span.fl { color: #40a070; }
+code > span.ch { color: #4070a0; }
+code > span.st { color: #4070a0; }
+code > span.co { color: #60a0b0; font-style: italic; }
+code > span.ot { color: #007020; }
+code > span.al { color: #ff0000; font-weight: bold; }
+code > span.fu { color: #06287e; }
+code > span.er { color: #ff0000; font-weight: bold; }
+  </style>
+  <link href="data:text/css,body%2C%20td%20%7B%0A%20%20%20font%2Dfamily%3A%20sans%2Dserif%3B%0A%20%20%20background%2Dcolor%3A%20white%3B%0A%20%20%20font%2Dsize%3A%2012px%3B%0A%20%20%20margin%3A%208px%3B%0A%7D%0A%0Att%2C%20code%2C%20pre%20%7B%0A%20%20%20font%2Dfamily%3A%20%27DejaVu%20Sans%20Mono%27%2C%20%27Droid%20Sans%20Mono%27%2C%20%27Lucida%20Console%27%2C%20Consolas%2C%20Monaco%2C%20monospace%3B%0A%7D%0A%0Ah1%20%7B%20%0A%20%20%20font%2Dsize%3A2%2E2em%3B%20%0A%7D%0A%0Ah2%20%7B%20%0A%20%20%20font%2Dsize%3A1%2E8em%3B%20%0A%7D%0A%0Ah3%20%7B%20%0A%20%20%20font%2Dsize%3A1%2E4em%3B%20%0A%7D%0A%0Ah4%20%7B%20%0A%20%20%20font%2Dsize%3A1%2E0em%3B%20%0A%7D%0A%0Ah5%20%7B%20%0A%20%20%20font%2Dsize%3A0%2E9em%3B%20%0A%7D%0A%0Ah6%20%7B%20%0A%20%20%20font%2Dsize%3A0%2E8em%3B%20%0A%7D%0A%0Aa%3Avisited%20%7B%0A%20%20%20color%3A%20rgb%2850%25%2C%200%25%2C%2050%25%29%3B%0A%7D%0A%0Apre%20%7B%09%0A%20%20%20margin%2Dtop%3A%200%3B%0A%20%20%20max%2Dwidth%3A%2095%25%3B%0A%20%20%20border%3A%201px%20solid%20%23ccc%3B%0A%20%20%20white%2Dspace%3A%20pre%2Dwrap%3B%0A%7D%0A%0Apre%20code%20%7B%0A%20%20%20display%3A%20block%3B%20padding%3A%200%2E5em%3B%0A%7D%0A%0Acode%2Er%2C%20code%2Ecpp%20%7B%0A%20%20%20background%2Dcolor%3A%20%23F8F8F8%3B%0A%7D%0A%0Atable%2C%20td%2C%20th%20%7B%0A%20%20border%3A%20none%3B%0A%7D%0A%0Ablockquote%20%7B%0A%20%20%20color%3A%23666666%3B%0A%20%20%20margin%3A0%3B%0A%20%20%20padding%2Dleft%3A%201em%3B%0A%20%20%20border%2Dleft%3A%200%2E5em%20%23EEE%20solid%3B%0A%7D%0A%0Ahr%20%7B%0A%20%20%20height%3A%200px%3B%0A%20%20%20border%2Dbottom%3A%20none%3B%0A%20%20%20border%2Dtop%2Dwidth%3A%20thin%3B%0A%20%20%20border%2Dtop%2Dstyle%3A%20dotted%3B%0A%20%20%20border%2Dtop%2Dcolor%3A%20%23999999%3B%0A%7D%0A%0A%40media%20print%20%7B%0A%20%20%20%2A%20%7B%20%0A%20%20%20%20%20%20background%3A%20transparent%20%21important%3B%20%0A%20%20%20%20%20%20color%3A%20black%20%21important%3B%20%0A%20%20%20%20%20%20filter%3Anone%20%21important%3B%20%0A%20%20%20%20%20%20%2Dms%2Dfilter%3A%20none%20%21important%3B%20%0A%20%20%20%7D%0A%0A%20%20%20body%20%7B%20%0A%20%20%20%20%20%20font%2Dsize%3A12pt%3B%20%0A%20%20%20%20%20%20max%2Dwidth%3A100%25%3B%20%0A%20%20%20%7D%0A%20%20%20%20%20%20%20%0A%20%20%20a%2C%20a%3Avisited%20%7B%20%0A%20%20%20%20%20%20text%2Ddecoration%3A%20underline%3B%20%0A%20%20%20%7D%0A%0A%20%20%20hr%20%7B%20%0A%20%20%20%20%20%20visibility%3A%20hidden%3B%0A%20%20%20%20%20%20page%2Dbreak%2Dbefore%3A%20always%3B%0A%20%20%20%7D%0A%0A%20%20%20pre%2C%20blockquote%20%7B%20%0A%20%20%20%20%20%20padding%2Dright%3A%201em%3B%20%0A%20%20%20%20%20%20page%2Dbreak%2Dinside%3A%20avoid%3B%20%0A%20%20%20%7D%0A%0A%20%20%20tr%2C%20img%20%7B%20%0A%20%20%20%20%20%20page%2Dbreak%2Dinside%3A%20avoid%3B%20%0A%20%20%20%7D%0A%0A%20%20%20img%20%7B%20%0A%20%20%20%20%20%20max%2Dwidth%3A%20100%25%20%21important%3B%20%0A%20%20%20%7D%0A%0A%20%20%20%40page%20%3Aleft%20%7B%20%0A%20%20%20%20%20%20margin%3A%2015mm%2020mm%2015mm%2010mm%3B%20%0A%20%20%20%7D%0A%20%20%20%20%20%0A%20%20%20%40page%20%3Aright%20%7B%20%0A%20%20%20%20%20%20margin%3A%2015mm%2010mm%2015mm%2020mm%3B%20%0A%20%20%20%7D%0A%0A%20%20%20p%2C%20h2%2C%20h3%20%7B%20%0A%20%20%20%20%20%20orphans%3A%203%3B%20widows%3A%203%3B%20%0A%20%20%20%7D%0A%0A%20%20%20h2%2C%20h3%20%7B%20%0A%20%20%20%20%20%20page%2Dbreak%2Dafter%3A%20avoid%3B%20%0A%20%20%20%7D%0A%7D%0A" rel="stylesheet" type="text/css" />
+  <script type="text/javascript">/**/
+  /* 
+  March 19, 2004 MathHTML (c) Peter Jipsen http://www.chapman.edu/~jipsen
+  Released under the GNU General Public License version 2 or later.
+  See the GNU General Public License (at http://www.gnu.org/copyleft/gpl.html)
+  for more details.
+  */
+  
+  function convertMath(node) {// for Gecko
+    if (node.nodeType==1) {
+      var newnode = 
+        document.createElementNS("http://www.w3.org/1998/Math/MathML",
+          node.nodeName.toLowerCase());
+      for(var i=0; i < node.attributes.length; i++)
+        newnode.setAttribute(node.attributes[i].nodeName,
+          node.attributes[i].nodeValue);
+      for (var i=0; i<node.childNodes.length; i++) {
+        var st = node.childNodes[i].nodeValue;
+        if (st==null || st.slice(0,1)!=" " && st.slice(0,1)!="\n") 
+          newnode.appendChild(convertMath(node.childNodes[i]));
+      }
+      return newnode;
+    }
+    else return node;
+  }
+  
+  function convert() {
+    var mmlnode = document.getElementsByTagName("math");
+    var st,str,node,newnode;
+    for (var i=0; i<mmlnode.length; i++)
+      if (document.createElementNS!=null)
+        mmlnode[i].parentNode.replaceChild(convertMath(mmlnode[i]),mmlnode[i]);
+      else { // convert for IE
+        str = "";
+        node = mmlnode[i];
+        while (node.nodeName!="/MATH") {
+          st = node.nodeName.toLowerCase();
+          if (st=="#text") str += node.nodeValue;
+          else {
+            str += (st.slice(0,1)=="/" ? "</m:"+st.slice(1) : "<m:"+st);
+            if (st.slice(0,1)!="/") 
+               for(var j=0; j < node.attributes.length; j++)
+                 if (node.attributes[j].nodeValue!="italic" &&
+                   node.attributes[j].nodeValue!="" &&
+                   node.attributes[j].nodeValue!="inherit" &&
+                   node.attributes[j].nodeValue!=undefined)
+                   str += " "+node.attributes[j].nodeName+"="+
+                       "\""+node.attributes[j].nodeValue+"\"";
+            str += ">";
+          }
+          node = node.nextSibling;
+          node.parentNode.removeChild(node.previousSibling);
+        }
+        str += "</m:math>";
+        newnode = document.createElement("span");
+        node.parentNode.replaceChild(newnode,node);
+        newnode.innerHTML = str;
+      }
+  }
+  
+  if (document.createElementNS==null) {
+    document.write("<object id=\"mathplayer\"\
+    classid=\"clsid:32F66A20-7614-11D4-BD11-00104BD3F987\"></object>");
+    document.write("<?import namespace=\"m\" implementation=\"#mathplayer\"?>");
+  }
+  if(typeof window.addEventListener != 'undefined'){
+    window.addEventListener('load', convert, false);
+  }
+  if(typeof window.attachEvent != 'undefined') {
+    window.attachEvent('onload', convert);
+  }
+  /**/
+  </script>
+</head>
+<body>
+<h1 id="model-selection-and-inference">Model selection and inference</h1>
+<h2 id="key-references">Key references</h2>
+<p>Harrell, Venables, Schielzeth 2010</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">require</span>(<span class="st">&quot;reshape2&quot;</span>)
+<span class="kw">library</span>(<span class="st">&quot;ggplot2&quot;</span>)
+<span class="kw">theme_set</span>(<span class="kw">theme_bw</span>())</code></pre>
+<h1 id="model-selection">Model selection</h1>
+<ul>
+<li>discrete set of possible models</li>
+<li>want to rank/evaluate relative quality (using <em>some</em> metric); need to adjust for model complexity somehow
+<ul>
+<li>adjusted <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msup><mi>R</mi><mn>2</mn></msup></mrow></math></li>
+<li>cross-validation score</li>
+<li>AIC: <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mo>−</mo><mn>2</mn><mi>L</mi><mo>+</mo><mn>2</mn><mi>k</mi></mrow></math>
+<ul>
+<li>minimize expected Kullback-Leibler distance (average predictive error)</li>
+<li>under some cases <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mo>→</mo></mrow></math> CV score</li>
+<li>inconsistent ...</li>
+<li>... but <a href="http://emdbolker.wikidot.com/blog:aic-vs-bic">makes sense in the case of <em>tapering effects</em></a></li>
+</ul></li>
+<li>Bayes/Schwarz IC:
+<ul>
+<li>asymptotically equivalent to the <em>Bayes factor</em>, odds in favor of a specified model</li>
+<li>penalty term is <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mo stretchy="false">(</mo><mi>log</mi><mi>n</mi><mo stretchy="false">)</mo><mi>k</mi></mrow></math> (so, stricter than AIC when <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>n</mi><mo>&gt;</mo><mn>8</mn></mrow></math>)</li>
+<li>focus on <em>dimensionality</em> (true number of parameters of the model)</li>
+</ul></li>
+<li>finite-size correction:
+<ul>
+<li>AICc (derived for linear models)</li>
+<li>mixed models? <em>conditional AIC</em>, Vaida and Blanchard</li>
+</ul></li>
+<li>Deviance information criterion: makes sense in principle (allows for priors, etc.) but tricky: <a href="http://deepthoughtsandsilliness.blogspot.com/2007/12/focus-on-dic.html">&quot;level of focus&quot; problem</a></li>
+</ul></li>
+</ul>
+<h1 id="model-reduction">Model reduction</h1>
+<p>Why?</p>
+<ul>
+<li>Over- vs under-fitting (aka <em>bias-variance tradeoff</em>)</li>
+<li>Everything is interesting, but we don't have enough data to estimate everything reliably ...</li>
+<li>... and trying to estimate everything messes up <em>all</em> of our estimates</li>
+<li><strong>REFRAIN FROM DATA-DRIVEN MODEL REDUCTION</strong>, including stepwise and all-subsets approaches</li>
+<li>rule of thumb, 10-20 data points per parameter</li>
+<li>Harrell, p. 61: <strong>type of response variable</strong> | <strong>limiting sample size</strong> continuous | <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>n</mi></mrow></math> binary | min(success,failure) ordinal (<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>k</mi></mrow></math> categories) | <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>n</mi><mo>−</mo><mfrac><mn>1</mn><msup><mi>n</mi><mn>2</mn></msup></mfrac><msubsup><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>k</mi></msubsup><msubsup><mi>n</mi><mi>i</mi><mn>3</mn></msubsup></mrow></math> survival time | number of failures</li>
+<li><span class="citation">(Harrell 2001)</span> gives guidelines for different kinds of reduction:
+<ul>
+<li>'domain knowledge'/common sense</li>
+<li>PCA and related techniques (perhaps by groups?): clustering</li>
+<li>penalized regression</li>
+</ul></li>
+<li>eschew the &quot;minimal adequate model&quot; approach (OK for getting rid of interactions, random effects???)</li>
+<li>same issues apply with collinearity: <span class="citation">(Graham 2003)</span></li>
+<li>AIC-based 'multi-model averaging' is a form of penalized modeling, but probably</li>
+</ul>
+<h1 id="correlated-variables">Correlated variables</h1>
+<ul>
+<li>Correlation interferes with <em>interpretation</em>, not <em>fitting</em></li>
+<li>... except for fancy fitting methods (e.g. BUGS)</li>
+<li>... and except for perfect correlation (unidentifiability) -- missing factor combinations</li>
+<li>Centring takes care of correlation between continuous predictors and the <em>intercept</em></li>
+<li>Test the simultaneous effect of <em>all</em> correlated predictors: e.g.</li>
+</ul>
+<pre class="sourceCode r"><code class="sourceCode r">model1 &lt;-<span class="st"> </span><span class="kw">lm</span>(y~.,<span class="dt">data=</span>mydata)
+model2 &lt;-<span class="st"> </span><span class="kw">update</span>(model1,.~.-corrvar1-corrvar2-corrvar3)
+<span class="kw">anova</span>(model1,model2)</code></pre>
+<ul>
+<li>If you must drop some correlated predictors:
+<ul>
+<li>Make an <em>a priori</em> decision (but know that your results are entirely conditional on it!)</li>
+<li>use PCA or some other summarization tool</li>
+</ul></li>
+</ul>
+<blockquote>
+<p>Summarizing collinear variables using a summary score is more powerful and stable than arbitrary selection of one variable in a group of collinear variables (Harrell p. 65) # Model selection</p>
+</blockquote>
+<p>OK, let's suppose you do have a good reason to do model selection (rather than model <em>testing</em>, which corresponds to hypothesis testing) * Model selection (comparison among choices) vs. model validation (unspecificed alternative) * Lots of good arguments vs stepwise/all-subsets approaches (Harrell, Whittington), although see Murtaugh 2009 * Algorithmic approaches: cross-validation, again (but again see )</p>
+<h1 id="model-parameterizationinteractions">Model parameterization/interactions</h1>
+<p>How you parameterize a model is important, because it frames how you ask your questions, sometimes in surprising ways.</p>
+<h2 id="centering-and-scaling-schielzeth-2010">Centering and scaling (Schielzeth 2010)</h2>
+<ul>
+<li><em>Centering</em> continuous input variables is a sensible way to make sure that interactions are interpretable, and that the estimate of the intercept is independent of the other estimates</li>
+<li>Centering to the mean is a reasonable default, but you might also consider, for interpretability, centering to some meaningful default value (e.g. if the mean temperature is 20.1, it might be better to set the baseline at 20)</li>
+<li>If everyone centers to the mean of their data set, it makes it harder to compare results (although not impossible, as long as the mean is actually reported)</li>
+<li><em>Scaling</em> input variables (e.g. by 1 SD) doesn't change the statistical properties of the estimate at all, but allows meaningful comparison of the magnitude of the estimates</li>
+<li>May improve estimation slightly for complex fitting problems</li>
+<li>Same issues about choosing the scale, and across-study comparisons, apply</li>
+<li><code>scale()</code> function in R</li>
+</ul>
+<h2 id="marginality-etc.">Marginality etc.</h2>
+<ul>
+<li>Need to be very careful interpreting main effects in the presence of interactions: don't, or be very careful to set contrasts properly</li>
+<li>Type I, II, III ...</li>
+<li>be very careful of what <code>anova</code> does! may want to use <code>car::Anova</code></li>
+</ul>
+<h2 id="catch-22">Catch-22</h2>
+<p>Ideally, to test effects we would like to proceed with modeling in a way that (is):</p>
+<ul>
+<li>is interpretable</li>
+<li>incorporates all reasonable interactions</li>
+<li>is reasonably parsimonious</li>
+<li>is not based on variable selection (no snooping)</li>
+<li>respects marginality</li>
+</ul>
+<p>???</p>
+<p>Graham, Michael H. 2003. “Confronting multicollinearity in ecological multiple regression.” <em>Ecology</em> 84 (11): 2809–2815. doi:10.1890/02-3114. <a href="http://www.esajournals.org/doi/abs/10.1890/02-3114" title="http://www.esajournals.org/doi/abs/10.1890/02-3114">http://www.esajournals.org/doi/abs/10.1890/02-3114</a>.</p>
+<p>Harrell, Frank. 2001. <em>Regression Modeling Strategies</em>. Springer.</p>
+</body>
+</html>

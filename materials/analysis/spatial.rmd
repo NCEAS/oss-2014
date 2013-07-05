@@ -9,7 +9,7 @@ Huge topic!
 
 ## Key references
 
-Diggle (point patterns); Cressie (everything); Diggle and Ribeiro (geostatistics); Dormann et al (GLMMs for species presence/abundance), Haining
+Diggle (point patterns); Cressie (everything); Diggle and Ribeiro (geostatistics); Dormann et al (GLMMs for species presence/abundance); Haining; [@pinheiro_mixed-effects_2000]
 
 ### Point processes
  
@@ -46,6 +46,7 @@ I don't have much to say here: data are often *sampled* this way but we more typ
 
 * stationarity, isotropy
 * large- vs small-scale patterns
+* mean models vs variance models
 * (fitting small-scale spatial pattern via splines)
    
 ## Not-really-spatial models
@@ -72,6 +73,7 @@ variables, possibly with quadratic terms (`poly(x,y,degree=2)`) - in spatial sta
 
 ## Analyses based on weight matrices
 
+* Parallel with Ives and Zhu's "generalized least squares" example: correlation matrix assumed known
 * Moran's $I$ (analogue of lagged autocorrelation), Geary's $C$
 
 * Assume we are willing to specify the weight matrix $W$ *a priori*
@@ -134,14 +136,16 @@ image(g3,axes=FALSE,useRaster=TRUE,main="Gaussian")
     * all start at 1 (unless there's a *nugget effect*), decrease eventually to zero; most are positive everywhere
     * spatial *variogram* or *semivariogram*; equivalent information but easier to compute
 
-
+* spatial prediction: *kriging*
 
 ## R packages
 
-* `spdep`: weight matrices, Moran's I, CAR/SAR
+* `spdep`: weight matrices, Moran's $I$, CAR/SAR
 * `RandomFields`: simulating Gaussian RF of all types
-* `nlme`: `g[n]ls` and `[n]lme` can handle standard spatial autocorrelation structures
+* `nlme`: `g[n]ls` and `[n]lme` can handle standard spatial autocorrelation structures (only within blocks)
 * `ramps`: Bayesian MCMC fitting of geostatistical models.  Also lots of additional spatial correlation structures, including basing correlation on great-circle distances                      
 * `geoR`: spatial LMs and GLMMs (but without additional grouping structures)
 * `ape`: correlation classes for phylogenetic correlations
 * `INLA`: complex but powerful package for spatial (among others) fitting
+
+AD Model Builder [spatial ex.], BUGS (GeoBUGS)
