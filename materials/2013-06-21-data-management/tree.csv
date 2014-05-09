@@ -1,0 +1,6 @@
+plot_Year,plot_Month,plot_Name,subplot,quad,tree_Number,inv_Status,stemtype,species_Code,dbh,soundness,crownclass,height,note
+2009,3,Theplot1,1,NE,1,IL,S,QUEALB,17.5,1,DC,17,This is a note
+2009,3,Theplot1,1,null,2,IL,S,CARTOM,20.2,2,DC,18,null
+2009,3,Theplot1,2,null,3.1,IL,M,ACERUB,14.3,1,I,15,Final Note
+2009,3,Theplot1,2,SE,3.2,IL,M,ACERUB,10.3,1,I,12,Final Note
+2009,3,Theplot1,2,null,4,IL,S,OXYARB,6.3,3,O,5,Final Note
