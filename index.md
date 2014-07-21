@@ -95,6 +95,7 @@ contact: oss2014@nceas.ucsb.edu
   <div class="span6">
     <h3>Day 1</h3>
     <ul>
+        <li><a href="day01/20140721-jones-oss-intro.pptx">Overview of OSS</a></li>
         <li><a href="novice/shell/">Servers, Networks, and the Command Shell</a></li>
     </ul>
   </div>
