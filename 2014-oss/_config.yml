@@ -7,3 +7,5 @@ exclude         : [branding]
 contact         : "oss2014@nceas.ucsb.edu"
 github_url      : "https://github.com/NCEAS/training"
 irc_url         : "http://webchat.nceas.ucsb.edu/?channels=oss"
+twitter_name    : "@nceas"
+twitter_url     : "https://twitter.com/nceas"
