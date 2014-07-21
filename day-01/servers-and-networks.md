@@ -64,11 +64,8 @@ output: ioslides_presentation
 
 ## The Internet
 
-### Global network of networks using the Internet Protocol to communicate
-
 ![](images/internet-1024x1024.png
-     "http://r1.3crowd.com/blyon/opte/maps/static/1105841711.LGL.2D.1024x1024.png")
-
+    "http://r1.3crowd.com/blyon/opte/maps/static/1105841711.LGL.2D.1024x1024.png")
 
 ## Internet versus the Web
 
@@ -116,7 +113,9 @@ output: ioslides_presentation
 
 ### We will use this later:
 
-* ssh isis.nceas.ucsb.edu
+```bash
+$ ssh isis.nceas.ucsb.edu
+```
 
 
 
