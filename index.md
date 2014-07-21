@@ -1,7 +1,7 @@
 ---
 layout: bootcamp
 root: .
-venue: NCEAD and RENCI
+venue: NCEAS and RENCI
 address: Santa Barbara, CA and Chapel Hill, NC
 country: United-States
 humandate: July 21-Aug 8, 2014
