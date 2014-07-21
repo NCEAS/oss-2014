@@ -110,6 +110,10 @@ CLI
 * Change permissions: `chmod`
 * Change ownership: `chown`
 
+## Elevate your permissions
+
+![Act as root](images/sandwich.png "http://imgs.xkcd.com/comics/sandwich.png")
+
 ## Getting help
 
 ![](images/asking-for-help.jpg
@@ -131,11 +135,9 @@ CLI
 * long form: `--help`
 
 <!--
-## Elevate your permissions
-
-![Act as root](images/sandwich.png "http://imgs.xkcd.com/comics/sandwich.png")
-
-* `$ sudo vi /etc/postgresql/9.1/main/postgresql.conf`
+```bash
+$ sudo vi /etc/postgresql/9.1/main/postgresql.conf
+```
 -->
 
 ## Text editing
@@ -170,11 +172,13 @@ CLI
 ![`stdin`, `stdout`, `stderr`](images/pipe_split.png
     "http://www.ucblueash.edu/thomas/Intro_Unix_Text/Images/pipe_split.png")
 
-* `ls *.jpg | wc -l`
-* `ls *.jpg | wc -l > jpegcount.txt`
-* `diff <(sort file1.txt) <(sort file2.txt)`
-* `ls foo 2>/dev/null`
-* `tee`
+```bash
+$ ls *.jpg | wc -l
+$ ls *.jpg | wc -l > jpegcount.txt
+$ diff <(sort file1.txt) <(sort file2.txt)
+$ ls foo 2>/dev/null
+$ tee
+```
 
 ## A sampling of more advanced utilities
 
@@ -191,15 +195,27 @@ CLI
 
 ### Show all lines containing "bug" in my R scripts
 
-* `grep bug *.R`
+```bash
+$ grep bug *.R
+```
 
 ### Now count the number of occurrences per file
 
-* `grep -c bug *.R`
+```bash
+$ grep -c bug *.R
+```
 
-### Print the names of files that _don't_ contain bug
+### Print the names of files that contain bug
 
-* `grep -vl bug *.R`
+```bash
+$ grep -l bug *.R
+```
+
+### Print the lines of files that __don't__ contain bug
+
+```bash
+$ grep -v bug *.R
+```
 
 ## sed
 
@@ -210,15 +226,21 @@ CLI
 
 ### Remove all lines containing "bug"!
 
-* `sed '/bug/d' myscript.R`
+```bash
+$ sed '/bug/d' myscript.R
+```
 
 ### Call them buglets, not bugs!
 
-* `sed 's/bug/buglet/g' myscript.R`
+```bash
+$ sed 's/bug/buglet/g' myscript.R
+```
 
 ### Actually, only do this on lines starting with #
 
-* `sed '/#/ s/bug/buglet/g' myscript.R`
+```bash
+$ sed '/#/ s/bug/buglet/g' myscript.R
+```
 
 
 ## find
@@ -232,11 +254,15 @@ CLI
 
 ### Show me my pdfs!
 
-* `find . -iname "*.pdf"`
+```bash
+$ find . -iname '*.pdf'
+```
 
 ### Which files are larger than 10GB?
 
-* `find . -size +10G -ls`
+```bash
+$ find . -size +10G -ls
+```
 
 ## Getting things done
 
