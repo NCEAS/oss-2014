@@ -1,0 +1,32 @@
+RENCI
+-----
+0 all red
+1 all green
+0 all blue
+3 all yellow
+
+2 two red
+2 two green
+0 two blue
+2 two yellow
+
+12 one of each
+
+------
+RENCI(22) dominant...
+7 red
+4 green
+2 blue
+9 yellow
+
+NCEAS(24) dominant...
+5 red
+6 green
+6 blue
+7 yellow
+
+TOTAL(46) dominant...
+12 red
+10 green
+8  blue
+16 yellow
