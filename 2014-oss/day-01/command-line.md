@@ -142,7 +142,7 @@ CLI
 
 ### (Text rules!)
 
-## Some editors
+### Some editors
 
 * `vim`
 * `emacs`
