@@ -1,7 +1,10 @@
 ---
 layout: lesson
 root: ../..
-title: Servers, Networks, and the Command Line
+title: Servers and Networks
+author: "Matt Jones"
+date: "July 19, 2014"
+output: ioslides_presentation
 ---
 
 ## Our goal is to:
@@ -12,7 +15,7 @@ title: Servers, Networks, and the Command Line
 
 ![](images/xkcd-149-sandwich.png)
 
-# Basic networking
+## Basic networking
 
 * Host computers connect via networking equipment
 * Can send messages to each other over communication protocols
@@ -22,21 +25,21 @@ title: Servers, Networks, and the Command Line
 ![](images/tcp_ports.jpg)
 
 
-# Local networks
+## Local networks
 
 ![](images/client-server-network.png)
 
-* All messages broadcast on the local network
+- All messages broadcast on the local network
     - Local hosts only "listen" for data that targets them
 
-# Routed networks
+## Routed networks
 
 ![](images/routers_archs.gif)
 
 * Mechanism to connect networks together via forwarding data along routing paths
 
 
-# IP Numbers and Hostnames
+## IP Numbers and Hostnames
 
 * Hosts are assigned a unique IP number used for all communication and routing
     - 128.111.220.7
@@ -50,26 +53,26 @@ title: Servers, Networks, and the Command Line
     - Then they open a connection to the IP Number
 
 
-# Client-Server and the Internet
+## Client-Server and the Internet
 
 ![](images/client-server.png)
 
-# Peer to Peer networking
+## Peer to Peer networking
 
 ![](images/p2p-network.png)
 
 
-# The Internet
+## The Internet
 
-## Global network of networks using the Internet Protocol to communicate
+### Global network of networks using the Internet Protocol to communicate
 
 ![](images/internet-1024x1024.png
      "http://r1.3crowd.com/blyon/opte/maps/static/1105841711.LGL.2D.1024x1024.png")
 
 
-# Internet versus the Web
+## Internet versus the Web
 
-## What is the difference?
+### What is the difference?
 
 * Internet: Global communication network using the Internet Protocol (IP)
     - Supports many application protocols, including HTTP
@@ -78,7 +81,7 @@ title: Servers, Networks, and the Command Line
     - Transported over HTTP application protocol (over IP)
     - Generally accessed using web browsers that retrieve the documents
 
-# Routing on the internet
+## Routing on the internet
 
 ![](images/internet-core.jpg)
 
@@ -87,7 +90,7 @@ title: Servers, Networks, and the Command Line
     - loss of the core still leaves > 70% of internet connected peer-to-peer
     - see http://www.technologyreview.com/news/408104/mapping-the-internet/
 
-# Internet Application Protocols
+## Internet Application Protocols
 
 * Web (http)
 * Email (smtp)
@@ -97,7 +100,7 @@ title: Servers, Networks, and the Command Line
 * Network News (nntp)
 * ...
 
-# The Web
+## The Web
 
 * Global network of documents hosted on web servers around the world
 * Web documents connected using hyperlinked HTML documents
@@ -105,13 +108,13 @@ title: Servers, Networks, and the Command Line
 
 ![](images/img_HTTP_request.png)
 
-# Secure Shell
+## Secure Shell
 
 * Used for connecting to and running shell commands on a remote host
 * Tremendously simplifies remote computing
 * Supported out-of-the-box on Linux and Macs
 
-## We will use this later today:
+### We will use this later:
 
 * ssh isis.nceas.ucsb.edu
 
