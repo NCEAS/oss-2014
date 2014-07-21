@@ -3,7 +3,7 @@ layout: lesson
 root: ../..
 title: Servers and Networks
 author: "Matt Jones"
-date: "July 19, 2014"
+date: "July 21, 2014"
 output: ioslides_presentation
 ---
 
