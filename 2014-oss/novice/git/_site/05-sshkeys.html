@@ -1,0 +1,128 @@
+<div class='objectives'>
+<h4>Objectives</h4>
+
+<ul>
+<li>Explain what an SSH key is</li>
+
+<li>Generate your own SSH key pair</li>
+
+<li>Add your SSH key to your GitHub account</li>
+
+<li>Learn how to use your SSH key in your GitHub workflow</li>
+</ul>
+</div>
+<h4 id="why_use_an_ssh_key">Why Use an SSH Key?</h4>
+
+<p>When working with a GitHub repository, you’ll often need to identify yourself to GitHub using your username and password. An SSH key is an alternate way to identify yourself that doesn’t require you to enter you username and password every time.</p>
+
+<p>SSH keys come in pairs, a public key that gets shared with services like GitHub, and a private key that is stored only on your computer. If the keys match, you’re granted access.</p>
+
+<p>The cryptography behind SSH keys ensures that no one can reverse engineer your private key from the public one.</p>
+
+<h4 id="generating_an_ssh_key_pair">Generating an SSH key pair</h4>
+
+<p>The first step in using SSH authorization with GitHub is to generate your own key pair.</p>
+
+<p>You might already have an SSH key pair on your machine. You can check to see if one exists by moving to your <code>.ssh</code> directory and listing the contents.</p>
+<div class='in'>
+<pre><code>
+$ cd ~/.ssh
+$ ls
+</code></pre>
+</div>
+<p>If you see <code>id_rsa.pub</code>, you already have a key pair and don’t need to create a new one.</p>
+
+<p>If you don’t see <code>id_rsa.pub</code>, use the following command to generate a new key pair. Make sure to replace <code>your@email.com</code> with your own email address.</p>
+<div class='in'>
+<pre><code>
+$ ssh-keygen -t rsa -C &amp;quot;your@email.com&amp;quot;
+</code></pre>
+</div>
+<p>When asked where to save the new key, hit enter to accept the default location.</p>
+<div class='out'>
+<pre><code>
+Generating public/private rsa key pair.
+Enter file in which to save the key (/Users/username/.ssh/id_rsa):
+</code></pre>
+</div>
+<p>You will then be asked to provide an optional passphrase. This can be used to make your key even more secure, but for this lesson you can skip it by hitting enter twice.</p>
+<div class='out'>
+<pre><code>
+Enter passphrase (empty for no passphrase):
+</code></pre>
+</div><div class='out'>
+<pre><code>
+Enter same passphrase again:
+</code></pre>
+</div>
+<p>When the key generation is complete, you should see the following confirmation:</p>
+<div class='out'>
+<pre><code>
+Your identification has been saved in /Users/username/.ssh/id_rsa.
+Your public key has been saved in /Users/username/.ssh/id_rsa.pub.
+The key fingerprint is:
+01:0f:f4:3b:ca:85:d6:17:a1:7d:f0:68:9d:f0:a2:db your@email.com
+The key&amp;#39;s randomart image is:
++--[ RSA 2048]----+
+|                 |
+|                 |
+|        . E +    |
+|       . o = .   |
+|      . S =   o  |
+|       o.O . o   |
+|       o .+ .    |
+|      . o+..     |
+|       .+=o      |
++-----------------+
+</code></pre>
+</div>
+<p>The random art image is an alternate way to match keys but we won’t be needing this.</p>
+
+<h4 id="add_your_public_key_to_github">Add your public key to GitHub</h4>
+
+<p>We now need to tell GitHub about your public key. Display the contents of your new public key file with <code>cat</code>:</p>
+<div class='in'>
+<pre><code>
+$ cat ~/.ssh/id_rsa.pub
+</code></pre>
+</div>
+<p>The output should look something like this:</p>
+<div class='out'>
+<pre><code>
+ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEA879BJGYlPTLIuc9/R5MYiN4yc/YiCLcdBpSdzgK9Dt0Bkfe3rSz5cPm4wmehdE7GkVFXrBJ2YHqPLuM1yx1AUxIebpwlIl9f/aUHOts9eVnVh4NztPy0iSU/Sv0b2ODQQvcy2vYcujlorscl8JjAgfWsO3W4iGEe6QwBpVomcME8IU35v5VbylM9ORQa6wvZMVrPECBvwItTY8cPWH3MGZiK/74eHbSLKA4PY3gM4GHI450Nie16yggEg2aTQfWA1rry9JYWEoHS9pJ1dnLqZU3k/8OWgqJrilwSoC5rGjgp93iu0H8T6+mEHGRQe84Nk1y5lESSWIbn6P636Bl3uQ== your@email.com
+</code></pre>
+</div>
+<p>Copy the contents of the output to your clipboard.</p>
+
+<p>Login to github.com and bring up your account settings by clicking the tools icon.</p>
+
+<p><img src="img/github-account-settings.png" alt="GitHub Account Settings" /></p>
+
+<p>Select <strong>SSH Keys</strong> from the side menu, then click the <strong>Add SSH key</strong> button.</p>
+
+<p><img src="img/github-ssh-keys.png" alt="GitHub SSH Keys panel" /></p>
+
+<p>Name your key something whatever you like, and paste the contents of your clipboard into the <strong>Key</strong> text box.</p>
+
+<p><img src="img/github-add-ssh-key.png" alt="GitHub Add SSH Key" /></p>
+
+<p>Finally, hit <strong>Add key</strong> to save. Enter your github password if prompted.</p>
+
+<h4 id="using_your_ssh_key">Using Your SSH Key</h4>
+
+<p>Going forward, you can use the SSH clone URL when copying a repo to your local machine.</p>
+
+<p><img src="img/github-ssh-clone-url.png" alt="GitHub clone url options" /></p>
+
+<p>This will allow you to bypass entering your username and password for future GitHub commands.</p>
+<div class='keypoints'>
+<h4>Key Points</h4>
+
+<ul>
+<li>SSH is a secure alternative to username/password authorization</li>
+
+<li>SSH keys are generated in public / private pairs. Your public key can be shared with others. The private keys stays on your machine only.</li>
+
+<li>You can authorize with GitHub through SSH by sharing your public key with GitHub.</li>
+</ul>
+</div>
