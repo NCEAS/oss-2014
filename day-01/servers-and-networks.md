@@ -7,13 +7,15 @@ date: "July 19, 2014"
 output: ioslides_presentation
 ---
 
+## The Internet
+
+![](images/internet-1024x1024.png
+    "http://r1.3crowd.com/blyon/opte/maps/static/1105841711.LGL.2D.1024x1024.png")
+
 ## Our goal is to:
 
-* Provide basic background on computer networking to lay groundwork for later work on collaboration techniques that use the Internet
-
-# Make me a sandwich
-
-![](images/xkcd-149-sandwich.png)
+* Provide basic background on computer networking 
+* Lay groundwork for understanding tools that use the Internet
 
 ## Basic networking
 
@@ -62,11 +64,6 @@ output: ioslides_presentation
 ![](images/p2p-network.png)
 
 
-## The Internet
-
-![](images/internet-1024x1024.png
-    "http://r1.3crowd.com/blyon/opte/maps/static/1105841711.LGL.2D.1024x1024.png")
-
 ## Internet versus the Web
 
 ### What is the difference?
@@ -80,12 +77,11 @@ output: ioslides_presentation
 
 ## Routing on the internet
 
-![](images/internet-core.jpg)
-
 * 80 routers at the core
 * dense "mantle" of routers at the periphery
     - loss of the core still leaves > 70% of internet connected peer-to-peer
-    - see http://www.technologyreview.com/news/408104/mapping-the-internet/
+
+![](images/internet-core.jpg)
 
 ## Internet Application Protocols
 
