@@ -30,6 +30,22 @@ Examples
  * Validate data
  * Sanitize data
 
+## Examples using ls
+```bash
+$ ls -1 paleo-mammals*
+$ ls -1 paleo-mammals-v?.*
+```
+
+## Examples using sed
+
+```bash
+$ sed '/Mammuthus/ s/Mammuthus/Mamuthus/g' paleo-mammals.txt
+$ sed '/M/ d' paleo-mammals.txt
+$ sed '/^M/ d' paleo-mammals.txt
+$ sed '/M$/ d' paleo-mammals.txt
+$ sed '/Ca.*/ s/K$/M/g' paleo-mammals.txt
+```
+
 ## Places you might encounter regexes
 
 Editors
