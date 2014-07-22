@@ -34,6 +34,7 @@ contact: oss2014@nceas.ucsb.edu
         <li><a href="day-01/servers-and-networks.html">Servers and Networks</a></li>
         <li><a href="day-01/command-line.html">The Command Line</a></li>
         <li><a href="http://software-carpentry.org/v5/novice/shell/">Software Carpentry: Command Shell</a></li>
+        <li><a href="http://software-carpentry.org/v5/novice/ref/01-shell.html">Software Carpentry: Command Shell Reference</a></li>
     </ul>
   </div>
   <div class="span6">
