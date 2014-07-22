@@ -116,6 +116,19 @@
 <li>Sanitize data</li>
 </ul>
 
+</article></slide><slide class=''><hgroup><h2>Examples using ls</h2></hgroup><article  id="examples-using-ls">
+
+<pre class = 'prettyprint lang-bash'>$ ls -1 paleo-mammals*
+$ ls -1 paleo-mammals-v?.*</pre>
+
+</article></slide><slide class=''><hgroup><h2>Examples using sed</h2></hgroup><article  id="examples-using-sed">
+
+<pre class = 'prettyprint lang-bash'>$ sed &#39;/Mammuthus/ s/Mammuthus/Mamuthus/g&#39; paleo-mammals.txt
+$ sed &#39;/M/ d&#39; paleo-mammals.txt
+$ sed &#39;/^M/ d&#39; paleo-mammals.txt
+$ sed &#39;/M$/ d&#39; paleo-mammals.txt
+$ sed &#39;/Ca.*/ s/K$/M/g&#39; paleo-mammals.txt</pre>
+
 </article></slide><slide class=''><hgroup><h2>Places you might encounter regexes</h2></hgroup><article  id="places-you-might-encounter-regexes">
 
 <p>Editors</p>
