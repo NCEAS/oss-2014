@@ -24,7 +24,7 @@ contact: oss2014@nceas.ucsb.edu
 <!--
     Edit this block to show the agenda for your bootcamp.
 -->
-<h2>Lessons</h2>
+<h2>Documents and Slides</h2>
 
 <div class="row-fluid">
   <div class="span6">
