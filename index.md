@@ -54,14 +54,17 @@ contact: oss2014@nceas.ucsb.edu
     <ul>
     </ul>
   </div>
+</div>
+<div class="row-fluid">
   <div class="span6">
     <h3>Day 5</h3>
     <ul>
     </ul>
   </div>
-
+</div>
 <hr/>
 
+<div class="row-fluid">
   <div class="span6">
     <h3>Day 8</h3>
     <ul>
@@ -72,6 +75,8 @@ contact: oss2014@nceas.ucsb.edu
     <ul>
     </ul>
   </div>
+</div>
+<div class="row-fluid">
   <div class="span6">
     <h3>Day 10</h3>
     <ul>
@@ -82,14 +87,17 @@ contact: oss2014@nceas.ucsb.edu
     <ul>
     </ul>
   </div>
+</div>
+<div class="row-fluid">
   <div class="span6">
     <h3>Day 12</h3>
     <ul>
     </ul>
   </div>
-
+</div>
 <hr/>
 
+<div class="row-fluid">
   <div class="span6">
     <h3>Day 15</h3>
     <ul>
@@ -100,6 +108,8 @@ contact: oss2014@nceas.ucsb.edu
     <ul>
     </ul>
   </div>
+</div>
+<div class="row-fluid">
   <div class="span6">
     <h3>Day 17</h3>
     <ul>
@@ -110,6 +120,8 @@ contact: oss2014@nceas.ucsb.edu
     <ul>
     </ul>
   </div>
+</div>
+<div class="row-fluid">
   <div class="span6">
     <h3>Day 19</h3>
     <ul>
