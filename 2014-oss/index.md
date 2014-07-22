@@ -42,6 +42,7 @@ contact: oss2014@nceas.ucsb.edu
     <ul>
         <li><a href="day-02/COMPASSMessageBoxBlank.docx">Message Box Template</a></li>
         <li><a href="day-02/parker-oss2014-transform-synthesis.ppt">Transformative Research in Synthesis Centers</a></li>
+        <li><a href="day-02/bash-loops.html">Loops</a></li>
         <li><a href="day-02/regular-expressions.html">Regular Expressions</a></li>
     </ul>
   </div>
