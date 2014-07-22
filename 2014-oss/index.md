@@ -43,4 +43,83 @@ contact: oss2014@nceas.ucsb.edu
     </ul>
   </div>
 </div>
+<div class="row-fluid">
+  <div class="span6">
+    <h3>Day 3</h3>
+    <ul>
+    </ul>
+  </div>
+  <div class="span6">
+    <h3>Day 4</h3>
+    <ul>
+    </ul>
+  </div>
+</div>
+<div class="row-fluid">
+  <div class="span6">
+    <h3>Day 5</h3>
+    <ul>
+    </ul>
+  </div>
+  <div class="span6">
+    <h3>Day 8</h3>
+    <ul>
+    </ul>
+  </div>
+</div>
+<div class="row-fluid">
+  <div class="span6">
+    <h3>Day 9</h3>
+    <ul>
+    </ul>
+  </div>
+  <div class="span6">
+    <h3>Day 10</h3>
+    <ul>
+    </ul>
+  </div>
+</div>
+<div class="row-fluid">
+  <div class="span6">
+    <h3>Day 11</h3>
+    <ul>
+    </ul>
+  </div>
+  <div class="span6">
+    <h3>Day 12</h3>
+    <ul>
+    </ul>
+  </div>
+</div>
+<div class="row-fluid">
+  <div class="span6">
+    <h3>Day 15</h3>
+    <ul>
+    </ul>
+  </div>
+  <div class="span6">
+    <h3>Day 16</h3>
+    <ul>
+    </ul>
+  </div>
+</div>
+<div class="row-fluid">
+  <div class="span6">
+    <h3>Day 17</h3>
+    <ul>
+    </ul>
+  </div>
+  <div class="span6">
+    <h3>Day 18</h3>
+    <ul>
+    </ul>
+  </div>
+</div>
+<div class="row-fluid">
+  <div class="span6">
+    <h3>Day 19</h3>
+    <ul>
+    </ul>
+  </div>
+</div>
 
