@@ -138,13 +138,38 @@ Files paleo-mammals.txt and paleo-mammals-v3.txt differ</pre>
 
 <ul>
 <li>Imagine you have a lot of data files named similarly</li>
-<li>To create a backup copy of all of them, try a loop like:</li>
+<li>To rename all of them, try a loop like:</li>
 </ul>
 
 <pre class = 'prettyprint lang-bash'>$ for filename in *.csv
 &gt; do
 &gt;    mv $filename orig-$filename
-&gt; done</pre></article></slide>
+&gt; done</pre>
+
+</article></slide><slide class=''><hgroup><h2>Bash scripts</h2></hgroup><article  id="bash-scripts">
+
+<ul>
+<li>Series of commands can be saved in a file and run at any time</li>
+<li>Useful to write a program that automates a task</li>
+<li>Start with <code>#!</code> syntax to indicate which program should be used for the script
+
+<ul>
+<li>e.g., <code>#!/bin/bash</code> to use the bash shell</li>
+</ul></li>
+</ul>
+
+</article></slide><slide class=''><hgroup><h2>A simple bash script</h2></hgroup><article  id="a-simple-bash-script">
+
+<pre class = 'prettyprint lang-bash'>#!/bin/bash
+
+# Example of a simple shell script
+# Do not really use this for backup!
+PREFIX=&quot;backup-&quot;
+FILES=$@
+for file in $FILES
+do
+    cp $file $PREFIX$file
+done</pre></article></slide>
 
 
   <slide class="backdrop"></slide>
