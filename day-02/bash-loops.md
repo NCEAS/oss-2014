@@ -58,7 +58,7 @@ Files paleo-mammals.txt and paleo-mammals-v3.txt differ
 ## Renaming files
 
 - Imagine you have a lot of data files named similarly
-- To create a backup copy of all of them, try a loop like:
+- To rename all of them, try a loop like:
 
 ```bash
 $ for filename in *.csv
