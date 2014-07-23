@@ -13,15 +13,15 @@ output: ioslides_presentation
 
 ## The operating system
 
-![](images/OSDiagram.png
+![OS Diagram](images/OSDiagram.png
     "https://raw.github.com/ReturnInfinity/BareMetal-OS/master/docs/images/OS%20Diagram%20-%20Standard.png")
 
-![](images/OSes.png
+![OSes](images/OSes.png
     "http://www.instablogsimages.com/1/2011/08/16/operating_system_wcy2f.png")
 
 ## All about the X
 
-![](images/40years.png
+![UNIX logo](images/40years.png
     "http://www.unix.org/40years.png")
 
 UNIX
@@ -45,7 +45,7 @@ POSIX
 
 ## Some Unix hallmarks
 
-![](images/dilbert-unix.png
+![Dilbert cartoon](images/dilbert-unix.png
     "http://eikonal.files.wordpress.com/2010/02/dilbert-unix.png")
 
 * Multi-user, multi-process
@@ -55,7 +55,7 @@ POSIX
 
 ## The Command Line
 
-![](images/SQLite_Cmd_GUI_Compare.png
+![Screenshot of SQL DB Browser GUI](images/SQLite_Cmd_GUI_Compare.png
     "http://media.getspatial.com/wordpress/SQLite_Cmd_GUI_Compare.png")
 
 GUI
@@ -65,14 +65,14 @@ CLI
  
 ## GUIs can be impressive
 
-![](images/oz-wizard.png
+![Screenshot of SQL DB browser](images/oz-wizard.png
     "http://thefilmspectrum.com/wp-content/uploads/2011/12/Picture-31.png")
 
 #### [Pay no attention to that man behind the curtain](http://www.youtube.com/watch?v=YWyCCJ6B2WE)
 
 # CLIs let you get things done
 
-![](images/oz-man.jpg
+![Wizard of Oz](images/oz-man.jpg
     "http://farm7.staticflickr.com/6012/5958643658_0597586c9e_z.jpg")
 
 
@@ -86,7 +86,7 @@ CLI
 
 ## Let's connect
 
-![](images/isis-ssh.png)
+![ssh command line screenshot](images/isis-ssh.png)
 
 ## Lay of the land
 
@@ -102,7 +102,7 @@ CLI
 
 ## Permissions
 
-![](images/UnixFileLongFormat.png
+![File permissions](images/UnixFileLongFormat.png
 "https://www3.ntu.edu.sg/home/ehchua/programming/howto/images/UnixFileLongFormat.png")
 
 ### All files have permissions and ownership
@@ -116,7 +116,7 @@ CLI
 
 ## Getting help
 
-![](images/asking-for-help.jpg
+![I will ask for help before my problems get out of control](images/asking-for-help.jpg
     "http://www.socialconfidencecenter.com/wp-content/uploads/2012/11/asking-for-help.jpg")  
 
 * `<command> -h`, `<command> --help`
