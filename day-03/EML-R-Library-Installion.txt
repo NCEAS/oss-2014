@@ -1,0 +1,24 @@
+How to install the EML R Library
+--------------------------------
+
+# 1. Use the devtools library
+library(devtools)
+
+
+# 1a. If you get an error: "there is no package called 'devtools'
+#     then install the devtools R library
+install.packages("devtools") 
+
+
+# 2. Install the EML R library from GitHub (it is not yet published 
+#    on CRAN, so install.packages will not work
+install_github("ropensci/EML", build=FALSE) 
+
+
+# If you get errors similar to "package 'RWordXML' is not available"
+# for ROOXML, RWordXML, Rcompression, etc., download the tar.gz files
+# from http://www.omegahat.org/R/src/contrib/ and then install them by:
+# install("/path/to/unpacked/tar/file/")
+# e.g. install("/Users/walker/Downloads/RWordXML/")
+# OR on the command line:
+# R CMD INSTALL /Users/walker/Downloads/RWordXML_0.1.tar.gz
