@@ -10,11 +10,9 @@ output:
 
  ```{r, echo = TRUE, message = FALSE}
 knitr::opts_chunk$set(
-  comment = "#>",
+  comment = " ",
   error = FALSE,
-  tidy = FALSE,
-  fig.width = 6,
-  fig.height = 4
+  tidy = FALSE
 )
 ```
 
@@ -36,18 +34,18 @@ library(ggplot2) # for visualizing the data
 
 You start off by downloading a complete list of species from the FAO database
 
-```{r}
+```{r species_codes}
 species_list <- of_species_codes()
 ```
 
-```{r}
+```{r species_list}
 head(species_list)
 ```
 
 
 Now you've got a list of `r nrow(species_list)` commerically valuable species. Let's write a small function to search for species by their common names
 
-```{r}
+```{r fish_search}
 fish_search <- function(query = NULL, species_list) {
 	if(!is.null(query)) {
 		species_list[grep(query, species_list$english_name), ]
@@ -58,7 +56,8 @@ fish_search <- function(query = NULL, species_list) {
 We'll create another function to fail gracefully if data are not available for a particular species or country.
 
 
-```{r}
+```{r safe_landings}
+Sys.setlocale('LC_ALL','C') 
 safe_landings <- failwith(NULL, of_landings)
 # failwith is a function in the plyr package.
 ```
@@ -88,7 +87,7 @@ cod_data <- ldply(cods$a3_code, function(x) {
 
 This will only retrieve data if avaialble for the few species that we subset from the larger list. We can plot these out:
 
-```{r}
+```{r, fig.width = 6, fig.height = 4}
 ggplot(cod_data, aes(year, catch, color = species)) + geom_line(size = 1.1)
 ```
 
@@ -106,12 +105,12 @@ head(country_list)
 
 Want landings data for USA?
 
-```{r}
+```{r usa_catch, fig.width = 6, fig.height = 4}
 usa_data <- of_landings(country = "USA")
 fish_plot(usa_data)
 ```
-test
-# ![](http://i.imgur.com/TsYeAh2.png)
+
+<!-- # ![](http://i.imgur.com/TsYeAh2.png) -->
 
 We can do some interesting comparisons of species. Let's examine the Anchovy fisheries in the Northern and Southern hemispheres (California versus Peru) and a couple of other commercially interesting fish species
 
@@ -128,8 +127,9 @@ dat <- ldply(who, function(x) safe_landings(species = x))
 
 We can plot these data out:
 
-```{r}
-ggplot(dat, aes(year, catch)) + geom_line() + facet_wrap(~species, scales = "free_y") + theme_blank()
+```{r fisheries_collapse, fig.width = 6, fig.height = 4}
+ggplot(dat, aes(year, catch)) + geom_line() + 
+facet_wrap(~species, scales = "free_y") 
 ```
 
 
