@@ -77,9 +77,11 @@ class_list <- classification(uids)
 # And we can attach these names to our allnames data.frame
 
 gethiernames <- function(x) {
-temp <- data.frame(t(x[, 1]))
-names(temp) <- x[ , 2]
-temp[, c("kingdom", "phylum", "order", "family")]
+  if(!is.na(x)) {
+  temp <- data.frame(t(x[, 1]))
+  names(temp) <- x[ , 2]
+  temp[, c("kingdom", "phylum", "order", "family")]
+}
 }
 # We name the list using spnames
 names(class_list) <- splist
