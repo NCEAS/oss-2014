@@ -25,7 +25,6 @@ install.packages("ggplot2", dependencies = TRUE)
 install.packages("dismo")
 install.packages("maptools")
 install.packages("knitr") # for reproducible documents
-install.packages("rmarkdown")  
 install.packages("rgbif")
 install.packages("rplos")
 install.packages("rfisheries")
@@ -34,6 +33,7 @@ install.packages("rnoaa")
 
 # from GitHub
 install_github("rWBclimate",  "ropensci")
+install_github("rstudio/rmarkdown")  
 install_github("EML",  "ropensci", build = FALSE)
 ```
 
