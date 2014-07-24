@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js ie6" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!-->  <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+	<title>Reproducible reserarch with rOpenSci and figshare</title>
+
+	<meta name="description" content="rOpenSci Sheffield workshop">
+	<meta name="author" content="Karthik Ram">
+	<meta name="viewport" content="width=1024, user-scalable=no">
+
+<script type="text/javascript" src="//use.typekit.net/eyh7gaz.js"></script>
+<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+
+
+	<!-- Core and extension CSS files -->
+	<link rel="stylesheet" href="core/deck.core.css">
+	<link rel="stylesheet" href="extensions/goto/deck.goto.css">
+	<link rel="stylesheet" href="extensions/menu/deck.menu.css">
+	<link rel="stylesheet" href="extensions/navigation/deck.navigation.css">
+	<link rel="stylesheet" href="extensions/status/deck.status.css">
+	<link rel="stylesheet" href="extensions/hash/deck.hash.css">
+	<link rel="stylesheet" href="themes/style/web-2.0.css">
+	<link rel="stylesheet" href="themes/transition/fade.css">
+	<script src="modernizr.custom.js"></script>
+		<link href="http://inundata.org/ecolunch/ss-social/webfonts/ss-social.css" rel="stylesheet" />
+	<link href="http://inundata.org/ecolunch/ss-standard/webfonts/ss-standard.css" rel="stylesheet"/>
+
+
+	<style type="text/css">
+.knitr {
+	background-color: #F7F7F7;
+}
+.error {
+	font-weight: bold;
+	color: #FF0000;
+}
+.warning {
+	font-weight: bold;
+}
+.message {
+	font-style: italic;
+}
+.source, .output, .warning, .error, .message {
+	padding: 0.5em 1em;
+}
+.number{
+	color: rgb(21,20,181) ;
+}
+
+.functioncall{
+	color: rgb(32, 74, 147) ;
+}
+
+.string{
+	color: rgb(78, 163, 113) ;
+
+}
+
+.keyword{
+	font-weight: bolder ;
+	color: black;
+}
+
+.argument{
+	color: rgb( 177,63,5) ;
+}
+
+.comment{
+	color: rgb(146, 89, 2) ;
+}
+
+.roxygencomment{
+	color: rgb(0,151,255);
+}
+
+.formalargs{
+	color: rgb(18,182,18);
+}
+
+.eqformalargs{
+	color: rgb(18,182,18);
+}
+
+.assignement{
+	font-weight: bolder;
+	color: rgb(206, 92, 0);
+}
+
+.package{
+	color: rgb(150,182,37);
+}
+
+.slot{
+	font-style:italic;
+}
+
+.symbol{
+	color: black ;
+}
+
+.prompt{
+	color: black ;
+}
+
+</style>
+</head>
+
+<body class="deck-container">
+
+<!-- =====
+Slide Break
+==== -->
+	<section class="slide" id="intro">
+		<div>
+			<hgroup>
+				<h1>Maximizing the Value of Ecological Data</h1>
+			</hgroup>
+			<p><span style="color:#ccc">M to see all slides, G to go to a specific slide</span></p>
+		
+		</div>
+
+	</section>
+
+<!-- =====
+Slide Break
+==== -->
+
+<!--    ##############    slide delimiter  ##############    -->
+
+<section class="slide" id="eml1">
+<br><br>
+<blockquote>EML (Jones et al., 2001) is a comprehensive standard that
+has been adopted by a sector of the larger international ecological research community.
+</blockquote>
+</section>
+
+<!--    ##############    slide delimiter  ##############    -->
+
+<section class="slide" id="eml1b">
+<br><br>
+<blockquote>EML provides a common structure for these resources, to better enable ecologists to document, 
+share, and interpret ecological data</blockquote>
+</section>
+
+<!--    ##############    slide delimiter  ##############    -->
+
+<section class="slide" id="eml2">
+<br><br>
+<h2>EML standard enables data integration at the machine level (with little or no human intervention).</h2>
+</section>
+
+
+
+<!--    ##############    slide delimiter  ##############    -->
+
+<section class="slide" id="eml3">
+<br><br><br>
+<h2>EML has four general descriptors at the top of the hierarchy. One can choose
+to describe a <b>dataset</b>, a <b>protocol</b>, a <b>citation</b>, or <b>software</b>.</h2>
+</section>
+
+
+<!--    ##############    slide delimiter  ##############    -->
+<section class="slide" id="eml4">
+	<h2>Without metadata, a data table such as this one is useless.</h2>
+<img src="images/bad-metadata.png">
+</section>
+
+<!--    ##############    slide delimiter  ##############    -->
+<section class="slide" id="eml5">
+	<h2>A table with limited metadata</h2>
+<img src="images/limited-metadata.png">
+</section>
+
+
+<!-- =====
+Slide Break
+==== -->
+
+<section class="slide" id="sample-workflow">
+  <h2>A reproducible workflow in R</h2><br><br>
+<table cellspacing=100 cellpadding=100><tr><td>
+<pre><strong>Load your own data</strong>
+	<p>load all raw untransformed data.</p>
+</pre></td>
+<td valign="center"><br>&nbsp;<strong>→</strong> &nbsp;</td>
+<td>
+<pre><strong>Acquire additional data from the web</strong>
+<br><p>e.g. resolve taxonomic names, acquire additional datasets.</p>
+</pre></td>
+<td valign="center"><br>&nbsp;<strong>→</strong> &nbsp;</td>
+<td>
+<pre><strong>Document everything with metadata</strong>
+<br><p>The <code>REML</code> package makes it really easy to add valid EML to your data</p>
+</pre></td>
+<td valign="center"><br>&nbsp;<strong>→</strong> &nbsp;</td>
+<td>
+<pre><strong>Submit to a web repository</strong>
+<br><p>Share your data by submitting to figshare or one at your institution</p>
+</pre></td>
+</tr></table>
+<br>
+</section>
+
+
+<!--    ##############    slide delimiter  ##############    -->
+<section class="slide" id="eml6">
+	<h2>Valid EML</h2>
+<pre><code>
+&lt;?xml version="1.0"?&gt;
+&lt;eml:eml xmlns:eml="eml://ecoinformatics.org/eml-2.1.1" xmlns:ds="eml://ecoinformatics.org/dataset-2.1.1" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:stmml="http://www.xml-cml.org/schema/stmml-1.1" packageId="reml_3794487.58997023" system="reml"&gt;
+  &lt;dataset&gt;
+    &lt;title&gt;reml example&lt;/title&gt;
+    &lt;creator&gt;
+      &lt;individualName&gt;
+        &lt;givenName&gt;Karthik&lt;/givenName&gt;
+        &lt;surName&gt;Ram&lt;/surName&gt;
+      &lt;/individualName&gt;
+      &lt;electronicMailAddress&gt;karthik.ram@gmail.com&lt;/electronicMailAddress&gt;
+    &lt;/creator>
+</code></pre>
+</section>
+
+<!--    ##############    slide delimiter  ##############    -->
+<section class="slide" id="eml7">
+	<h2>Valid EML</h2>
+<pre><code>
+&lt;?xml version="1.0"?&gt;
+&lt;eml:eml xmlns:eml="eml://ecoinformatics.org/eml-2.1.1" xmlns:ds="eml://ecoinformatics.org/dataset-2.1.1" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:stmml="http://www.xml-cml.org/schema/stmml-1.1" packageId="reml_3794487.58997023" system="reml"&gt;
+  &lt;dataset&gt;
+    &lt;title&gt;reml example&lt;/title&gt;
+    &lt;creator&gt;
+      &lt;individualName&gt;
+        &lt;givenName&gt;Karthik&lt;/givenName&gt;
+        &lt;surName&gt;Ram&lt;/surName&gt;
+      &lt;/individualName&gt;
+      &lt;electronicMailAddress&gt;karthik.ram@gmail.com&lt;/electronicMailAddress&gt;
+    &lt;/creator>
+</code></pre>
+</section>
+
+<!--    ##############    slide delimiter  ##############    -->
+<section class="slide" id="eml8">
+	<h2>Units are well defined</h2>
+<pre><code>
+ &lt;attributeName&gt;ct&lt;/attributeName&gt;
+          &lt;attributeDefinition&gt;count&lt;/attributeDefinition&gt;
+          &lt;measurementScale&gt;
+            &lt;nominal&gt;
+              &lt;nonNumericDomain&gt;
+                &lt;textDomain&gt;
+                  &lt;definition&gt;number&lt;/definition&gt;
+                &lt;/textDomain&gt;
+              &lt;/nonNumericDomain&gt;
+            &lt;/nominal&gt;
+          &lt;/measurementScale&gt;
+        &lt;/attribute&gt;
+</code></pre>
+</section>
+
+
+<!-- =====
+END PRESENTATION
+==== -->
+
+
+<!-- deck.navigation snippet -->
+<a href="#" class="deck-prev-link" title="Previous">&#8592;</a>
+<a href="#" class="deck-next-link" title="Next">&#8594;</a>
+
+<!-- deck.status snippet -->
+<p class="deck-status">
+	<span class="deck-status-current"></span>
+	/
+	<span class="deck-status-total"></span>
+</p>
+
+<!-- deck.goto snippet -->
+<form action="." method="get" class="goto-form">
+	<label for="goto-slide">Go to slide:</label>
+	<input type="text" name="slidenum" id="goto-slide" list="goto-datalist">
+	<datalist id="goto-datalist"></datalist>
+	<input type="submit" value="Go">
+</form>
+
+<!-- deck.hash snippet -->
+<a href="." title="Permalink to this slide" class="deck-permalink">#</a>
+
+
+<!-- Grab CDN jQuery, with a protocol relative URL; fall back to local if offline -->
+<script src="//ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+<script>window.jQuery || document.write('<script src="jquery-1.7.min.js"><\/script>')</script>
+
+<!-- Deck Core and extensions -->
+<script src="core/deck.core.js"></script>
+<script src="extensions/hash/deck.hash.js"></script>
+<script src="extensions/menu/deck.menu.js"></script>
+<script src="extensions/goto/deck.goto.js"></script>
+<script src="extensions/status/deck.status.js"></script>
+<script src="extensions/navigation/deck.navigation.js"></script>
+
+<!-- Initialize the deck -->
+<script>
+$(function() {
+	$.deck('.slide');
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,66 @@
+## `rgbif` use case No. 2 - Biodiversity comparisons across cities
+
+In this example, we compare biodiversity in different regions using GBIF data from rgbif. This example can be done using BISON data as well with our rbison package.
+
+```{r, echo = FALSE, message = FALSE}
+knitr::opts_chunk$set(
+  comment = "#>",
+  error = FALSE,
+  tidy = FALSE,
+  message = FALSE,
+  warning = FALSE,
+  fig.width = 6, 
+  fig.height = 5
+)
+```
+
+### Load libraries
+
+```{r load}
+library(rgbif)
+library(ggplot2)
+library(plyr)
+```
+
+
+### Get GBIF data using the rgbif library.
+
+We wont not restrain our search to any particular taxonomic group, although you will likely do that in your own research. We will first make a new column with single lat/long coordinates for each cell for easy plotting. Finally we select 100 random cell IDs.
+
+```{r getbounding}
+temp <- gbifdata(densitylist(originisocountrycode = "US"))
+temp <- transform(temp, lat = (minLatitude+maxLatitude)/2, lon = (minLongitude + maxLongitude) / 2) 
+cellids <- sample(temp$cellid, 100)
+```
+
+Then search for data for each of those cell IDs. We then define a function to pass in each cell ID.
+
+```{r getdata, cache = TRUE}
+getdata <- function(x, maxresults = 100) {
+  results <- occurrencelist(cellid = x, coordinatestatus = TRUE, maxresults = maxresults)
+  df <- gbifdata(results, coordinatestatus = TRUE)
+  data.frame(cellid = x, richness = length(unique(df$taxonName)))
+}
+
+results_with_locations <- ldply(cellids, getdata)
+merged_results <- merge(results_with_locations, temp[, c('cellid', 'lat', 'lon')], by = 'cellid')
+# remove points outside the US
+final_results <- merged_results[merged_results$lat < 49 & merged_results$lat > 24.7433195 & merged_results$lon > -130 & merged_results$lon < -66.9513812, ]
+```
+
+### Plot data
+
+```{r plot}
+mapp <- map_data('state')
+ggplot(mapp, aes(long, lat)) +
+  geom_polygon(aes(group = group), fill = "white", alpha = 0, color = "gray80", size = 0.8) +
+  geom_point(data = final_results, aes(lon, lat, color = richness), size = 3, alpha = 0.8) +
+  scale_color_gradient2(low = "white", mid="lightblue", high = "blue") +
+  labs(x = "", y = "") +
+  theme_bw(base_size = 14) + 
+  theme(legend.position = "bottom", legend.key = element_blank())
+```
+
+### Notes
+
+Bounding lat/long data from [here](https://raw.github.com/amyxzhang/boundingbox-cities/master/boundbox.txt)

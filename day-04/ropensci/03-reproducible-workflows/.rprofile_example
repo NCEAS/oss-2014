@@ -1,0 +1,49 @@
+
+# An example .rprofile
+
+options(device = "quartz")
+# So the mac gui can find latex
+Sys.setenv(PATH = paste(Sys.getenv("PATH"), "/usr/texbin", sep = ":"))
+
+# API Keys
+#---------------------------------------------------------------
+options(width = 80)
+options(digits.secs = 3)
+options(showWarnCalls = T, showErrorCalls = T)
+# Because I frequently author packages I store my author information to automatically populate a desc file.
+options(devtools.desc.author = "'Karthik Ram <karthik.ram@gmail.com> [aut, cre]'")
+# and I almost always us the CC0 license. 
+# http://creativecommons.org/choose/zero/
+options(devtools.desc.license = "CC0")
+# Options for when I use the formatR package to clean up mycode
+options(stringsAsFactors = FALSE)
+options(replace.assign = TRUE)
+options(keep.blank.line = FALSE)
+options(keep.space = TRUE)
+options(keep.comment = TRUE)
+current_repo <- getOption('repos')
+# change this to your closest one
+current_repo["CRAN"] <- "http://cran.rstudio.com"
+options(repos = current_repo)
+options(save.defaults=list(ascii=TRUE, safe=FALSE))
+# My prompt is pirate-y
+options(prompt = "Arrrr> ")
+rm(current_repo)
+# API Keys
+options(Github_key = "xxxxxx")
+options(Github_secret = "xxxxxxx")
+options(ImpactStoryKey = "xxxxxx")
+options(noaakey = "xxxxxxx")
+options(FigshareKey = "xxxxxx")
+options(FigsharePrivateKey = "xxxxxx")
+options(FigshareToken = "xxxxxx")
+options(FigsharePrivateToken = "xxxxxx")
+options(OtterKey = "xxxxxx")
+
+# Load frequently used packages
+library(utils)
+library("knitr")
+library("ggplot2")
+library("plyr")
+suppressPackageStartupMessages(library(coyote))
+

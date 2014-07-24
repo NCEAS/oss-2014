@@ -1,0 +1,17 @@
+AntWeb
+base
+dismo
+ggplot2
+knitr
+maps
+maptools
+pander
+plyr
+raster
+rgbif
+rnoaa
+rWBclimate
+scales
+sp
+stringr
+taxize
