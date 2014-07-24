@@ -12,4 +12,18 @@ __List of packages__
 
 __On CRAN__
 
+```r
+spocc
+taxize
+rfigshare
+AntWeb
+ecoengine
+rfisheries
+rWBclimate
+```
+
 __On GitHub__
+
+```r
+EML
+```
