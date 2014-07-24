@@ -30,6 +30,7 @@ install.packages("rgbif")
 install.packages("rplos")
 install.packages("rfisheries")
 install.packages("rfigshare")
+install.packages("rnoaa")
 
 # from GitHub
 install_github("rWBclimate",  "ropensci")
