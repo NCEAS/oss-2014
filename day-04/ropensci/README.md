@@ -7,9 +7,9 @@ For the hands on activities, please use our RStudio server (since there won't be
 
 | Topic | Code/Slides |
 | ----- | ----------  |
-| Intro slides | link |
-| example 1 | link |
-| example 2 | link |
-| example 3 | link |
-| example 4 | link |
-| example 5 | link |
+| Intro slides | [slides](http://karthik.github.io/userR2014/) |
+| Examining fisheries dynamics from FAO data | [output](01-fisheries.md), [source](01-fisheries.Rmd) |
+| Resolving taxonomic names with Taxize | [output](02-taxize.md), [source](02-taxize.Rmd) |
+| Documenting and depositing data with eml/figshare | [output](03-eml.md), [source](03-eml.Rmd) |
+| example 4 | [output](01-fisheries.md), [source](01-fisheries.Rmd) |
+| example 5 | [output](01-fisheries.md), [source](01-fisheries.Rmd) |
