@@ -5,11 +5,24 @@ The rOpenSci project aims to support reproducible, transparent, and data-driven 
 
 For the hands on activities, please use our RStudio server (since there won't be time for me to make sure everyone has the latest version of all packages).  The server is available at [http://ropensci.rstudio.org](http://ropensci.rstudio.org). I'll provide logins for everyone. 
 
+
 | Topic | Code/Slides |
-| ----- | ----------  |
+|---------------|-------|
 | Intro slides | [slides](http://karthik.github.io/useR2014/) |
 | Examining fisheries dynamics from FAO data | [output](01-rfisheries.md), [source](01-rfisheries.Rmd) |
-| Resolving taxonomic names with Taxize | [output](02-taxize.md), [source](02-taxize.Rmd) |
-| Documenting and depositing data with eml/figshare | [output](03-eml.md), [source](03-eml.Rmd) |
-| example 4 | [output](01-fisheries.md), [source](01-fisheries.Rmd) |
-| example 5 | [output](01-fisheries.md), [source](01-fisheries.Rmd) |
+|**rOpenSci demos 1** *Biodiversity records, taxonomic name resolution, climate mapping*  |   |
+| 1. [Niche modeling (rgbif)](https://github.com/NCEAS/training/blob/kr-additions/2014-oss/day-04/ropensci/02-biodiversity-climate/rgbif_usecase1.md) | |
+| 2. [Fixing taxonomic names (taxize)](https://github.com/NCEAS/training/blob/kr-additions/2014-oss/day-04/ropensci/02-biodiversity-climate/taxize_usecase1.md) | |
+| 3. [Making a phylogeny directly from species names. (taxize)](https://github.com/NCEAS/training/blob/kr-additions/2014-oss/day-04/ropensci/02-biodiversity-climate/taxize_usecase2.md) | |
+| 4. [NOAA climate data](https://github.com/NCEAS/training/blob/kr-additions/2014-oss/day-04/ropensci/02-biodiversity-climate/noaa_seaice.md) | |
+| 5. [Mapping occurrence data](https://github.com/NCEAS/training/blob/kr-additions/2014-oss/day-04/ropensci/02-biodiversity-climate/ant_map.md#antweb--mapping-ant-occurrence-data) | |
+| 6.  [IPCC climate data](https://github.com/NCEAS/training/blob/kr-additions/2014-oss/day-04/ropensci/02-biodiversity-climate/world-bank-climate.md#introduction-to-rwbclimate) | Not covered today |
+|**rOpenSci demos 2** *Reproducible workflows, sharing and reusing data and analyses*  [slides](http://ropensci.github.io//workshop-stanford-2014-06/03-reproducible-workflows/slides/index.html) |   |
+| 7. [How to acquire and deposit data in R](https://github.com/NCEAS/training/blob/kr-additions/2014-oss/day-04/ropensci/03-reproducible-workflows/eml.md#a-complete-example-of-downloading-documenting-and-depositing-data) | |
+| 8. [How to use figshare from R](https://github.com/NCEAS/training/blob/kr-additions/2014-oss/day-04/ropensci/03-reproducible-workflows/figshare.md) | Not covered today |
+| 9. [The gbif example as a reproducible document](https://raw.githubusercontent.com/NCEAS/training/kr-additions/2014-oss/day-04/ropensci/03-reproducible-workflows/rgbif.Rmd) | |
+|**Wrap up, questions and discussion**  |   |
+
+## Feedback
+
+We welcome any feedback on our workshops, tools, suggestions for new packages, and any collaborations you might have in mind. [Please get in touch](http://ropensci.org/contact.html).
