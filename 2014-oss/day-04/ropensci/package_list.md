@@ -33,7 +33,7 @@ install.packages("rfigshare")
 
 # from GitHub
 install_github("rWBclimate",  "ropensci")
-install_github("reml",  "ropensci")
+install_github("EML",  "ropensci", build = FALSE)
 ```
 
 *Note: EML currently has dependencies that are not on CRAN. See [this page](https://github.com/ropensci/workshop-stanford-2014-06/blob/master/scripts/install.R) for instructions on how to install them from source. Once a stable version is ready, all dependencies will also be available and setup will be a lot simpler.*
