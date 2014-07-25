@@ -33,6 +33,7 @@ install.packages("rfigshare")
 install.packages("rnoaa")
 
 # from GitHub
+install_github("jeroenooms/jsonlite")
 install_github("rWBclimate",  "ropensci")
 install_github("rstudio/rmarkdown")  
 install_github("EML",  "ropensci", build = FALSE)
