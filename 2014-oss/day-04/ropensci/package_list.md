@@ -25,7 +25,7 @@ install.packages("ggplot2", dependencies = TRUE)
 install.packages("dismo")
 install.packages("maptools")
 install.packages("knitr") # for reproducible documents
-install.packages("rmarkdown")  
+install_github("rstudio/rmarkdown") # Direct from R Studio to get the 3.1.1 compatible version
 install.packages("rgbif")
 install.packages("rplos")
 install.packages("rfisheries")
