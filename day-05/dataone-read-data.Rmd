@@ -12,8 +12,8 @@ The `dataone` package provides classes for reading and writing data from DataONE
 ```{r, echo = TRUE, message = FALSE}
 library(dataone)
 
-#mn_nodeid <- "urn:node:mnTestKNB"
-mn_nodeid <- "urn:node:mnDemo9"
+mn_nodeid <- "urn:node:mnTestKNB"
+#mn_nodeid <- "urn:node:mnDemo9"
 ```
 
 ## Create a client 

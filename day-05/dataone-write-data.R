@@ -35,8 +35,9 @@ if (canRead(d1Object,"public")) {
 # Now actually load the object into the KNB repository
 createD1Object(cli, d1Object)
 
-# Now retrieve it from the KNB node via remote access
-# Directly fetch one of the data files listed in search results
+# Now retrieve it from the node via remote access to show it is there
+# You will get an error until the object is indexed in DataONE, which can vary
+# from a few minutes to days or weeks, depending on how a Member Node is scheduled
 obj0 <- getD1Object(cli, pidValue)
 d0 <- asDataFrame(obj0)
 head(d0)
