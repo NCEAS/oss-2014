@@ -1,6 +1,3 @@
-```{r, include = FALSE}
-source("../chunk_options.R")
-```
 
 # Input output operations
 
