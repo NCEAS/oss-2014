@@ -34,6 +34,7 @@ install.packages("rnoaa")
 
 # from GitHub
 install_github("rWBclimate",  "ropensci")
+install_github("rstudio/rmarkdown")  
 install_github("EML",  "ropensci", build = FALSE)
 install_github("DataONEorg/rdataone", subdir = 'dataone')
 ```
