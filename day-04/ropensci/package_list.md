@@ -35,6 +35,7 @@ install.packages("rnoaa")
 # from GitHub
 install_github("rWBclimate",  "ropensci")
 install_github("EML",  "ropensci", build = FALSE)
+install_github("DataONEorg/rdataone", subdir = 'dataone')
 ```
 
 *Note: EML currently has dependencies that are not on CRAN. See [this page](https://github.com/ropensci/workshop-stanford-2014-06/blob/master/scripts/install.R) for instructions on how to install them from source. Once a stable version is ready, all dependencies will also be available and setup will be a lot simpler.*
