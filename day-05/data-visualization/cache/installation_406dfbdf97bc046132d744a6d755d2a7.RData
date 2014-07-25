@@ -1,0 +1,16 @@
+RDA2
+A
+2
+196864
+131840
+1026
+1
+262153
+52
+.cache/installation_406dfbdf97bc046132d744a6d755d2a7
+16
+1
+262153
+517
+\\begin{knitrout}\\footnotesize\n\\definecolor{shadecolor}{rgb}{0.969,\0400.969,\0400.969}\\color{fgcolor}\\begin{kframe}\n\\begin{alltt}\n\\hlkwd{install.packages}\\hlstd{(}\\hlstr{\"ggplot2\"}\\hlstd{,}\040\\hlkwc{dependencies}\040\\hlstd{=}\040\\hlnum{TRUE}\\hlstd{)}\n\\hlkwd{install.packages}\\hlstd{(}\\hlstr{\"plyr\"}\\hlstd{)}\n\\hlkwd{install.packages}\\hlstd{(}\\hlstr{\"ggthemes\"}\\hlstd{)}\n\\hlkwd{install.packages}\\hlstd{(}\\hlstr{\"reshape2\"}\\hlstd{)}\n\\hlkwd{install.packages}\\hlstd{(}\\hlstr{\"gridExtra\"}\\hlstd{)}\n\\end{alltt}\n\\end{kframe}\n\\end{knitrout}
+254
