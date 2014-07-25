@@ -80,7 +80,7 @@ sr</code></pre>
 ## &lt;response&gt;
 ##   &lt;lst name=&quot;responseHeader&quot;&gt;
 ##     &lt;int name=&quot;status&quot;&gt;0&lt;/int&gt;
-##     &lt;int name=&quot;QTime&quot;&gt;9&lt;/int&gt;
+##     &lt;int name=&quot;QTime&quot;&gt;15&lt;/int&gt;
 ##     &lt;lst name=&quot;params&quot;&gt;
 ##       &lt;str name=&quot;fl&quot;&gt;identifier,title,author,documents,resourceMap&lt;/str&gt;
 ##       &lt;arr name=&quot;authorizedSubjects&quot;&gt;
@@ -223,7 +223,7 @@ getFormatId(obj4)</code></pre>
 </div>
 <div id="extract-attributes" class="section level2">
 <h2>Extract attributes</h2>
-<p>With the metadata parsed, we can now extract and print a list of all attribute names in the metadata (and any other metadata field that was encoded in the metadata document. See the <a href="https://knb.ecoinformatics.org/software/eml">EML Specification</a> for details on the possible fields in a metadata document.</p>
+<p>With the metadata parsed, we can now extract and print a list of all attribute names in the metadata (and any other metadata field that was encoded in the metadata document). See the <a href="https://knb.ecoinformatics.org/software/eml">EML Specification</a> for details on the possible fields in a metadata document.</p>
 <pre class="r"><code>attList &lt;- sapply(getNodeSet(metadata, &quot;//attributeName&quot;), xmlValue)
 attList</code></pre>
 <pre><code>##  [1] &quot;\&quot;DatasetID\&quot;&quot;       &quot;\&quot;Year\&quot;&quot;            &quot;\&quot;medium\&quot;&quot;         
@@ -236,6 +236,107 @@ attList</code></pre>
 ## [22] &quot;\&quot;phenper\&quot;&quot;         &quot;\&quot;phentype\&quot;&quot;        &quot;\&quot;species\&quot;&quot;        
 ## [25] &quot;\&quot;medium\&quot;&quot;          &quot;\&quot;onetempchange\&quot;&quot;   &quot;\&quot;precipchange\&quot;&quot;   
 ## [28] &quot;\&quot;precipchangetyp\&quot;&quot; &quot;\&quot;site\&quot;&quot;            &quot;\&quot;temprep\&quot;&quot;</code></pre>
+</div>
+<div id="load-into-eml" class="section level2">
+<h2>Load into EML</h2>
+<p>Alternatively, we can use the <code>EML</code> package to parse the EML document and gain access to its contents through convenient parsing methods. The <code>EML</code> package is aware of the <code>dataone</code> package and will use it to load metadata from the DataONE network.</p>
+<pre class="r"><code>library(EML)
+eml &lt;- eml_read(&quot;doi:10.5063/AA/nceas.982.3&quot;)
+eml_get(eml, &quot;id&quot;)</code></pre>
+<pre><code>## [1] &quot;nceas.982.3&quot;</code></pre>
+<pre class="r"><code>eml_get(eml, &quot;version&quot;)</code></pre>
+<pre><code>## [1] &quot;eml://ecoinformatics.org/eml-2.1.0&quot;</code></pre>
+<pre class="r"><code>eml_get(eml, &quot;creator&quot;)</code></pre>
+<pre><code>## [1] &quot;[cre]&quot;                                                    
+## [2] &quot;[cre]&quot;                                                    
+## [3] &quot;Elizabeth Wolkovich &lt;wolkovich@biodiversity.ubc.ca&gt; [cre]&quot;</code></pre>
+<pre class="r"><code>eml_get(eml, &quot;attributeList&quot;)</code></pre>
+<pre><code>## $attribute
+## $attribute[[1]]
+## [1] &quot;\&quot;DatasetID\&quot;&quot;
+## 
+## $attribute[[2]]
+## [1] &quot;Unique identifier of study&quot;
+## 
+## $attribute[[3]]
+## [1] &quot;Initials of person who entered study and 3 digit numerical code&quot;
+## 
+## 
+## $attribute
+## $attribute[[1]]
+## [1] &quot;\&quot;Year\&quot;&quot;
+## 
+## $attribute[[2]]
+## [1] &quot;Year&quot;
+## 
+## $attribute[[3]]
+## [1] &quot;YYYY&quot;
+## 
+## 
+## $attribute
+## $attribute[[1]]
+## [1] &quot;\&quot;medium\&quot;&quot;
+## 
+## $attribute[[2]]
+## [1] &quot;Medium in which climate variable was measured&quot;
+## 
+## $attribute[[3]]
+## [1] &quot;Medium in which climate variable was measured&quot;
+## 
+## 
+## $attribute
+## $attribute[[1]]
+## [1] &quot;\&quot;Temp_treat\&quot;&quot;
+## 
+## $attribute[[2]]
+## [1] &quot;Temperature treatment&quot;
+## 
+## $attribute[[3]]
+## [1] &quot;0 is control, 1 is heating, 2 is heating above 1 etc.&quot;
+## 
+## 
+## $attribute
+## $attribute[[1]]
+## [1] &quot;\&quot;onetempchange\&quot;&quot;
+## 
+## $attribute[[2]]
+## [1] &quot;temperature change, collapsing data from multiple columns in original file&quot;
+## 
+## $attribute[[3]]
+## [1] &quot;celsius&quot;
+## 
+## 
+## $attribute
+## $attribute[[1]]
+## [1] &quot;\&quot;Precip_treat\&quot;&quot;
+## 
+## $attribute[[2]]
+## [1] &quot;Precipitation treatment&quot;
+## 
+## $attribute[[3]]
+## [1] &quot;0 is control, 1 is water addition, -1 water removal etc.&quot;
+## 
+## 
+## $attribute
+## $attribute[[1]]
+## [1] &quot;\&quot;precipchange\&quot;&quot;
+## 
+## $attribute[[2]]
+## [1] &quot;Change in precipitation&quot;
+## 
+## $attribute[[3]]
+## [1] &quot;Change in precipitation&quot;
+## 
+## 
+## $attribute
+## $attribute[[1]]
+## [1] &quot;\&quot;precipchangetyp\&quot;&quot;
+## 
+## $attribute[[2]]
+## [1] &quot;Information on change in precipitation&quot;
+## 
+## $attribute[[3]]
+## [1] &quot;Information on precipitation measurement&quot;</code></pre>
 </div>
 
 

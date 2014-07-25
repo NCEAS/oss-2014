@@ -81,9 +81,23 @@ metadata <- xmlParse(getData(obj4))
 
 ## Extract attributes 
 
-With the metadata parsed, we can now extract and print a list of all attribute names in the metadata (and any other metadata field that was encoded in the metadata document.  See the [EML Specification](https://knb.ecoinformatics.org/software/eml) for details on the possible fields in a metadata document.
+With the metadata parsed, we can now extract and print a list of all attribute names in the metadata (and any other metadata field that was encoded in the metadata document).  See the [EML Specification](https://knb.ecoinformatics.org/software/eml) for details on the possible fields in a metadata document.
 
 ```{r, eval = TRUE, echo = TRUE, message = FALSE}
 attList <- sapply(getNodeSet(metadata, "//attributeName"), xmlValue)
 attList
 ```
+
+## Load into EML
+
+Alternatively, we can use the `EML` package to parse the EML document and gain access to its contents through convenient parsing methods. The `EML` package is aware of the `dataone` package and will use it to load metadata from the DataONE network.
+
+```{r, eval = TRUE, echo = TRUE, message = FALSE}
+library(EML)
+eml <- eml_read("doi:10.5063/AA/nceas.982.3")
+eml_get(eml, "id")
+eml_get(eml, "version")
+eml_get(eml, "creator")
+eml_get(eml, "attributeList")
+```
+
