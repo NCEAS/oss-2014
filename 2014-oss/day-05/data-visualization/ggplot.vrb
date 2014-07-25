@@ -1,0 +1,11 @@
+\frametitle{Further help}
+\begin{itemize}
+\item You've just scratched the surface with ggplot2.
+\item Practice
+\item Read the docs (either locally in \texttt{R} or at \url{http://docs.ggplot2.org/current/})
+\item Work together
+\end{itemize}
+\begin{center}
+\includegraphics[scale=.15]{images/chang_book.png}
+\includegraphics[scale=.15]{images/hadley.png}
+\end{center}
