@@ -1,4 +1,5 @@
 library(dataone)
+library(uuid)
 
 # Select a repository to use for writing the data, in the case the KNB
 mn_nodeid <- "urn:node:mnTestKNB"
@@ -8,8 +9,7 @@ mn_nodeid <- "urn:node:mnTestKNB"
 cli <- D1Client("STAGING2", mn_nodeid)
 
 ## Create a permanent id.
-cur_time <- format(Sys.time(), "%Y%m%d%H%M%s")
-id <- paste("r_test1", cur_time, "1", sep=".")
+id <- paste("urn:uuid:", UUIDgenerate(), sep="")
 
 ## Create a data table, and write it to csv format
 testdf <- data.frame(x=1:10,y=11:20)
