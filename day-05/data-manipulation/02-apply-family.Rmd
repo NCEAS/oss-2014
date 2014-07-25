@@ -1,6 +1,4 @@
-```{r, include = FALSE}
-source("../chunk_options.R")
-```
+
 
 # Learning the apply family of functions
 
