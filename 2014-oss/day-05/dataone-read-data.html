@@ -61,8 +61,8 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 <p>The <code>dataone</code> package provides classes for reading and writing data from DataONE repositories. We demonstrate how to connect to DataONE, query to locate data of interest, and how to then use the identifiers of that data to access both the data files and the associated metadata. We then load the data as a data.frame.</p>
 <pre class="r"><code>library(dataone)
 
-#mn_nodeid &lt;- &quot;urn:node:mnTestKNB&quot;
-mn_nodeid &lt;- &quot;urn:node:mnDemo9&quot;</code></pre>
+mn_nodeid &lt;- &quot;urn:node:mnTestKNB&quot;
+#mn_nodeid &lt;- &quot;urn:node:mnDemo9&quot;</code></pre>
 <div id="create-a-client" class="section level2">
 <h2>Create a client</h2>
 <p>The DataONE package uses a client of the class <code>D1Client</code> to communicate with the system. The <code>D1Client</code> communicates with the DataONE network of Member Nodes when a user requests to read or write data.</p>
@@ -80,7 +80,7 @@ sr</code></pre>
 ## &lt;response&gt;
 ##   &lt;lst name=&quot;responseHeader&quot;&gt;
 ##     &lt;int name=&quot;status&quot;&gt;0&lt;/int&gt;
-##     &lt;int name=&quot;QTime&quot;&gt;15&lt;/int&gt;
+##     &lt;int name=&quot;QTime&quot;&gt;63&lt;/int&gt;
 ##     &lt;lst name=&quot;params&quot;&gt;
 ##       &lt;str name=&quot;fl&quot;&gt;identifier,title,author,documents,resourceMap&lt;/str&gt;
 ##       &lt;arr name=&quot;authorizedSubjects&quot;&gt;
