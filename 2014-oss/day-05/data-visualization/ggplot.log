@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2014.4.28)  25 JUL 2014 08:44
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2014.4.28)  25 JUL 2014 09:07
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -831,7 +831,7 @@ Package textcomp Info: Setting ptmj sub-encoding to TS1/4 on input line 340.
 Package: upquote 2012/04/19 v1.3 upright-quote and grave-accent glyphs in verba
 tim
 )
-No file ggplot.aux.
+(./ggplot.aux)
 \openout1 = `ggplot.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 87.
@@ -850,7 +850,7 @@ LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 87.
 LaTeX Font Info:    ... okay on input line 87.
 LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 87.
 LaTeX Font Info:    Try loading font information for TS1+cmr on input line 87.
-(/usr/local/texlive/2013/texmf-dist/tex/latex/base/ts1cmr.fd
+ (/usr/local/texlive/2013/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    ... okay on input line 87.
@@ -932,6 +932,8 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 LaTeX Info: Redefining \ref on input line 87.
 LaTeX Info: Redefining \pageref on input line 87.
 LaTeX Info: Redefining \nameref on input line 87.
+
+(./ggplot.out) (./ggplot.out)
 \@outlinefile=\write5
 \openout5 = `ggplot.out'.
 
@@ -1014,8 +1016,7 @@ Dictionary: translator-theorem-dictionary, Language: English
 )
 LaTeX Info: Redefining \includegraphics on input line 87.
 \c@lstlisting=\count169
-
-No file ggplot.nav.
+ (./ggplot.nav)
 
 Package hyperref Warning: Option `pdfauthor' has already been used,
 (hyperref)                setting the option has no effect on input line 91.
@@ -1096,145 +1097,109 @@ thkerncmss.
 ]
 \openout4 = `ggplot.vrb'.
 
- (./ggplot.vrb
+ (./ggplot.vrb) [11
 
-LaTeX Font Warning: Font shape `OT1/zi4/m/it' undefined
-(Font)              using `OT1/zi4/m/n' instead on input line 13.
-
-LaTeX Font Info:    Try loading font information for TS1+zi4 on input line 13.
-(/usr/local/texlive/2013/texmf-dist/tex/latex/inconsolata/ts1zi4.fd
-File: ts1zi4.fd 2013/06/07 Fontinst v1.933 font definitions for TS1/zi4.
-)
-
-LaTeX Font Warning: Font shape `TS1/zi4/m/it' undefined
-(Font)              using `TS1/zi4/m/n' instead
-(Font)              for symbol `textquotesingle' on input line 13.
-
-) [11
+] [12
 
 ]
 \openout4 = `ggplot.vrb'.
 
- (./ggplot.vrb) [12
-
-]
-\openout4 = `ggplot.vrb'.
-
- (./ggplot.vrb) [13
+ (./ggplot.vrb)
+[13
 
 ]
 \openout4 = `ggplot.vrb'.
 
  (./ggplot.vrb) [14
 
-] [15
-
 ]
 \openout4 = `ggplot.vrb'.
 
-
-(./ggplot.vrb) [16
-
-]
-\openout4 = `ggplot.vrb'.
-
- (./ggplot.vrb) [17
-
-] [18
-
-]
-\openout4 = `ggplot.vrb'.
-
- (./ggplot.vrb) [19
-
-]
-\openout4 = `ggplot.vrb'.
-
- (./ggplot.vrb) [20
-
-]
-\openout4 = `ggplot.vrb'.
-
- (./ggplot.vrb) [21
+ (./ggplot.vrb) [15
 
 ]
 \openout4 = `ggplot.vrb'.
 
  (./ggplot.vrb
-<figure/first_plot_.pdf, id=566, 433.62pt x 289.08pt>
+<figure/first_plot_.pdf, id=413, 433.62pt x 289.08pt>
 File: figure/first_plot_.pdf Graphic file (type pdf)
 
 <use figure/first_plot_.pdf>
 Package pdftex.def Info: figure/first_plot_.pdf used on input line 10.
 (pdftex.def)             Requested size: 230.46739pt x 153.64394pt.
-) [22
+) [16
 
  <./figure/first_plot_.pdf>]
 \openout4 = `ggplot.vrb'.
 
  (./ggplot.vrb
-<figure/first_plot_size_.pdf, id=598, 433.62pt x 289.08pt>
+<figure/first_plot_size_.pdf, id=444, 433.62pt x 289.08pt>
 File: figure/first_plot_size_.pdf Graphic file (type pdf)
 
 <use figure/first_plot_size_.pdf>
 Package pdftex.def Info: figure/first_plot_size_.pdf used on input line 10.
 (pdftex.def)             Requested size: 230.46739pt x 153.64394pt.
-) [23
+) [17
 
  <./figure/first_plot_size_.pdf>]
 \openout4 = `ggplot.vrb'.
 
 
-(./ggplot.vrb <figure/first_plot_color_.pdf, id=630, 433.62pt x 289.08pt>
+(./ggplot.vrb <figure/first_plot_color_.pdf, id=476, 433.62pt x 289.08pt>
 File: figure/first_plot_color_.pdf Graphic file (type pdf)
 
 <use figure/first_plot_color_.pdf>
 Package pdftex.def Info: figure/first_plot_color_.pdf used on input line 10.
 (pdftex.def)             Requested size: 230.46739pt x 153.64394pt.
-) [24
+) [18
 
  <./figure/first_plot_color_.pdf>]
 \openout4 = `ggplot.vrb'.
 
 
-(./ggplot.vrb <figure/first_plot_shape_.pdf, id=664, 433.62pt x 252.945pt>
+(./ggplot.vrb
+
+LaTeX Font Warning: Font shape `OT1/zi4/m/it' undefined
+(Font)              using `OT1/zi4/m/n' instead on input line 7.
+
+<figure/first_plot_shape_.pdf, id=511, 433.62pt x 252.945pt>
 File: figure/first_plot_shape_.pdf Graphic file (type pdf)
 
 <use figure/first_plot_shape_.pdf>
 Package pdftex.def Info: figure/first_plot_shape_.pdf used on input line 11.
 (pdftex.def)             Requested size: 230.46739pt x 134.43845pt.
-) [25
+) [19
 
  <./figure/first_plot_shape_.pdf>]
 \openout4 = `ggplot.vrb'.
 
 
-(./ggplot.vrb <figure/ex1.pdf, id=698, 505.89pt x 289.08pt>
+(./ggplot.vrb <figure/ex1.pdf, id=545, 505.89pt x 289.08pt>
 File: figure/ex1.pdf Graphic file (type pdf)
 
 <use figure/ex1.pdf>
 Package pdftex.def Info: figure/ex1.pdf used on input line 15.
 (pdftex.def)             Requested size: 230.46739pt x 131.69922pt.
-) [26
+) [20
 
- <./figure/ex1.pdf>] [27
-
-]
-\openout4 = `ggplot.vrb'.
-
- (./ggplot.vrb) [28
+ <./figure/ex1.pdf>] [21
 
 ]
 \openout4 = `ggplot.vrb'.
 
+ (./ggplot.vrb) [22
 
-(./ggplot.vrb <figure/boxplots1_.pdf, id=784, 433.62pt x 289.08pt>
+]
+\openout4 = `ggplot.vrb'.
+
+
+(./ggplot.vrb <figure/boxplots1_.pdf, id=631, 433.62pt x 289.08pt>
 File: figure/boxplots1_.pdf Graphic file (type pdf)
 
 <use figure/boxplots1_.pdf>
 Package pdftex.def Info: figure/boxplots1_.pdf used on input line 11.
 (pdftex.def)             Requested size: 230.46739pt x 153.64394pt.
-) [29
+) [23
 
  <./figure/boxplots1_.pdf>]
 \openout4 = `ggplot.vrb'.
@@ -1245,9 +1210,57 @@ Overfull \hbox (251.61024pt too wide) in paragraph at lines 17--17
 outlier.size = 2, notch = FALSE, notchwidth = 0.5, varwidth = FALSE[] 
  []
 
-) [30
+) [24
 
-] [31
+] [25
+
+]
+\openout4 = `ggplot.vrb'.
+
+ (./ggplot.vrb) [26
+
+]
+\openout4 = `ggplot.vrb'.
+
+ (./ggplot.vrb
+<figure/facetgrid1.pdf, id=740, 289.08pt x 216.81pt>
+File: figure/facetgrid1.pdf Graphic file (type pdf)
+
+<use figure/facetgrid1.pdf>
+Package pdftex.def Info: figure/facetgrid1.pdf used on input line 11.
+(pdftex.def)             Requested size: 230.46739pt x 172.84943pt.
+) [27
+
+ <./figure/facetgrid1.pdf>]
+\openout4 = `ggplot.vrb'.
+
+ (./ggplot.vrb
+<figure/facet_grid2.pdf, id=775, 289.08pt x 216.81pt>
+File: figure/facet_grid2.pdf Graphic file (type pdf)
+
+<use figure/facet_grid2.pdf>
+Package pdftex.def Info: figure/facet_grid2.pdf used on input line 11.
+(pdftex.def)             Requested size: 230.46739pt x 172.84943pt.
+) [28
+
+ <./figure/facet_grid2.pdf>]
+\openout4 = `ggplot.vrb'.
+
+ (./ggplot.vrb
+<figure/facet_wrap.pdf, id=809, 289.08pt x 216.81pt>
+File: figure/facet_wrap.pdf Graphic file (type pdf)
+
+<use figure/facet_wrap.pdf>
+Package pdftex.def Info: figure/facet_wrap.pdf used on input line 11.
+(pdftex.def)             Requested size: 230.46739pt x 172.84943pt.
+) [29
+
+ <./figure/facet_wrap.pdf>] [30
+
+]
+\openout4 = `ggplot.vrb'.
+
+ (./ggplot.vrb) [31
 
 ]
 \openout4 = `ggplot.vrb'.
@@ -1258,360 +1271,316 @@ outlier.size = 2, notch = FALSE, notchwidth = 0.5, varwidth = FALSE[]
 \openout4 = `ggplot.vrb'.
 
  (./ggplot.vrb
-<figure/facetgrid1.pdf, id=895, 289.08pt x 216.81pt>
-File: figure/facetgrid1.pdf Graphic file (type pdf)
-
-<use figure/facetgrid1.pdf>
-Package pdftex.def Info: figure/facetgrid1.pdf used on input line 11.
-(pdftex.def)             Requested size: 230.46739pt x 172.84943pt.
-) [33
-
- <./figure/facetgrid1.pdf>]
-\openout4 = `ggplot.vrb'.
-
- (./ggplot.vrb
-<figure/facet_grid2.pdf, id=928, 289.08pt x 216.81pt>
-File: figure/facet_grid2.pdf Graphic file (type pdf)
-
-<use figure/facet_grid2.pdf>
-Package pdftex.def Info: figure/facet_grid2.pdf used on input line 11.
-(pdftex.def)             Requested size: 230.46739pt x 172.84943pt.
-) [34
-
- <./figure/facet_grid2.pdf>]
-\openout4 = `ggplot.vrb'.
-
- (./ggplot.vrb
-<figure/facet_wrap.pdf, id=961, 289.08pt x 216.81pt>
-File: figure/facet_wrap.pdf Graphic file (type pdf)
-
-<use figure/facet_wrap.pdf>
-Package pdftex.def Info: figure/facet_wrap.pdf used on input line 11.
-(pdftex.def)             Requested size: 230.46739pt x 172.84943pt.
-) [35
-
- <./figure/facet_wrap.pdf>] [36
-
-]
-\openout4 = `ggplot.vrb'.
-
- (./ggplot.vrb) [37
-
-]
-\openout4 = `ggplot.vrb'.
-
- (./ggplot.vrb) [38
-
-]
-\openout4 = `ggplot.vrb'.
-
- (./ggplot.vrb
-<images/color_palette.png, id=1073, 677.53125pt x 546.04pt>
+<images/color_palette.png, id=921, 677.53125pt x 546.04pt>
 File: images/color_palette.png Graphic file (type png)
 
 <use images/color_palette.png>
 Package pdftex.def Info: images/color_palette.png used on input line 11.
 (pdftex.def)             Requested size: 169.38239pt x 136.50966pt.
-) [39
+) [33
 
  <./images/color_palette.png>]
 \openout4 = `ggplot.vrb'.
 
- (./ggplot.vrb <figure/barcolors.pdf, id=1100, 433.62pt x 289.08pt>
+ (./ggplot.vrb <figure/barcolors.pdf, id=947, 433.62pt x 289.08pt>
 File: figure/barcolors.pdf Graphic file (type pdf)
 
 <use figure/barcolors.pdf>
 Package pdftex.def Info: figure/barcolors.pdf used on input line 12.
 (pdftex.def)             Requested size: 230.46739pt x 153.64394pt.
-) [40
+) [34
 
  <./figure/barcolors.pdf>]
 \openout4 = `ggplot.vrb'.
 
  (./ggplot.vrb
-<figure/facetgridcolors.pdf, id=1132, 289.08pt x 216.81pt>
+<figure/facetgridcolors.pdf, id=978, 289.08pt x 216.81pt>
 File: figure/facetgridcolors.pdf Graphic file (type pdf)
 
 <use figure/facetgridcolors.pdf>
 Package pdftex.def Info: figure/facetgridcolors.pdf used on input line 12.
 (pdftex.def)             Requested size: 230.46739pt x 172.84943pt.
 )
-Overfull \vbox (1.41666pt too high) detected at line 851
+Overfull \vbox (1.41666pt too high) detected at line 721
  []
 
-[41
+[35
 
  <./figure/facetgridcolors.pdf>]
 \openout4 = `ggplot.vrb'.
 
  (./ggplot.vrb
-<images/color_schemes.png, id=1166, 913.4125pt x 439.6425pt>
+<images/color_schemes.png, id=1012, 913.4125pt x 439.6425pt>
 File: images/color_schemes.png Graphic file (type png)
 
 <use images/color_schemes.png>
 Package pdftex.def Info: images/color_schemes.png used on input line 6.
 (pdftex.def)             Requested size: 228.35257pt x 109.91035pt.
-) [42
+) [36
 
  <./images/color_schemes.png>]
 \openout4 = `ggplot.vrb'.
 
- (./ggplot.vrb <figure/boxplots3.pdf, id=1194, 433.62pt x 289.08pt>
+ (./ggplot.vrb <figure/boxplots3.pdf, id=1042, 433.62pt x 289.08pt>
 File: figure/boxplots3.pdf Graphic file (type pdf)
 
 <use figure/boxplots3.pdf>
 Package pdftex.def Info: figure/boxplots3.pdf used on input line 13.
 (pdftex.def)             Requested size: 230.46739pt x 153.64394pt.
-) [43
+) [37
 
  <./figure/boxplots3.pdf>]
 \openout4 = `ggplot.vrb'.
 
  (./ggplot.vrb)
-[44
+[38
 
-] [45
+] [39
 
 ]
 \openout4 = `ggplot.vrb'.
 
- (./ggplot.vrb) [46
+ (./ggplot.vrb) [40
 
-] [47
+] [41
 
-] [48
+] [42
 
 ]
 \openout4 = `ggplot.vrb'.
 
  (./ggplot.vrb
-<figure/histogr.pdf, id=1360, 433.62pt x 289.08pt>
+<figure/histogr.pdf, id=1207, 433.62pt x 289.08pt>
 File: figure/histogr.pdf Graphic file (type pdf)
  <use figure/histogr.pdf>
 Package pdftex.def Info: figure/histogr.pdf used on input line 10.
 (pdftex.def)             Requested size: 230.46739pt x 153.64394pt.
 )
-[49
+[43
 
  <./figure/histogr.pdf>]
 \openout4 = `ggplot.vrb'.
 
  (./ggplot.vrb
-<figure/histogra.pdf, id=1392, 433.62pt x 289.08pt>
+<figure/histogra.pdf, id=1239, 433.62pt x 289.08pt>
 File: figure/histogra.pdf Graphic file (type pdf)
  <use figure/histogra.pdf>
 Package pdftex.def Info: figure/histogra.pdf used on input line 10.
 (pdftex.def)             Requested size: 230.46739pt x 153.64394pt.
 )
-[50
+[44
 
- <./figure/histogra.pdf>] [51
+ <./figure/histogra.pdf>] [45
 
 ]
 \openout4 = `ggplot.vrb'.
 
  (./ggplot.vrb
-<figure/linea_.pdf, id=1451, 433.62pt x 289.08pt>
+<figure/linea_.pdf, id=1297, 433.62pt x 289.08pt>
 File: figure/linea_.pdf Graphic file (type pdf)
  <use figure/linea_.pdf>
 Package pdftex.def Info: figure/linea_.pdf used on input line 17.
 (pdftex.def)             Requested size: 230.46739pt x 153.64394pt.
-)
-Overfull \vbox (8.76129pt too high) detected at line 1038
+LaTeX Font Info:    Try loading font information for TS1+zi4 on input line 30.
+
+(/usr/local/texlive/2013/texmf-dist/tex/latex/inconsolata/ts1zi4.fd
+File: ts1zi4.fd 2013/06/07 Fontinst v1.933 font definitions for TS1/zi4.
+))
+Overfull \vbox (8.76129pt too high) detected at line 908
  []
 
-[52
+[46
 
  <./figure/linea_.pdf>]
 \openout4 = `ggplot.vrb'.
 
  (./ggplot.vrb
-<figure/lineb.pdf, id=1482, 433.62pt x 289.08pt>
+<figure/lineb.pdf, id=1329, 433.62pt x 289.08pt>
 File: figure/lineb.pdf Graphic file (type pdf)
  <use figure/lineb.pdf>
 Package pdftex.def Info: figure/lineb.pdf used on input line 13.
 (pdftex.def)             Requested size: 230.46739pt x 153.64394pt.
 )
-[53
+[47
 
  <./figure/lineb.pdf>]
 \openout4 = `ggplot.vrb'.
 
  (./ggplot.vrb
-<figure/ex2.pdf, id=1516, 433.62pt x 289.08pt>
+<figure/ex2.pdf, id=1363, 433.62pt x 289.08pt>
 File: figure/ex2.pdf Graphic file (type pdf)
  <use figure/ex2.pdf>
 Package pdftex.def Info: figure/ex2.pdf used on input line 7.
 (pdftex.def)             Requested size: 214.04236pt x 142.69583pt.
-) [54
+) [48
 
- <./figure/ex2.pdf>] [55
+ <./figure/ex2.pdf>] [49
 
 ]
 \openout4 = `ggplot.vrb'.
 
  (./ggplot.vrb
-<figure/barone.pdf, id=1576, 433.62pt x 289.08pt>
+<figure/barone.pdf, id=1423, 433.62pt x 289.08pt>
 File: figure/barone.pdf Graphic file (type pdf)
  <use figure/barone.pdf>
 Package pdftex.def Info: figure/barone.pdf used on input line 9.
 (pdftex.def)             Requested size: 230.46739pt x 153.64394pt.
 )
-[56
+[50
 
  <./figure/barone.pdf>]
 \openout4 = `ggplot.vrb'.
 
  (./ggplot.vrb
-<figure/bartwo.pdf, id=1607, 433.62pt x 289.08pt>
+<figure/bartwo.pdf, id=1454, 433.62pt x 289.08pt>
 File: figure/bartwo.pdf Graphic file (type pdf)
  <use figure/bartwo.pdf>
 Package pdftex.def Info: figure/bartwo.pdf used on input line 10.
 (pdftex.def)             Requested size: 230.46739pt x 153.64394pt.
 )
-[57
+[51
 
  <./figure/bartwo.pdf>]
 \openout4 = `ggplot.vrb'.
 
  (./ggplot.vrb
-<figure/barthree.pdf, id=1639, 433.62pt x 289.08pt>
+<figure/barthree.pdf, id=1488, 433.62pt x 289.08pt>
 File: figure/barthree.pdf Graphic file (type pdf)
  <use figure/barthree.pdf>
 Package pdftex.def Info: figure/barthree.pdf used on input line 9.
 (pdftex.def)             Requested size: 230.46739pt x 153.64394pt.
 )
-[58
+[52
 
  <./figure/barthree.pdf>]
 \openout4 = `ggplot.vrb'.
 
  (./ggplot.vrb
-<figure/barthree2.pdf, id=1672, 433.62pt x 289.08pt>
+<figure/barthree2.pdf, id=1520, 433.62pt x 289.08pt>
 File: figure/barthree2.pdf Graphic file (type pdf)
 
 <use figure/barthree2.pdf>
 Package pdftex.def Info: figure/barthree2.pdf used on input line 9.
 (pdftex.def)             Requested size: 230.46739pt x 153.64394pt.
-) [59
+) [53
 
  <./figure/barthree2.pdf>]
 \openout4 = `ggplot.vrb'.
 
  (./ggplot.vrb
-<figure/ex3.pdf, id=1704, 433.62pt x 289.08pt>
+<figure/ex3.pdf, id=1552, 433.62pt x 289.08pt>
 File: figure/ex3.pdf Graphic file (type pdf)
  <use figure/ex3.pdf>
 Package pdftex.def Info: figure/ex3.pdf used on input line 6.
 (pdftex.def)             Requested size: 230.46739pt x 153.64394pt.
-) [60
+) [54
 
  <./figure/ex3.pdf>]
 \openout4 = `ggplot.vrb'.
 
- (./ggplot.vrb <figure/ex4.pdf, id=1736, 433.62pt x 289.08pt>
+ (./ggplot.vrb <figure/ex4.pdf, id=1583, 433.62pt x 289.08pt>
 File: figure/ex4.pdf Graphic file (type pdf)
 
 <use figure/ex4.pdf>
 Package pdftex.def Info: figure/ex4.pdf used on input line 8.
 (pdftex.def)             Requested size: 214.04236pt x 142.69583pt.
-) [61
+) [55
 
- <./figure/ex4.pdf>] [62
+ <./figure/ex4.pdf>] [56
 
 ]
 \openout4 = `ggplot.vrb'.
 
  (./ggplot.vrb
-<figure/densityone_.pdf, id=1797, 433.62pt x 289.08pt>
+<figure/densityone_.pdf, id=1645, 433.62pt x 289.08pt>
 File: figure/densityone_.pdf Graphic file (type pdf)
 
 <use figure/densityone_.pdf>
 Package pdftex.def Info: figure/densityone_.pdf used on input line 9.
 (pdftex.def)             Requested size: 230.46739pt x 153.64394pt.
-) [63
+) [57
 
  <./figure/densityone_.pdf>]
 \openout4 = `ggplot.vrb'.
 
  (./ggplot.vrb
-<figure/densityonefove_.pdf, id=1828, 433.62pt x 289.08pt>
+<figure/densityonefove_.pdf, id=1677, 433.62pt x 289.08pt>
 File: figure/densityonefove_.pdf Graphic file (type pdf)
 
 <use figure/densityonefove_.pdf>
 Package pdftex.def Info: figure/densityonefove_.pdf used on input line 10.
 (pdftex.def)             Requested size: 230.46739pt x 153.64394pt.
-) [64
+) [58
 
  <./figure/densityonefove_.pdf>]
 \openout4 = `ggplot.vrb'.
 
 
-(./ggplot.vrb <figure/densitytwo___.pdf, id=1862, 433.62pt x 289.08pt>
+(./ggplot.vrb <figure/densitytwo___.pdf, id=1711, 433.62pt x 289.08pt>
 File: figure/densitytwo___.pdf Graphic file (type pdf)
 
 <use figure/densitytwo___.pdf>
 Package pdftex.def Info: figure/densitytwo___.pdf used on input line 9.
 (pdftex.def)             Requested size: 230.46739pt x 153.64394pt.
-) [65
+) [59
 
- <./figure/densitytwo___.pdf>] [66
+ <./figure/densitytwo___.pdf>] [60
 
 ]
 \openout4 = `ggplot.vrb'.
 
 
-(./ggplot.vrb <figure/adding_stats_.pdf, id=1921, 361.35pt x 289.08pt>
+(./ggplot.vrb <figure/adding_stats_.pdf, id=1769, 361.35pt x 289.08pt>
 File: figure/adding_stats_.pdf Graphic file (type pdf)
 
 <use figure/adding_stats_.pdf>
 Package pdftex.def Info: figure/adding_stats_.pdf used on input line 10.
 (pdftex.def)             Requested size: 230.46739pt x 184.37538pt.
-) [67
+) [61
 
  <./figure/adding_stats_.pdf>]
 \openout4 = `ggplot.vrb'.
 
- (./ggplot.vrb <figure/adding_stats2_.pdf, id=1958, 505.89pt x 289.08pt>
+ (./ggplot.vrb <figure/adding_stats2_.pdf, id=1805, 505.89pt x 289.08pt>
 File: figure/adding_stats2_.pdf Graphic file (type pdf)
 
 <use figure/adding_stats2_.pdf>
 Package pdftex.def Info: figure/adding_stats2_.pdf used on input line 11.
 (pdftex.def)             Requested size: 230.46739pt x 131.69922pt.
-) [68
+) [62
 
- <./figure/adding_stats2_.pdf>] [69
-
-]
-\openout4 = `ggplot.vrb'.
-
-
-(./ggplot.vrb) [70
+ <./figure/adding_stats2_.pdf>] [63
 
 ]
 \openout4 = `ggplot.vrb'.
 
- (./ggplot.vrb) [71
+
+(./ggplot.vrb) [64
+
+]
+\openout4 = `ggplot.vrb'.
+
+ (./ggplot.vrb) [65
 
 ]
 \openout4 = `ggplot.vrb'.
 
  (./ggplot.vrb
-<figure/facet_wrap_theme_execc.pdf, id=2072, 289.08pt x 216.81pt>
+<figure/facet_wrap_theme_execc.pdf, id=1919, 289.08pt x 216.81pt>
 File: figure/facet_wrap_theme_execc.pdf Graphic file (type pdf)
 
 <use figure/facet_wrap_theme_execc.pdf>
 Package pdftex.def Info: figure/facet_wrap_theme_execc.pdf used on input line 4
 .
 (pdftex.def)             Requested size: 230.46739pt x 172.84943pt.
-) [72
+) [66
 
  <./figure/facet_wrap_theme_execc.pdf>]
 \openout4 = `ggplot.vrb'.
 
- (./ggplot.vrb) [73
+ (./ggplot.vrb) [67
 
-] [74
+] [68
 
 ]
 \openout4 = `ggplot.vrb'.
@@ -1625,33 +1594,33 @@ LaTeX Font Warning: Font shape `OMS/zi4/m/n' undefined
 (Font)              using `OMS/cmsy/m/n' instead
 (Font)              for symbol `textbraceleft' on input line 5.
 
-) [75
+) [69
 
-] [76
+] [70
 
 ]
 \openout4 = `ggplot.vrb'.
 
- (./ggplot.vrb) [77
+ (./ggplot.vrb) [71
 
 ]
 \openout4 = `ggplot.vrb'.
 
  (./ggplot.vrb
-<images/chang_book.png, id=2239, 583.17876pt x 724.7075pt>
+<images/chang_book.png, id=2087, 583.17876pt x 724.7075pt>
 File: images/chang_book.png Graphic file (type png)
 
 <use images/chang_book.png>
 Package pdftex.def Info: images/chang_book.png used on input line 9.
 (pdftex.def)             Requested size: 87.47304pt x 108.70143pt.
 
-<images/hadley.png, id=2240, 603.25375pt x 682.55pt>
+<images/hadley.png, id=2088, 603.25375pt x 682.55pt>
 File: images/hadley.png Graphic file (type png)
  <use images/hadley.png>
 Package pdftex.def Info: images/hadley.png used on input line 10.
 (pdftex.def)             Requested size: 90.48415pt x 102.37808pt.
 )
-[78
+[72
 
  <./images/chang_book.png> <./images/hadley.png>]
 \tf@nav=\write6
@@ -1663,21 +1632,15 @@ Package pdftex.def Info: images/hadley.png used on input line 10.
 \tf@snm=\write8
 \openout8 = `ggplot.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1508.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1508.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1378.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1378.
  (./ggplot.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1508.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1508.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1378.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1378.
 
+Package rerunfilecheck Info: File `ggplot.out' has not changed.
+(rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
 
-
-Package rerunfilecheck Warning: File `ggplot.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `ggplot.out':
-(rerunfilecheck)             Before: <no file>
-(rerunfilecheck)             After:  D41D8CD98F00B204E9800998ECF8427E;0.
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 1.0pt have occurred.
@@ -1685,34 +1648,42 @@ LaTeX Font Warning: Size substitutions with differences
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1508.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1378.
  ) 
 Here is how much of TeX's memory you used:
- 18751 strings out of 493308
- 351945 string characters out of 6137816
- 410523 words of memory out of 5000000
- 21454 multiletter control sequences out of 15000+600000
+ 18913 strings out of 493308
+ 352389 string characters out of 6137816
+ 410596 words of memory out of 5000000
+ 21628 multiletter control sequences out of 15000+600000
  14845 words of font info for 55 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
- 56i,14n,61p,451b,688s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/local/texlive/2013/texmf-dist/fonts/enc/dvips/inconsolata/i4-ts1.enc}{/
-usr/local/texlive/2013/texmf-dist/fonts/enc/dvips/inconsolata/i4-ot1-0.enc}</us
-r/local/texlive/2013/texmf-dist/fonts/type1/public/inconsolata/Inconsolata-zi4b
-.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/inconsolata/Inconso
-lata-zi4r.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/c
-m/cmss10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm
-/cmss12.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/
-cmss17.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/c
-mss9.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cms
+ 56i,14n,55p,451b,690s stack positions out of 5000i,500n,10000p,200000b,80000s
+pdfTeX warning (dest): name{Navigation74} has been referenced but does not ex
+ist, replaced by a fixed one
+
+pdfTeX warning (dest): name{Navigation73} has been referenced but does not exis
+t, replaced by a fixed one
+
+pdfTeX warning (dest): name{Navigation78} has been referenced but does not exis
+t, replaced by a fixed one
+
+{/usr/local/texlive/2013/texmf-dist/fonts/enc/dvips/inconsolata/i4-ts1.enc}{/us
+r/local/texlive/2013/texmf-dist/fonts/enc/dvips/inconsolata/i4-ot1-0.enc}</usr/
+local/texlive/2013/texmf-dist/fonts/type1/public/inconsolata/Inconsolata-zi4b.p
+fb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/inconsolata/Inconsola
+ta-zi4r.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/
+cmss10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/c
+mss12.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+ss17.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cms
 sbx10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cm
 ssi10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cm
 sy9.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/symbols
 /msam10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/sym
 bols/msam7.pfb>
-Output written on ggplot.pdf (78 pages, 883541 bytes).
+Output written on ggplot.pdf (72 pages, 866979 bytes).
 PDF statistics:
- 2346 PDF objects out of 2487 (max. 8388607)
- 2163 compressed objects within 22 object streams
- 174 named destinations out of 1000 (max. 500000)
+ 2189 PDF objects out of 2487 (max. 8388607)
+ 2014 compressed objects within 21 object streams
+ 164 named destinations out of 1000 (max. 500000)
  208 words of extra memory for PDF output out of 10000 (max. 10000000)
 
