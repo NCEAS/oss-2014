@@ -5,7 +5,7 @@ date: "July 26, 2014"
 output: html_document
 ---
 
-`tidyr` is a new package in R that is meant to be an update/replacement to the widely used `reshape2` package. It works similar to `dplyr` in that it uses pipes (`%>%`) to chain the output from one command into the next. In addition to giving you the speed of dplyr, it also makes complex code human readable. Here are a few examples on how to use `tidyr`. I pulled together various examples from stackoverflow and answered them below.
+`tidyr` is a new package in R that is meant to be an update/replacement to the widely used `reshape2` package. It works similar to `dplyr` in that it uses pipes (`%>%`) to chain the output from one function into the next. In addition to giving you the speed of dplyr, it also makes complex code human readable. Here are a few examples on how to use `tidyr`. I pulled together various examples from stackoverflow and answered them below.
 
 ```{r, echo = FALSE, message = FALSE}
 knitr::opts_chunk$set(
