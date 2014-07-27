@@ -7,10 +7,10 @@ getPercent <- function( value, pct ) {
         return( 0 )
     }
 
-    result <- value * pct
+    result <- value * ( pct / 100 )
     return( result )
 }
 
-result <- getPercent( 10, 1.1 )
+result <- getPercent( 10, 110 )
 print( result )
 

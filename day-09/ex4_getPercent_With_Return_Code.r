@@ -9,13 +9,13 @@ getPercent <- function( value, pct ) {
         return( result )
     }
 
-    result <- value * pct
+    result <- value * ( pct / 100 )
     
     return( result )
 }
 
 # this should print out 11
-result <- getPercent( 10, 1.1 )
+result <- getPercent( 10, 110 )
 if( result == INVALID_PARAMETER ) {
     cat( sprintf( "getPercent Failed - %d\n", result ) )
 } else {
