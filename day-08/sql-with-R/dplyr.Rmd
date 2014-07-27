@@ -1,0 +1,34 @@
+---
+title: "Introduction to dplyr, including how to interact with databases"
+author: "Karthik Ram"
+date: "July 26, 2014"
+output: pdf_document
+---
+
+```{r, echo = FALSE, message = FALSE}
+# For those who have asked, this is just my way of setting global options to the chunks remaining in the document
+# I can still override one or more of these anytime
+knitr::opts_chunk$set(
+  comment = "#>",
+  error = FALSE,
+  message = FALSE,
+  tidy = FALSE
+)
+```
+
+
+Manipulating and munging data just became considerably easier in `R` thanks to the `dplyr` package developed by Hadley Wickham.
+
+```{r dplyr}
+library(dplyr)
+x <- iris %>%  
+group_by(Species) %>%
+summarise(smallest_sepal = min(Sepal.Length), largest_sepal = max(Sepal.Length)) 
+```
+
+You can also coerce this into a `data.frame` like so:
+
+```{r data.frame}
+data.frame(x)
+```
+
