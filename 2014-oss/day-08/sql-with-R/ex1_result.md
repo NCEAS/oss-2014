@@ -12,6 +12,10 @@ Srsly
 ok here it is:
 
 
+
 ```r
+library(dplyr)
+# I removed column X because it looked like they included a row number.
+# Then I also specified the indicator variables by adding a - in front because the number of measured variables were too many and not in order. You may have a better solution here.
 chicks %>% select(-X) %>% gather(variable, measurement, -year, -nest.identity, -chick.identity) 
 ```
