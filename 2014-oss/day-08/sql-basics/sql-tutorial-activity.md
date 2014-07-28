@@ -186,7 +186,7 @@ DELETE from sites where siteid=33;
 
 ## Transactions
 
-Transactions are a mechanism for ensuring the success of all operations or none, which aids in maintaining data integrity. When a transaction has been started, you can modify the tables in the database with impunity, and nobody will see your changes until you decide to `commit` the changes to the database.  Before that happens, you can choose to `rollback`, which discards all of your pending changes and returns the data to its original state.  Transactions all programmers to ensure that a consistent set of changes is applied across multiple tables.
+Transactions are a mechanism for ensuring the success of all operations or none, which aids in maintaining data integrity. When a transaction has been started, you can modify the tables in the database with impunity, and nobody will see your changes until you decide to `commit` the changes to the database.  Before that happens, you can choose to `rollback`, which discards all of your pending changes and returns the data to its original state.  Transactions allow programmers to ensure that a consistent set of changes is applied across multiple tables.
 
 ```sql
 -- TRANSACTIONS
