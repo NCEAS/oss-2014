@@ -31,6 +31,21 @@ ggplot(delays, aes(long, lat)) +
 delays %>% filter(arr_delay < 0)
 
 
+# How joins work with data.table
+
+library(data.table)
+delays1 <- data.table(delays)
+location1 <- data.table(location)
+# These keys are the primary keys.
+# You can set multiple keys and also reset at anytime
+setkey(delays1, "dest")
+setkey(location1, "dest")
+delays1[location1]
+delays1[lat < 31.95376]
+# Subsetting and selecting are just as easy
+# This will show all data where the lat is less than 31.95376
+location1[lat < 31.95376]
+
 # What weather condition is most related to delays? ----------------------------
 
 hourly_delay <- flights %>% 
