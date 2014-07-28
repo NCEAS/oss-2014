@@ -1,4 +1,10 @@
-# SQL tutorial notes
+---
+title: "Basics of SQL"
+author: "Matt Jones"
+date: "July 28, 2014"
+---
+
+# Basics of SQL, the Structured Query Language
 
 ## Objectives
 
