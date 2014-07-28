@@ -121,7 +121,7 @@ SELECT * from sites where altitude > 500;
 SELECT * from sites where habitat = 'scrub';
 ```
 
-# More complex constraints
+## More complex constraints
 
 Complex constraints can be constructed using boolean operators to logically combine clauses. All clauses must evaluate to `TRUE` for a constraint to be satisfied.  For example, below we request records with two constraints, which both must be met.
 
@@ -129,7 +129,7 @@ Complex constraints can be constructed using boolean operators to logically comb
 -- SELECT with a more complex constraint
 SELECT * from sites where habitat = 'scrub' AND altitude > 500;
 ```
-# Group functions
+## Group functions
 
 SQL provides the ability to group results using a grouping variable along with an aggregation function.  This allows calculation of the sum of a column grouped by another column (e.g., sum of tree height by species).  In the example below, we count the number of records in each habitat.  To use `group by`, records must be sorted by the grouping variables, which is accomplished with the `order by` clause.
 
@@ -201,7 +201,7 @@ SELECT * from sites order by siteid;
 COMMIT;
 ```
 
-# Using `COPY` for larger databases
+## Using `COPY` for larger databases
 
 Using `INSERT` for large numbers of rows can be slow.  Not only are you issuing many `INSET` statements, but each of these takes time and resources, slowing down the whole database.  Instead, it is possible to copy an entire data table into the database by simoly using the `SQL COPY` operator.  There is a tremendous efficiency gain in using `COPY` over `INSERT` for largish data sets.
 
