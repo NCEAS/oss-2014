@@ -4,8 +4,7 @@ author: "Jim Regetz and Matt Jones"
 date: "July 28, 2014"
 output:
   html_document:
-    toc: false
-    highlight: default
+    keep_md: yes
 ---
 
 # Interfacing with PostgreSQL from R, using the RPostgreSQL package.
