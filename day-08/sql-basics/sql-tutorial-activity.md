@@ -120,7 +120,7 @@ SELECT * from sites where habitat = 'scrub' AND altitude > 500;
 ```
 # Group functions
 
-SQL provides the ability to group results using a grouping variable along with an aggregation function.  This allows calculation of the sum of a column grouped by another column (e.g., sum of tree height by species).  In the example below, we count the number of records in each habitat.  To use `group by`, records must be sorted by the gourping variables, which is accomplished with the `order by` clause.
+SQL provides the ability to group results using a grouping variable along with an aggregation function.  This allows calculation of the sum of a column grouped by another column (e.g., sum of tree height by species).  In the example below, we count the number of records in each habitat.  To use `group by`, records must be sorted by the grouping variables, which is accomplished with the `order by` clause.
 
 ```sql
 -- SELECT with an aggregation function using group by
@@ -129,12 +129,27 @@ SELECT habitat, count(*) from sites group by habitat order by habitat;
 
 ## Integrity constraints
 
+One of the major benefits of SQL is the ability to specify constraints within the definition of a schema.  These constraints must be satisfied to allow any new data record to be inserted or updated.  Constraints come in several types including:
+
+- Primary key
+    - One or more columns whose values uniquely identify a row and that are used to reference a row in various operations; values must be unique.
+- Unique key
+    - All values in the column must be unique.
+- Foreign key
+    - All values in the column must refer to the primary key in another table.
+- Check constraint
+    - Constraints can be specified which check values against a specified set of criteria.
+
+In the example, below, we try to insert a new record into the `sites` table, which fails because it would cause a data corruption issue -- in this case, the `siteid` is already in use and therefore would not be unique, which is required for primary keys. Foreign keys are highly useful to ensure that records are not inserted into a child table without first inserting the proper contextual information in a parent table.
+
 ```sql
 -- INTEGRITY CONSTRAINTS: PRIMARY KEY ENFORCEMENT
 INSERT INTO sites (siteid, altitude, habitat) VALUES (1, 721, 'scrub');
 ```
 
-## Updating records by changing the values (think twice before doing this)
+## Updating records
+
+Once a record has been created, it can be modified by calling `update` and using the primary key to choose the rows to be changed.  Think twice before doing this, as it can result in data loss.
 
 ```sql
 -- UPDATE
@@ -143,6 +158,8 @@ UPDATE sites SET altitude=721 where siteid=1;
 
 ## Deleting a record
 
+Sometimes you simply inserted the wrong data.  `delete` will remove rows that match a particular set of criteria.
+
 ```sql
 -- DELETE
 INSERT INTO sites (siteid, altitude, habitat) VALUES (33, 121, 'forest');
@@ -150,7 +167,9 @@ SELECT count(*) from sites;
 DELETE from sites where siteid=33;
 ```
 
-## Transactions: ensuring the success of all operations
+## Transactions
+
+Transactions are a mechanism for ensuring the success of all operations or none, which aids in maintaining data integrity. When a transaction has been started, you can modify the tables in the database with impunity, and nobody will see your changes until you decide to `commit` the changes to the database.  Before that happens, you can choose to `rollback`, which discards all of your pending changes and returns the data to its original state.  Transactions all programmers to ensure that a consistent set of changes is applied across multiple tables.
 
 ```sql
 -- TRANSACTIONS
@@ -172,6 +191,8 @@ COMMIT;
 ```
 
 # Using `COPY` for larger databases
+
+Using `INSERT` for large numbers of rows can be slow.  Not only are you issuing many `INSET` statements, but each of these takes time and resources, slowing down the whole database.  Instead, it is possible to copy an entire data table into the database by simoly using the `SQL COPY` operator.  There is a tremendous efficiency gain in using `COPY` over `INSERT` for largish data sets.
 
 ```sql
 -- CREATE ANOTHER TABLE THAT WILL BE RELATED TO site
@@ -195,19 +216,25 @@ COPY plotobs FROM '/home/jones/training/2014-oss/day-08/sql-basics/plotobs.csv' 
 
 ## Calulating an average
 
+Using our new table, we can calcualte the average over a group, in this case `sciname`.
+
 ```sql
 -- ANOTHER AGGREGATION QUERY
 SELECT sciname, avg(diameter) FROM plotobs GROUP BY sciname ORDER BY sciname;
 ```
 
 ## Inner joins
-	
+
+Now that we have two tables in the database, you can see that it is possible to combine our knowlegde using a `JOIN` to merge data from the two tables. This is a simple `INNER JOIN`, and is a powerful part of using a relational database. Only rows that have keys matching in both tables will be returned from the query (e.g., any rows in the `sites` table that lack corresponding rows in the `plotobs` table will be omitted by the query.  This is in contrast to an `OUTER JOIN` where you can choose to include some non-matching records.
+
 ```sql
 -- SIMPLE INNER JOIN
 SELECT s.siteid, s.altitude, p.obsid, p.plot, p.sciname, p.diameter FROM sites s, plotobs p WHERE p.siteid = s.siteid;
 ```
 
 ## Concatenate query results
+
+Append the results of one query to another.  This is frequently useful when you want to combine results form multiple source tables.
 
 ```sql
 -- UNION for concatenating results of two queries
@@ -216,8 +243,9 @@ UNION
 SELECT * FROM plotobs WHERE diameter < 10;
 ```
 
-## Merge query results
+## Intersect query results
 
+Take only the common results from two queries.  This allows you to find a set of matching rows that meets one of two or more incompatible constraints.  In the example, we return all rows where the diameter is both greater than 30 and less than 35, which could have also more easily be done using an `AND` clause in the `WHERE` constraint.
 ```sql
 -- INTERSECT for finding common results between two queries
 SELECT * FROM plotobs WHERE diameter > 30
