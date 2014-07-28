@@ -1,6 +1,6 @@
 ---
 title: "Basics of SQL"
-author: "Matt Jones"
+author: "Jim Regetz and Matt Jones"
 date: "July 28, 2014"
 output:
   html_document:
@@ -11,19 +11,16 @@ output:
 # Interfacing with PostgreSQL from R, using the RPostgreSQL package.
 
 This covers:
-* Connecting to a database
-* Doing basic CRUD operations
+
+- Connecting to a database
+- Doing basic CRUD operations
   - Create
   - Read
   -  Update
   - Delete
 
 For more examples like those below, see:
-* https://code.google.com/p/rpostgresql/
-
-Jim Regetz
-NCEAS Institute 2013
-26-Jun-2013
+- https://code.google.com/p/rpostgresql/
 
 ```{r, eval=FALSE, echo = TRUE, message = FALSE}
 install.packages("RPostgreSQL")
@@ -63,23 +60,23 @@ host <- "isis.nceas.ucsb.edu"
 ```
 
 - Case 1: local database not requiring username/password
-```{r}
+```{r, eval=FALSE}
 con <- dbConnect(dbDriver("PostgreSQL"), dbname=dbname)
 ```
 
 - Case 2: local database requiring username/password
-```{r}
+```{r, eval=FALSE}
 con <- dbConnect(dbDriver("PostgreSQL"), user=user,
   password=password, dbname=dbname)
 ```
 
 - Case 3: remote database requiring username/password
-```{r}
+```{r, eval=FALSE}
 con <- dbConnect(dbDriver("PostgreSQL"), user=user,
   password=password, dbname=dbname, host=host)
 ```
 
-```{r}
+```{r, eval=FALSE}
 summary(con)
 ```
 
@@ -87,7 +84,7 @@ summary(con)
 
 - easiest way to create a new table in the database
 
-```{r}
+```{r, eval=FALSE}
 dbWriteTable(con, "iris", iris, row.names=FALSE)
 ```
 
@@ -99,9 +96,8 @@ dbWriteTable(con, "iris", iris, row.names=FALSE)
     -   append=TRUE    : inserts new rows
     - (default is that both are FALSE; can't have both TRUE)
 
-## another example
-- this time inserting a data.frame created on the fly 
-```{r}
+- Another example, this time inserting a data.frame created on the fly 
+```{r, eval=FALSE}
 dbWriteTable(con,
     name = "sillytable",
     value = data.frame(
@@ -110,31 +106,39 @@ dbWriteTable(con,
     row.names=FALSE)
 ```
 
-# Read data from the database
+## Read data from the database
 
-# first let's just get some info about what's in the database
-# ...list tables in the database
-```{r}
+- first let's just get some info about what's in the database
+- ...list tables in the database
+```{r, eval=FALSE}
 dbListTables(con)
 ```
-# ...list column names from particular table
-```{r}
+
+- ...list column names from particular table
+```{r, eval=FALSE}
 dbListFields(con, "iris")
 ```
 
-# three ways to extract data from the database
+## Three ways to extract data from the database
 
-# 1. retrieve an entire table by name
+1. retrieve an entire table by name
+```{r, eval=FALSE}
 iris1 <- dbReadTable(con, "iris")
+```
 
-# 2. retrieve data by querying (in this case, entire table!)
+2. retrieve data by querying (in this case, entire table!)
+```{r, eval=FALSE}
 iris2 <- dbGetQuery(con, "SELECT * FROM iris")
+```
 
-# show that these options are equivalent
+- Show that these options are equivalent
+```{r, eval=FALSE}
 identical(iris1, iris2)
-## [1] TRUE
+[1] TRUE
+```
 
-# 3. as above, but decouple query submission from result transfer
+3. as above, but decouple query submission from result transfer
+```{r, eval=FALSE}
 rs <- dbSendQuery(con, "SELECT * FROM iris")
 dbColumnInfo(rs)
 ##           name    Sclass   type len precision scale nullOK
@@ -159,35 +163,40 @@ dbClearResult(rs)
 # show that this third option is also equivalent
 identical(iris2, rbind(iris3.first10, iris3.rest))
 ## [1] TRUE
+```
 
-#
-# Update data
-#
+## Update data
 
 # no friendly wrappers in R -- use SQL!
+```{r, eval=FALSE}
 sql <- "INSERT INTO sites (siteid, altitude, habitat) VALUES (33, 121, 'forest')"
 dbGetQuery(con, sql)
+```
 
 # let's do it again, violating unique constraint
-# ...results in an error!
+- ...results in an error!
+```{r, eval=FALSE}
 dbGetQuery(con, sql)
+```
 
-#
-# Delete
-#
+## Delete
 
-# no friendly wrappers in R -- use SQL!
+- no friendly wrappers in R -- use SQL!
+```{r, eval=FALSE}
 sql <- "DELETE from sites where siteid=33"
 dbGetQuery(con, sql)
+```
 
-#
-# Free all resources!
-#
+## Free all resources!
 
-# disconnect from database
+- disconnect from database
+```{r, eval=FALSE}
 dbDisconnect(con)
+```
 
-# unload database driver
+- unload database driver
+```{r, eval=FALSE}
 dbUnloadDriver(drv)
+```
 
 
