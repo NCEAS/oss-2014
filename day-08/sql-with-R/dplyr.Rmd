@@ -27,6 +27,13 @@ group_by(Species) %>%
 summarise(smallest_sepal = min(Sepal.Length), largest_sepal = max(Sepal.Length)) 
 ```
 
+Need to check to make sure there are even samples across all species?
+
+```{r even_samples}
+y <- iris %>% group_by(Species) %>% summarise(sample_size = n())
+y
+```
+
 You can also coerce this into a `data.frame` like so:
 
 ```{r data.frame}
