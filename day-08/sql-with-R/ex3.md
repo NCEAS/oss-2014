@@ -13,5 +13,8 @@
 6  setosa Sepal.Length         5.4
 ```
 
+2. Load the `chicks.csv` file also located in this folder (see: [http://karthik.github.io/useR2014/#data_dryad](http://karthik.github.io/useR2014/#data_dryad) for how I downloaded that file). How would you reshape this file? Please discuss with a neighbor and post a solution.
+
+
 
 
