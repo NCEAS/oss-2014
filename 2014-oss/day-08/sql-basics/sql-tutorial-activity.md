@@ -1,5 +1,16 @@
 # SQL tutorial notes
 
+## Objectives
+
+- Learn to create a simple database, populate it, and query it
+- Gain basic understanding of integrity constraints and their utility
+
+## About the database
+
+The database you will create contains two tables that are linked by one of thier shared columns, siteid, as shown in the figure below:
+
+![Plotobs ER diagram](plotobs-diagram.png)
+
 ## Create postgres user accounts for all participants
 
 In order to connect to a postgres database, you must have an account that grants you permission to connect, and to perform the other operations you need, such as creating tables or reading data from tables.  In general, users can be created with the commandline utility:
@@ -208,6 +219,7 @@ CREATE TABLE plotobs (
 	CONSTRAINT plotobs_site_fk FOREIGN KEY (siteid) REFERENCES sites
 );
 ```
+Note that we now have two tables in our database, linked by a foreign key on the `siteid` column which references the `sites` table.
 
 ```sql
 -- Batch load data from a CSV file
