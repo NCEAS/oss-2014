@@ -10,7 +10,7 @@ output: pdf_document
 # For those who have asked, this is just my way of setting global options to the chunks remaining in the document
 # I can still override one or more of these anytime
 knitr::opts_chunk$set(
-  comment = "#>",
+  comment = " ",
   error = FALSE,
   message = FALSE,
   tidy = FALSE
@@ -27,6 +27,12 @@ group_by(Species) %>%
 summarise(smallest_sepal = min(Sepal.Length), largest_sepal = max(Sepal.Length)) 
 ```
 
+You can also coerce this into a `data.frame` like so:
+
+```{r data.frame}
+data.frame(x)
+```
+
 Need to check to make sure there are even samples across all species?
 
 ```{r even_samples}
@@ -34,9 +40,15 @@ y <- iris %>% group_by(Species) %>% summarise(sample_size = n())
 y
 ```
 
-You can also coerce this into a `data.frame` like so:
+More complex select operations
 
-```{r data.frame}
-data.frame(x)
+```{r select}
+iris <- tbl_df(iris) # so it prints a little nicer
+select(iris, starts_with("Petal"))
+select(iris, ends_with("Width"))
+select(iris, contains("etal"))
+select(iris, Petal.Length, Petal.Width)
 ```
+
+
 
