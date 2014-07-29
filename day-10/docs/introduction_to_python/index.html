@@ -28,7 +28,7 @@
     <div id="impress">
     <div class='step' >
     
-<h1>Introduction to Python</h1>
+<h1>Python Introduction and Overview</h1>
 
 <p><img src="../images/python.png" alt="python logo"></p>
 </div>
@@ -67,7 +67,7 @@
     
 <h1>Basic Philosophy</h1>
 
-<h4>PEP 20 (The Zen of Python)</h4>
+<h4><a href="https://www.python.org/dev/peps/pep-0020/">PEP 20</a> (The Zen of Python)</h4>
 
 <ul>
 <li>Beautiful is better than ugly</li>
@@ -88,60 +88,112 @@
     
 <h1>Honest answer is... I don&#39;t know...</h1>
 
-<h2>but, what I can do is tell you why it was useful for me</h2>
+<h2>but I can tell you why it was useful for me</h2>
 </div>
       <div class='step' >
     
-<p><strong>GOAL:</strong> Map river transects for velocity and water quality fields. The coupled fields allow computation of total fluxes of constituents, such as salinity, so that precise mass balances may be determined across upstream and downstream transects to provide a better understanding of mixing processes, reaeration, and ground-water surface water interactions.</p>
+<p><strong>Project:</strong> Map river transects for velocity and water quality fields. The coupled fields allow computation of total fluxes of constituents, such as salinity, so that precise mass balances may be determined across upstream and downstream transects to provide a better understanding of mixing processes, reaeration, and ground-water surface water interactions.</p>
 
 <p><img src="../images/merced.png" alt="River Confluence"></p>
 </div>
       <div class='step' >
     
-<p>Python served as the underlying glue to pull together R models, sensor integration, system controls, and all other code required for the collection, transmission and utilization of the data by a diverse grouping of researchers</p>
-
-<p><img src="../images/people.png" alt="Science!"></p>
-</div>
-      <div class='step' >
-    
-<p>Variety of Python libraries to facilitate aggregating data from multiple sensors and/or multiple sources of sensors which were subsequently fed into R models for mapping, plotting and automated decision making</p>
+<p>Python offers a variety of relatively easy to use libraries that allowed us to create interfaces to all of our sensors and platforms, stream and aggregate sensor data, and analyze the data in real-time. </p>
 
 <p><img src="../images/multiple.png" alt="Multimodal"></p>
 </div>
       <div class='step' >
     
-<h1>Basics of Python</h1>
+<p>Python served as the underlying glue to pull together all of our system controls, sensor integration and I/O agent for populating the R-models (Rpy) used in the data analysis and to automate decision making.</p>
+
+<p><img src="../images/people.png" alt="Science!"></p>
+</div>
+      <div class='step' >
+    
+<h1>Roadmap for today</h1>
 
 <ul>
-<li>Command Line</li>
-<li>Data Structures</li>
-<li>Array and Vector Manipulation</li>
-<li>Building Functions</li>
-<li>Classes</li>
+<li>These slides</li>
+<li>A few tutorials on some Python Basics</li>
+<li>A look at Scientfic Python (more slides)</li>
+<li>How R and Python compare (using IPython Notebook)</li>
+<li>Prep work for Day 11 (Geospatial Data and Open Tools)</li>
 </ul>
 </div>
       <div class='step' >
     
-<h2>Command Line</h2>
+<h1>Python Basics - Tutorial 1</h1>
+
+<ul>
+<li>Command line python</li>
+<li>Numbers</li>
+<li>Strings</li>
+<li>Lists</li>
+<li>First steps towards programming</li>
+</ul>
 </div>
       <div class='step' >
     
-<h2>Data Structures</h2>
+<h1>Python Basics - Tutorial 2</h1>
+
+<ul>
+<li>Control Flow Tools
+
+<ul>
+<li>if Statements</li>
+<li>for Statements</li>
+<li>range() Function</li>
+<li>break and continue Statements, and else clauses on Loops</li>
+<li>pass Statements</li>
+<li>Defining Functions</li>
+</ul></li>
+</ul>
 </div>
       <div class='step' >
     
-<h2>Array and Vector Manipulation</h2>
+<h1>Python Basics - Tutorial 3</h1>
+
+<ul>
+<li>Classes
+
+<ul>
+<li>Names and Objects</li>
+<li>Scopes and Namespaces</li>
+<li>First look at Classes</li>
+</ul></li>
+<li>Inheritance</li>
+<li>Private Variables and Class-local References</li>
+<li>Iterators</li>
+<li>Generators</li>
+<li>Links to additional tutorials </li>
+</ul>
 </div>
       <div class='step' >
     
-<h2>Building Functions</h2>
+<h1>R vs Python</h1>
+
+<ul>
+<li>By example using <a href="http://www.theswarmlab.com/r-vs-python-round-1/">this</a>
+
+<ul>
+<li>IPython Notebook from Anaconda install</li>
+</ul></li>
+</ul>
 </div>
       <div class='step' >
     
-<h2>Classes</h2>
+<h1>Prep work for Day 11</h1>
+
+<ul>
+<li>IPython Notebook install</li>
+<li>VirtualBox install</li>
+<li>VM to load into VirtualBox (~ 8GB)</li>
+</ul>
 </div>
       <div class='step' >
     
+<p>End</p>
+
       </div>
     <script src="js/impress.js"></script>
     <script>impress().init();</script>

@@ -1,4 +1,4 @@
-#Introduction to Python
+#Python Introduction and Overview
 
 ![python logo](../images/python.png)
 
@@ -30,7 +30,7 @@
 ---
 
 #Basic Philosophy
-####PEP 20 (The Zen of Python)
+####[PEP 20](https://www.python.org/dev/peps/pep-0020/) (The Zen of Python)
 * Beautiful is better than ugly
 * Explicit is better than implicit
 * Simple is better than complex
@@ -50,57 +50,86 @@
 ---
 
 #Honest answer is... I don't know...
-##but, what I can do is tell you why it was useful for me
+
+##but I can tell you why it was useful for me
 
 ---
 
-**GOAL:** Map river transects for velocity and water quality fields. The coupled fields allow computation of total fluxes of constituents, such as salinity, so that precise mass balances may be determined across upstream and downstream transects to provide a better understanding of mixing processes, reaeration, and ground-water surface water interactions.
+**Project:** Map river transects for velocity and water quality fields. The coupled fields allow computation of total fluxes of constituents, such as salinity, so that precise mass balances may be determined across upstream and downstream transects to provide a better understanding of mixing processes, reaeration, and ground-water surface water interactions.
 
 
 ![River Confluence](../images/merced.png)
 
 ---
 
-Python served as the underlying glue to pull together R models, sensor integration, system controls, and all other code required for the collection, transmission and utilization of the data by a diverse grouping of researchers
-
-![Science!](../images/people.png)
-
----
-
-Variety of Python libraries to facilitate aggregating data from multiple sensors and/or multiple sources of sensors which were subsequently fed into R models for mapping, plotting and automated decision making
+Python offers a variety of relatively easy to use libraries that allowed us to create interfaces to all of our sensors and platforms, stream and aggregate sensor data, and analyze the data in real-time. 
 
 ![Multimodal](../images/multiple.png)
 
 ---
 
-#Basics of Python
-* Command Line
-* Data Structures
-* Array and Vector Manipulation
-* Building Functions
+Python served as the underlying glue to pull together all of our system controls, sensor integration and I/O agent for populating the R-models (Rpy) used in the data analysis and to automate decision making.
+
+![Science!](../images/people.png)
+
+---
+
+#Roadmap for today
+* These slides
+* A few tutorials on some Python Basics
+* A look at Scientfic Python (more slides)
+* How R and Python compare (using IPython Notebook)
+* Prep work for Day 11 (Geospatial Data and Open Tools)
+
+---
+
+#Python Basics - Tutorial 1
+* Command line python
+* Numbers
+* Strings
+* Lists
+* First steps towards programming
+
+---
+
+#Python Basics - Tutorial 2
+* Control Flow Tools
+	* if Statements
+	* for Statements
+	* range() Function
+	* break and continue Statements, and else clauses on Loops
+	* pass Statements
+	* Defining Functions
+
+---
+
+#Python Basics - Tutorial 3
 * Classes
+	* Names and Objects
+	* Scopes and Namespaces
+	* First look at Classes
+* Inheritance
+* Private Variables and Class-local References
+* Iterators
+* Generators
+* Links to additional tutorials 
 
 ---
 
-##Command Line
+#R vs Python
+* By example using [this](http://www.theswarmlab.com/r-vs-python-round-1/)
+	* IPython Notebook from Anaconda install
 
 ---
 
-##Data Structures
+#Prep work for Day 11
+* IPython Notebook install
+* VirtualBox install
+* VM to load into VirtualBox (~ 8GB)
 
 ---
 
-##Array and Vector Manipulation
-
----
-
-##Building Functions
-
----
-
-##Classes
-
----
+End
 
 
 
