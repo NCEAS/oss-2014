@@ -232,7 +232,7 @@ Note that we now have two tables in our database, linked by a foreign key on the
 COPY plotobs FROM '/home/jones/training/2014-oss/day-08/sql-basics/plotobs.csv' DELIMITER ',' CSV HEADER;
 ```
 
-## Calulating an average
+## Calculating an average
 
 Using our new table, we can calcualte the average over a group, in this case `sciname`.
 
