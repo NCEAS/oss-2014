@@ -1,6 +1,11 @@
-# creating-r-packages.Rmd
-Matt Jones  
-July 28, 2014  
+---
+title: "creating-r-packages.Rmd"
+author: "Matt Jones"
+date: "July 28, 2014"
+output:
+  html_document:
+    keep_md: yes
+---
 
 ## Why packages?
 
@@ -45,6 +50,37 @@ License: Apache License (== 2.0)
 LazyData: true
 ```
 
+For discussion on when to list a package under Imports or Depends, see [this discussion on StackOverflow](http://stackoverflow.com/questions/8637993/better-explanation-of-when-to-use-imports-depends). But in brief:
+
+Avoid depends as much as possible. It's basically like saying `library(other_package)` every time your package is loaded. This can lead to a large number of dependencies being installed each time. Instead, list a package under Imports like so:
+
+```
+Imports:
+    ggplot2
+```
+
+The in the documentation for any package, add the following line:
+
+```
+#' @importFrom ggplot2 ggplot
+```
+
+If you need to use all (or most functions from a package)
+
+```
+#' @import ggplot2
+```
+
+This will ensure that only the necessary functions and packages are downloaded and specific functions are referenced by NAMESPACE.
+
+For an example to poke around, see one of Karthik's packages: [https://github.com/ropensci/ecoengine](https://github.com/ropensci/ecoengine)
+
+See how I listed an import: 
+1. https://github.com/ropensci/ecoengine/blob/master/DESCRIPTION#L25
+2. and specifically imported a function for a package: https://github.com/ropensci/ecoengine/blob/master/R/ee_observations.R#L36
+
+---
+
 ## Add your code
 
 The skeleton package created contains a directory `R` which should contain your source files.  Add your functions and classes in files to this directory, attempting to choose names that don't conflict with existing packages.  For example, you might add a file `info.R` that contains a function `environment_info()` that you might want to reuse. This one might leave something to be desired...
@@ -86,8 +122,7 @@ document()
 ```
 
 ```
-## Updating mytools documentation
-## Loading mytools
+## Error: could not find function "document"
 ```
 
 That's really it.  You now have a package that you can `check()` and `install()` and `release()`.  See below for these helper utilities.
@@ -103,15 +138,7 @@ check()
 ```
 
 ```
-## Updating mytools documentation
-## Loading mytools
-## '/Library/Frameworks/R.framework/Resources/bin/R' --vanilla CMD build  \
-##   '/Users/jones/development/training/2014-oss/day-09/creating-r-packages/mytools'  \
-##   --no-manual --no-resave-data 
-## 
-## '/Library/Frameworks/R.framework/Resources/bin/R' --vanilla CMD check  \
-##   '/var/folders/nn/jz0j961968b3xzffnqs6k9yw0000gn/T//Rtmp7yQZFp/mytools_0.1.tar.gz'  \
-##   --timings
+## Error: could not find function "check"
 ```
 
 ```r
@@ -120,19 +147,7 @@ install("mytools")
 ```
 
 ```
-## Installing mytools
-## '/Library/Frameworks/R.framework/Resources/bin/R' --vanilla CMD INSTALL  \
-##   '/Users/jones/development/training/2014-oss/day-09/creating-r-packages/mytools'  \
-##   --library='/Library/Frameworks/R.framework/Versions/3.1/Resources/library'  \
-##   --install-tests 
-## 
-## Reloading installed mytools
-## 
-## Attaching package: 'mytools'
-## 
-## The following object is masked _by_ '.GlobalEnv':
-## 
-##     environment_info
+## Error: could not find function "install"
 ```
 
 Your package is now available for use in your local environment.
