@@ -113,6 +113,7 @@ Once your files are documented, you can then process the documentation using the
 ```{r}
 setwd("./mytools")
 document()
+# or document(".")
 ```
 
 That's really it.  You now have a package that you can `check()` and `install()` and `release()`.  See below for these helper utilities.
@@ -121,7 +122,7 @@ That's really it.  You now have a package that you can `check()` and `install()`
 
 Now that your package is built, you can check it for consistency and completeness using `check()`, and then you can install it locally using `install()`, which needs to be run from the parent directory of your module.
 
-```{r}
+```{r eval = FALSE}
 setwd("./mytools")
 check()
 setwd("..")

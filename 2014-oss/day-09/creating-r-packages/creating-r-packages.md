@@ -122,7 +122,12 @@ document()
 ```
 
 ```
-## Error: could not find function "document"
+## Updating mytools documentation
+## Loading mytools
+```
+
+```r
+# or document(".")
 ```
 
 That's really it.  You now have a package that you can `check()` and `install()` and `release()`.  See below for these helper utilities.
@@ -135,19 +140,8 @@ Now that your package is built, you can check it for consistency and completenes
 ```r
 setwd("./mytools")
 check()
-```
-
-```
-## Error: could not find function "check"
-```
-
-```r
 setwd("..")
 install("mytools")
-```
-
-```
-## Error: could not find function "install"
 ```
 
 Your package is now available for use in your local environment.

@@ -90,6 +90,18 @@ Description: Package mytools contains a suite of utility functions useful whenev
 Depends: R (&gt;= 3.1.0)
 License: Apache License (== 2.0)
 LazyData: true</code></pre>
+<p>For discussion on when to list a package under Imports or Depends, see <a href="http://stackoverflow.com/questions/8637993/better-explanation-of-when-to-use-imports-depends">this discussion on StackOverflow</a>. But in brief:</p>
+<p>Avoid depends as much as possible. It’s basically like saying <code>library(other_package)</code> every time your package is loaded. This can lead to a large number of dependencies being installed each time. Instead, list a package under Imports like so:</p>
+<pre><code>Imports:
+    ggplot2</code></pre>
+<p>The in the documentation for any package, add the following line:</p>
+<pre><code>#' @importFrom ggplot2 ggplot</code></pre>
+<p>If you need to use all (or most functions from a package)</p>
+<pre><code>#' @import ggplot2</code></pre>
+<p>This will ensure that only the necessary functions and packages are downloaded and specific functions are referenced by NAMESPACE.</p>
+<p>For an example to poke around, see one of Karthik’s packages: <a href="https://github.com/ropensci/ecoengine"><a href="https://github.com/ropensci/ecoengine">https://github.com/ropensci/ecoengine</a></a></p>
+<p>See how I listed an import: 1. <a href="https://github.com/ropensci/ecoengine/blob/master/DESCRIPTION#L25">https://github.com/ropensci/ecoengine/blob/master/DESCRIPTION#L25</a> 2. and specifically imported a function for a package: <a href="https://github.com/ropensci/ecoengine/blob/master/R/ee_observations.R#L36">https://github.com/ropensci/ecoengine/blob/master/R/ee_observations.R#L36</a></p>
+<hr />
 </div>
 <div id="add-your-code" class="section level2">
 <h2>Add your code</h2>
@@ -119,37 +131,16 @@ environment_info &lt;- function(msg) {
 document()</code></pre>
 <pre><code>## Updating mytools documentation
 ## Loading mytools</code></pre>
+<pre class="r"><code># or document(&quot;.&quot;)</code></pre>
 <p>That’s really it. You now have a package that you can <code>check()</code> and <code>install()</code> and <code>release()</code>. See below for these helper utilities.</p>
 </div>
 <div id="checking-and-installing-your-package" class="section level2">
 <h2>Checking and installing your package</h2>
 <p>Now that your package is built, you can check it for consistency and completeness using <code>check()</code>, and then you can install it locally using <code>install()</code>, which needs to be run from the parent directory of your module.</p>
 <pre class="r"><code>setwd(&quot;./mytools&quot;)
-check()</code></pre>
-<pre><code>## Updating mytools documentation
-## Loading mytools
-## '/Library/Frameworks/R.framework/Resources/bin/R' --vanilla CMD build  \
-##   '/Users/jones/development/training/2014-oss/day-09/creating-r-packages/mytools'  \
-##   --no-manual --no-resave-data 
-## 
-## '/Library/Frameworks/R.framework/Resources/bin/R' --vanilla CMD check  \
-##   '/var/folders/nn/jz0j961968b3xzffnqs6k9yw0000gn/T//Rtmp7yQZFp/mytools_0.1.tar.gz'  \
-##   --timings</code></pre>
-<pre class="r"><code>setwd(&quot;..&quot;)
+check()
+setwd(&quot;..&quot;)
 install(&quot;mytools&quot;)</code></pre>
-<pre><code>## Installing mytools
-## '/Library/Frameworks/R.framework/Resources/bin/R' --vanilla CMD INSTALL  \
-##   '/Users/jones/development/training/2014-oss/day-09/creating-r-packages/mytools'  \
-##   --library='/Library/Frameworks/R.framework/Versions/3.1/Resources/library'  \
-##   --install-tests 
-## 
-## Reloading installed mytools
-## 
-## Attaching package: 'mytools'
-## 
-## The following object is masked _by_ '.GlobalEnv':
-## 
-##     environment_info</code></pre>
 <p>Your package is now available for use in your local environment.</p>
 </div>
 <div id="sharing-and-releasing-your-package" class="section level2">
