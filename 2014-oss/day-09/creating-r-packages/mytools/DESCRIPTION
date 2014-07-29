@@ -1,0 +1,10 @@
+Package: mytools
+Title: Utility functions created by Matt Jones
+Version: 0.1
+Authors@R: "Matthew Jones <jones@nceas.ucsb.edu> [aut, cre]"
+Description: Package mytools contains a suite of utility functions useful
+    whenever I need stuff to get done.
+Depends:
+    R (>= 3.1.0)
+License: Apache License (== 2.0)
+LazyData: true
