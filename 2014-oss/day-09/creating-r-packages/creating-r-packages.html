@@ -60,8 +60,14 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 </div>
 
 
-<div id="overview" class="section level2">
-<h2>Overview</h2>
+<div id="why-packages" class="section level2">
+<h2>Why packages?</h2>
+<p>Most R users are familiar with loading and utilizing packages in their work. And they know how rich CRAN is in providing for many conceivable needs. Ironically, most have never created a package for their own work, and most think the process is too complicated. It is not. Creating packages serves two main use cases:</p>
+<ul>
+<li>Mechanism to redistribute reusable code</li>
+<li>Mechanism to reproducibly document analysis and models and their results</li>
+</ul>
+<p>The <code>devtools</code> and <code>roxygen</code> package makes creating and maintining a package to be a straightforward experience.</p>
 </div>
 <div id="install-and-load-packages" class="section level2">
 <h2>Install and load packages</h2>
@@ -127,7 +133,7 @@ check()</code></pre>
 ##   --no-manual --no-resave-data 
 ## 
 ## '/Library/Frameworks/R.framework/Resources/bin/R' --vanilla CMD check  \
-##   '/var/folders/nn/jz0j961968b3xzffnqs6k9yw0000gn/T//RtmpdfdhV1/mytools_0.1.tar.gz'  \
+##   '/var/folders/nn/jz0j961968b3xzffnqs6k9yw0000gn/T//Rtmp7yQZFp/mytools_0.1.tar.gz'  \
 ##   --timings</code></pre>
 <pre class="r"><code>setwd(&quot;..&quot;)
 install(&quot;mytools&quot;)</code></pre>
