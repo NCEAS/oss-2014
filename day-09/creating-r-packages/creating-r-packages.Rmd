@@ -7,7 +7,14 @@ output:
     keep_md: yes
 ---
 
-## Overview
+## Why packages?
+
+Most R users are familiar with loading and utilizing packages in their work. And they know how rich CRAN is in providing for many conceivable needs.  Ironically, most have never created a package for their own work, and most think the process is too complicated.  It is not.  Creating packages serves two main use cases:
+
+- Mechanism to redistribute reusable code
+- Mechanism to reproducibly document analysis and models and their results
+
+The `devtools` and `roxygen` package makes creating and maintining a package to be a straightforward experience.
 
 ## Install and load packages
 

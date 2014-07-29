@@ -2,7 +2,14 @@
 Matt Jones  
 July 28, 2014  
 
-## Overview
+## Why packages?
+
+Most R users are familiar with loading and utilizing packages in their work. And they know how rich CRAN is in providing for many conceivable needs.  Ironically, most have never created a package for their own work, and most think the process is too complicated.  It is not.  Creating packages serves two main use cases:
+
+- Mechanism to redistribute reusable code
+- Mechanism to reproducibly document analysis and models and their results
+
+The `devtools` and `roxygen` package makes creating and maintining a package to be a straightforward experience.
 
 ## Install and load packages
 
@@ -103,7 +110,7 @@ check()
 ##   --no-manual --no-resave-data 
 ## 
 ## '/Library/Frameworks/R.framework/Resources/bin/R' --vanilla CMD check  \
-##   '/var/folders/nn/jz0j961968b3xzffnqs6k9yw0000gn/T//RtmpdfdhV1/mytools_0.1.tar.gz'  \
+##   '/var/folders/nn/jz0j961968b3xzffnqs6k9yw0000gn/T//Rtmp7yQZFp/mytools_0.1.tar.gz'  \
 ##   --timings
 ```
 
@@ -135,8 +142,6 @@ Your package is now available for use in your local environment.
 The simplest way to share your package with others is to upload it to a [GitHub repository](https://github.com), which allows others to install your package using the `install_github('mytools','github_username')` function from `devtools`.
 
 If your package might be broadly useful, also consider releasing it to CRAN, using the `release()` method from `devtools().
-
-
 
 
 
