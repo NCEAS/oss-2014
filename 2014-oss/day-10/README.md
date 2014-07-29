@@ -2,18 +2,17 @@
 
 Training materials for Day 10.
 
-additinal updates to be added on 7/29 once all files converted for markdown
+#Introduction to Python
 
-#Introduction to Python (tentative)
-
-Topic | Code / Slides
+Topic | Slides / Examples
 --- | ---
-Python Overview <ul><li>Command Line</li><li>Data Structures</li><li>Array and Vector Manipulation</li><li>Building Functions</li><li>Classes</li></ul> | [Slides](http://people.renci.org/~stealey/OSS2014/introduction_to_python/index.html)
-Tools <ul><li>IPython (Anaconda [Install](http://docs.continuum.io/anaconda/install.html))</li></ul> |
+Python Introduction and Overview | [Slides](http://people.renci.org/~stealey/OSS2014/introduction_to_python/index.html)
+Python Basics (Command Line, Numbers, Strings, Lists, First steps towards programming) | [Tutorial 1](./docs/python_basics.md)
+Python Basics (Control Flow Tools) | [Tutorial 2](./docs/python_basics_2.md)
+Python Basics (Objects, Scope, Namespaces, Classes) | [Tutorial 3](./docs/python_basics_3.md)
+Scientific Python | [Slides](http://people.renci.org/~stealey/OSS2014/scientific_python/index.html)
 R vs Python | example
-Scientific Libraries <ul><li>NumPy</li><li>SciPy</li><li>Matplotlib</li><li>Pandas</li><li>IPython</li><li>Sympy</li><li>Rpy2</li></ul> | [Slides](http://people.renci.org/~stealey/OSS2014/scientific_python/index.html)
-IPython Notebook | example code
-VirtualBox <ul><li>Virtual Box [Install](https://www.virtualbox.org/wiki/Downloads)</li><li>VM for Day 11 [Link](...)</li></ul> | Day 11 Prep
+Day 11 Preparation Materials <ul><li>IPython Notebook (Anaconda) [Install](http://docs.continuum.io/anaconda/install.html)</li><li>Virtual Box [Install](https://www.virtualbox.org/wiki/Downloads)</li><li>VM for Day 11 [Link](...)</li></ul> | 
 **Wrap up, Questions and Disucssion** | 
 ## References
 [references.md](./docs/references.md)

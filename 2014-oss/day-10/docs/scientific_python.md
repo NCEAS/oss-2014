@@ -4,6 +4,30 @@
 
 ---
 
+##Why use Python for Scientific computation?
+
+Python is a complete programming solution, in that
+
+* First, it is open source and completely free, even for commercial use, as are many of the key scientific libraries. 
+* Second, it runs natively on Windows, Mac OS, linux, and others, as does its standard library and the third party libraries that are mentioned here. 
+* Third, it fits quick scripting and large development projects equally well.
+
+Python plus a handful of mature 3rd-party open source libraries, namely Numpy/Scipy for numerical operations, Cython for low-level optimization, IPython for interactive work, and MatPlotLib for plotting provide a formidable baseline for scientific computation and analysis.
+
+*source: [NumericAndScientific](https://wiki.python.org/moin/NumericAndScientific) Python libraries*
+
+---
+
+##What your statistical software says about you:
+
+**R:** You are willing to invest in learning something difficult.  You do not care about aesthetics, only availability of packages and getting results quickly. 
+
+**Python or JVM languages:** You are a hacker who may have already been a programmer before you delved into statistics. You are probably willing to run alpha or beta-quality algorithms because the statistical package ecosystem is still evolving. You care about integrating your statistics code into a production codebase.
+
+*source: [the-statistics-software-signal](http://seanjtaylor.com/post/39573264781/the-statistics-software-signal)*
+
+---
+
 #NumPy
 
 NumPy is the fundamental package for scientific computing with Python. It contains among other things:
@@ -55,7 +79,7 @@ Pandas is data manipulation library based on Numpy which provides many useful fu
 Rpy2 is a Python binding for the R statistical package allowing the execution of R functions from Python and passing data back and forth between the two environments. Rpy2 is the object oriented implementation of the Rpy bindings.
 
 ---
-#SciPy & Packages
+#How to install?
 
 Installation of scientific Python packages can be troublesome... these are a couple scientific Python distributions which provide precompiled and easy-to-install collections of scientific Python packages.
 
@@ -69,3 +93,4 @@ Installation of scientific Python packages can be troublesome... these are a cou
 
 ---
 
+End
