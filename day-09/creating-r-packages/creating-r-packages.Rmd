@@ -47,6 +47,37 @@ License: Apache License (== 2.0)
 LazyData: true
 ```
 
+For discussion on when to list a package under Imports or Depends, see [this discussion on StackOverflow](http://stackoverflow.com/questions/8637993/better-explanation-of-when-to-use-imports-depends). But in brief:
+
+Avoid depends as much as possible. It's basically like saying `library(other_package)` every time your package is loaded. This can lead to a large number of dependencies being installed each time. Instead, list a package under Imports like so:
+
+```
+Imports:
+    ggplot2
+```
+
+The in the documentation for any package, add the following line:
+
+```
+#' @importFrom ggplot2 ggplot
+```
+
+If you need to use all (or most functions from a package)
+
+```
+#' @import ggplot2
+```
+
+This will ensure that only the necessary functions and packages are downloaded and specific functions are referenced by NAMESPACE.
+
+For an example to poke around, see one of Karthik's packages: [https://github.com/ropensci/ecoengine](https://github.com/ropensci/ecoengine)
+
+See how I listed an import: 
+1. https://github.com/ropensci/ecoengine/blob/master/DESCRIPTION#L25
+2. and specifically imported a function for a package: https://github.com/ropensci/ecoengine/blob/master/R/ee_observations.R#L36
+
+---
+
 ## Add your code
 
 The skeleton package created contains a directory `R` which should contain your source files.  Add your functions and classes in files to this directory, attempting to choose names that don't conflict with existing packages.  For example, you might add a file `info.R` that contains a function `environment_info()` that you might want to reuse. This one might leave something to be desired...
