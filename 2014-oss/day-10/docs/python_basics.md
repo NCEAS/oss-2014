@@ -5,6 +5,7 @@
 * Lists
 * First steps towards programming
 
+
 ---
 
 SSH into **isis.nceas.ucsb.edu** and invoke Python from command line where *\<username>* is your username
@@ -20,6 +21,61 @@ Python 2.7.3 (default, Feb 27 2014, 19:58:35)
 [GCC 4.6.3] on linux2
 Type "help", "copyright", "credits" or "license" for more information.
 >>> 
+```
+
+---
+
+###Basics
+
+###Invoking the Interpreter
+
+The Python interpreter is usually installed as ```/usr/local/bin/python``` on those machines where it is available; putting ```/usr/local/bin``` in your Unix shell’s search path makes it possible to start it by typing the command
+
+```
+[~]$ python
+
+```
+
+to the shell. Since the choice of the directory where the interpreter lives is an installation option, other places are possible; check with your local Python guru or system administrator. (E.g., ```/usr/local/python``` is a popular alternative location.)
+
+On Windows machines, the Python installation is usually placed in ```C:\Python27```, though you can change this when you’re running the installer. To add this directory to your path, you can type the following command into the command prompt in a DOS box:
+
+```
+set path=%path%;C:\python27
+```
+
+Typing an end-of-file character (```Control-D``` on Unix, ```Control-Z``` on Windows) at the primary prompt causes the interpreter to exit with a zero exit status. If that doesn’t work, you can exit the interpreter by typing the following command: ```quit()```.
+
+The interpreter’s line-editing features usually aren’t very sophisticated. On Unix, whoever installed the interpreter may have enabled support for the GNU readline library, which adds more elaborate interactive editing and history features. Perhaps the quickest check to see whether command line editing is supported is typing Control-P to the first Python prompt you get. If it beeps, you have command line editing; see Appendix [Interactive Input Editing and History Substitution](https://docs.python.org/2/tutorial/interactive.html#tut-interacting) for an introduction to the keys. If nothing appears to happen, or if ```^P``` is echoed, command line editing isn’t available; you’ll only be able to use backspace to remove characters from the current line.
+
+The interpreter operates somewhat like the Unix shell: when called with standard input connected to a tty device, it reads and executes commands interactively; when called with a file name argument or with a file as standard input, it reads and executes a script from that file.
+
+A second way of starting the interpreter is ```python -c command [arg] ...```, which executes the statement(s) in command, analogous to the shell’s -c option. Since Python statements often contain spaces or other characters that are special to the shell, it is usually advised to quote command in its entirety with single quotes.
+
+Some Python modules are also useful as scripts. These can be invoked using ```python -m module [arg] ...```, which executes the source file for module as if you had spelled out its full name on the command line.
+
+When a script file is used, it is sometimes useful to be able to run the script and enter interactive mode afterwards. This can be done by passing -i before the script.
+
+###Interactive Mode
+
+When commands are read from a tty, the interpreter is said to be in interactive mode. In this mode it prompts for the next command with the primary prompt, usually three greater-than signs (```>>>```); for continuation lines it prompts with the secondary prompt, by default three dots (```...```). The interpreter prints a welcome message stating its version number and a copyright notice before printing the first prompt:
+
+```
+python
+Python 2.7 (#1, Feb 28 2010, 00:02:06)
+Type "help", "copyright", "credits" or "license" for more information.
+>>>
+```
+
+Continuation lines are needed when entering a multi-line construct. As an example, take a look at this if statement:
+
+```
+>>>
+>>> the_world_is_flat = 1
+>>> if the_world_is_flat:
+...     print "Be careful not to fall off!"
+...
+Be careful not to fall off!
 ```
 
 ---
@@ -558,15 +614,16 @@ This example introduces several new features.
 * The body of the loop is indented: indentation is Python’s way of grouping statements. At the interactive prompt, you have to type a tab or space(s) for each indented line. In practice you will prepare more complicated input for Python with a text editor; all decent text editors have an auto-indent facility. When a compound statement is entered interactively, it must be followed by a blank line to indicate completion (since the parser cannot guess when you have typed the last line). Note that each line within a basic block must be indented by the same amount.
 
 * The ```print``` statement writes the value of the expression(s) it is given. It differs from just writing the expression you want to write (as we did earlier in the calculator examples) in the way it handles multiple expressions and strings. Strings are printed without quotes, and a space is inserted between items, so you can format things nicely, like this:
-* 
+
 ```
 >>>
 >>> i = 256*256
 >>> print 'The value of i is', i
 The value of i is 65536
 ```
+
 A trailing comma avoids the newline after the output:
-* 
+
 ```
 >>>
 >>> a, b = 0, 1
@@ -576,4 +633,25 @@ A trailing comma avoids the newline after the output:
 ...
 1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987
 ```
+
 Note that the interpreter inserts a newline before it prints the next prompt if the last line was not completed.
+
+---
+
+###Executable Python Scripts
+
+On BSD’ish Unix systems, Python scripts can be made directly executable, like shell scripts, by putting the line
+
+```
+#! /usr/bin/env python
+```
+
+(assuming that the interpreter is on the user’s PATH) at the beginning of the script and giving the file an executable mode. The ```#!``` must be the first two characters of the file. On some platforms, this first line must end with a Unix-style line ending (```'\n'```), not a Windows (```'\r\n'```) line ending. Note that the hash, or pound, character, ```'#'```, is used to start a comment in Python.
+
+The script can be given an executable mode, or permission, using the chmod command:
+
+```
+$ chmod +x myscript.py
+```
+
+On Windows systems, there is no notion of an “executable mode”. The Python installer automatically associates ```.py``` files with ```python.exe``` so that a double-click on a Python file will run it as a script. The extension can also be ```.pyw```, in that case, the console window that normally appears is suppressed.
