@@ -78,8 +78,10 @@ Python served as the underlying glue to pull together all of our system controls
 * These slides
 * A few tutorials on some Python Basics
 * A look at Scientfic Python (more slides)
-* How R and Python compare (using IPython Notebook)
-* Prep work for Day 11 (Geospatial Data and Open Tools)
+* Setting up a local virtual environment
+* IPython and IPython Notebook
+	* R versus Python
+	* Rpy2
 
 ---
 
@@ -116,16 +118,30 @@ Python served as the underlying glue to pull together all of our system controls
 
 ---
 
-#R vs Python
-* By example using [this](http://www.theswarmlab.com/r-vs-python-round-1/)
-	* IPython Notebook from Anaconda install
+#Python Basics - Tutorial 4
+* VirtualBox
+* xubuntu VM
+	* zip file ~ 1.7 GB
+	* unzipped file ~ 6.15 GB
+* Prep for Day 11
 
 ---
 
-#Prep work for Day 11
-* IPython Notebook install
-* VirtualBox install
-* VM to load into VirtualBox (~ 8GB)
+#Python Basics - Tutorial 5
+* IPython install on VM using apt-get
+* self directed links to tutorials
+
+---
+
+#Python Basics - Tutorial 6
+* Round 1: R vs Python example using IPython Notebook and R-Studio
+* additional links to Rounds 2 and 3
+
+---
+
+#Python Basics - Tutorial 7
+* Rpy2 Install on VM using apt-get
+* self directect links to tutorials
 
 ---
 
