@@ -118,7 +118,18 @@ Python served as the underlying glue to pull together all of our system controls
 
 ---
 
-#Python Basics - Tutorial 4
+#Scientific Python - Slides
+* NumPy
+* SciPy
+* Matplotlib
+* IPython
+* SymPy
+* Pandas
+* Rpy2
+
+---
+
+#Local Virtual Machine - Tutorial 4
 * VirtualBox
 * xubuntu VM
 	* zip file ~ 1.7 GB
@@ -127,19 +138,19 @@ Python served as the underlying glue to pull together all of our system controls
 
 ---
 
-#Python Basics - Tutorial 5
+#IPython Notebook - Tutorial 5
 * IPython install on VM using apt-get
 * self directed links to tutorials
 
 ---
 
-#Python Basics - Tutorial 6
+#R versus Python - Tutorial 6
 * Round 1: R vs Python example using IPython Notebook and R-Studio
 * additional links to Rounds 2 and 3
 
 ---
 
-#Python Basics - Tutorial 7
+#Rpy2 - Tutorial 7
 * Rpy2 Install on VM using apt-get
 * self directect links to tutorials
 
