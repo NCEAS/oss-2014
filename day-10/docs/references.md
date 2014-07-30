@@ -3,10 +3,12 @@
 #References
 
 ###Python
-* [docs.python.org tutorials](https://docs.python.org/2/tutorial/appetite.html)
+* [docs.python.org](https://docs.python.org/2/tutorial/appetite.html) tutorials
 
-###[SciPy.org](http://scipy.org)
-* [Ipython](http://ipython.org), [NumPy](http://www.numpy.org), [Matplotlib](http://matplotlib.org), [SciPy library](http://scipy.org/scipylib/index.html), [Sympy](http://sympy.org/en/index.html), and [Pandas](http://pandas.pydata.org)
+###Scientific Python
+* [SciPy.org](http://scipy.org)
+* [Ipython](http://ipython.org)
+* [NumPy](http://www.numpy.org), [Matplotlib](http://matplotlib.org), [SciPy library](http://scipy.org/scipylib/index.html), [Sympy](http://sympy.org/en/index.html), and [Pandas](http://pandas.pydata.org)
 * [Anaconda](https://store.continuum.io/cshop/anaconda/)
 * [Canopy](https://www.enthought.com/products/canopy/)
 
@@ -14,7 +16,11 @@
 * The Swarm Lab@NJIT [Round 1](http://www.theswarmlab.com/r-vs-python-round-1/), 
 [Round 2](http://www.theswarmlab.com/r-vs-python-round-2/), and [Round 3](http://www.theswarmlab.com/r-vs-python-round-3/)
 
-###[VirtualBox](https://www.virtualbox.org)
+###Rpy2
+* [rpy.sourceforge.net](http://rpy.sourceforge.net/rpy2/doc-dev/html/introduction.html)
+
+###VirtualBox
+* [www.virtualbox.org](https://www.virtualbox.org)
 
 ###San Joaquin River Mixing Dynamics
-* [CENS](http://cens.ucla.edu/projects/2007/Contaminant/Rivers_Streams/San_Joaquin/) and  [UC Merced](https://eng.ucmerced.edu/harmongroup/harmon/recently-completed-projects/copy_of_high-resolution-river-water-quality-assessment)
+* [UC Merced](https://eng.ucmerced.edu/harmongroup/harmon/recently-completed-projects/copy_of_high-resolution-river-water-quality-assessment)
