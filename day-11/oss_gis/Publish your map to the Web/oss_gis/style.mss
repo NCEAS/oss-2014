@@ -23,10 +23,11 @@ Map {
 }
 
 #foodstampsncmerged {
-  line-color:#594;
-  line-width:0.5;
   polygon-opacity:1;
   polygon-fill:#ae8;
+  line-width: 0.5;
+  line-color: #fff;
+  
   
   ::textlayer [zoom>10] {
      text-name: [pct_povert] + '%';
@@ -48,14 +49,14 @@ Map {
   [poverty_cl=9] { polygon-fill: @q08; }
   [poverty_cl=10] { polygon-fill: @q10; }
   
-  [has_mkt=1] { line-width:1.0; }
-  [snap_mkt=1] { line-width: 2.0; }
-  [wic_mkt=1] { line-width: 2.0; }
-  [imp_mkt=1] { line-color: #000; }
+  [has_mkt=1] { line-color: #168; line-width:1.0; }
+  [snap_mkt=1] { line-color: #000; }
+  [wic_mkt=1] { line-color: #868; }
+  [imp_mkt=1] { line-color: #168; line-width: 2.0; }
 }
 
 
-#farmersmkts {
+#farmersmktsnc {
   marker-width:6;
   marker-fill:#f45;
   marker-line-color:#813;
@@ -67,4 +68,3 @@ Map {
 
   [zoom>10] { marker-width: 12; }  
 }
-

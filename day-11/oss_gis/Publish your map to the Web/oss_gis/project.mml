@@ -40,10 +40,7 @@
       "id": "foodstampsncmerged",
       "class": "",
       "Datasource": {
-        "file": "/home/oss/ossgis/oss_gis/Spatial Data analysis in Python/foodstamps_nc_merged.shp",
-        "id": "foodstampsncmerged",
-        "project": "oss_gis",
-        "srs": ""
+        "file": "/home/oss/ossgis/training/2014-oss/day-11/oss_gis/Spatial Data analysis in Python/foodstamps_nc_merged.shp"
       },
       "layer": null,
       "srs-name": "autodetect",
@@ -54,24 +51,21 @@
     {
       "geometry": "point",
       "extent": [
-        -159.718,
-        -2.851317575765145e-15,
-        0,
-        77.05830000000003
+        -83.9668,
+        34.095967266091925,
+        -75.61690000000002,
+        36.69915193521837
       ],
-      "id": "farmersmkts",
+      "id": "farmersmktsnc",
       "class": "",
       "Datasource": {
-        "file": "/home/oss/ossgis/oss_gis/Fun with Excel and QGIS/farmers_mkts.shp",
-        "id": "farmersmkts",
-        "project": "oss_gis",
-        "srs": ""
+        "file": "/home/oss/ossgis/training/2014-oss/day-11/oss_gis/Fun with Excel and QGIS/farmers_mkts_nc.shp"
       },
       "layer": null,
       "srs-name": "autodetect",
       "srs": "",
       "advanced": {},
-      "name": "farmersmkts"
+      "name": "farmersmktsnc"
     }
   ],
   "scale": 1,
