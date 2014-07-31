@@ -20,4 +20,3 @@ sh==1.09
 ssh==1.8.0
 ssh-import-id==3.14
 tables==3.0.0
-rpy2
