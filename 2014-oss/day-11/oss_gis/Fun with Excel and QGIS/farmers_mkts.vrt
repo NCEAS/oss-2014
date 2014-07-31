@@ -1,6 +1,6 @@
 <OGRVRTDataSource>
     <OGRVRTLayer name="farmers_mkts">
-        <SrcDataSource>/home/oss/ossgis/oss_gis/Fun with Excel and QGIS/farmers_mkts.csv</SrcDataSource>
+        <SrcDataSource>farmers_mkts.csv</SrcDataSource>
         <GeometryType>wkbPoint</GeometryType>
         <LayerSRS>WGS84</LayerSRS>
         <GeometryField encoding="PointFromColumns" x="x" y="y"/>
