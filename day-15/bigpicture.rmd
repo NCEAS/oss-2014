@@ -56,8 +56,8 @@ do.call(rect,as.list(mvec))
 segments(c(0,0,1,1),c(0,1,0,1),
          mvec[c(1,1,3,3)],mvec[c(1,3,1,3)])
 text(0.5,mvec[3],pos=3,"Scientific\nquestion?")
-text(mvec[1],0.5-eps,pos=3,srt=90,"What data?")
-text(mvec[3],0.5+eps,pos=3,srt=270,"What assumptions?")
+text(mvec[1]-eps,0.5,pos=3,srt=90,"What data?")
+text(mvec[3]+eps,0.5,pos=3,srt=270,"What assumptions?")
 text(0.5,mvec[1],pos=1,"Analytical methods")
 ```
 
