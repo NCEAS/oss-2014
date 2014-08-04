@@ -12,15 +12,95 @@ opts_chunk$set(tidy=FALSE)
 * "learn from the data"; "answer scientific and management questions" (vague!)
 * describe (really?)
 * understand or explain something (slippery/subjective)
+* test hypotheses
+* predict or control
+* make a decision
+
+In a slightly narrower framework where we can isolate particular effects that we are interested in ... do we want to know
+
+* if they are different from zero?
+* whether they are positive or negative?
+* what their magnitude (*point estimate*) is?
+* how uncertain they are, or what their *interval estimate* is?
+(How do these more specific questions fit in with the bigger questions listed above?)
+
+In this context Gelman [-@gelman_type_2000] talks about "type S" errors (we estimated the wrong sign) and "type M" errors (we estimated the wrong magnitude), in contrast to the classical "type I/type II" (we incorrectly rejected/failed to reject the null hypothesis).
+
+All of the technical methods we often think about (model selection, parameter estimation, $p$-value estimation, statistical inference) ... are all *means, not ends*.
+
+## The statistical Message Box
+
+Can we develop an analogue of the [Message Box](http://www.scribd.com/doc/139351833/The-COMPASS-Message-Box) for connecting scientific questions with analytical methods??
+
+* *What is our scientific question?* 
+    * The goal/reason we are doing the analysis in the first place
+    * How concretely, precisely, and tersely can we state it?
+* *What data (observables) are we using?*
+     * the input to the analysis
+     * What are we assuming about the relationship between our observables and the true (!!!) quantities and relationships of interest?
+* *What quantities or relationships are we estimating?*
+     * The (proximal) output of the analysis
+     * Why? How do these quantities or relationships relate back to the scientific question?
+* *What analytical methods are we using?*
+     * What assumptions do they embody about the form of the data and/or the causal relationships among entities?
+
+```{r messagebox,echo=FALSE}
+par(mar=rep(0.5,4),xaxs="i",yaxs="i")
+plot.new()
+box()
+mid <- 1/2
+eps <- 0.015
+## define inner box
+mvec <- rep(1/2,4)+c(-1,-1,1,1)*mid/2
+do.call(rect,as.list(mvec))
+segments(c(0,0,1,1),c(0,1,0,1),
+         mvec[c(1,1,3,3)],mvec[c(1,3,1,3)])
+text(0.5,mvec[3],pos=3,"Scientific\nquestion?")
+text(mvec[1],0.5-eps,pos=3,srt=90,"What data?")
+text(mvec[3],0.5+eps,pos=3,srt=270,"What assumptions?")
+text(0.5,mvec[1],pos=1,"Analytical methods")
+```
+
+## Limiting resources for analysis
+* data
+* signal
+* brainpower (failure to simplify the question appropriately)
+* analytical tools
+* computational power
+* conceptual framework (vague *or* misguided)
+* independence (political pressure, academic or real-world; avoiding [statistical machismo](http://dynamicecology.wordpress.com/2012/09/11/statistical-machismo/))
+* conformity (unwillingness to use prior art)
+
+## Discussion
+
+In groups:
+
+* what is your big-picture question?
+* what does your message box look like?
+* what is your most limiting resource?
+
+## Paradigms
+
+Associated with goals & techniques, but not defined by them)
+
+**algorithmic** | **model-based**
+----------------|--------------------
+descriptive/phenomenological | mechanistic
+predictive | explanatory
+exploratory | confirmatory
+large data | small/medium data
+robust | efficient
+nonparametric | parametric
+observational data | experimental data
+computational | analytical
+field | lab
+
 
 ```{r echo=FALSE,eval=FALSE}
 debug(ascii:::show.asciidoc.table)
 ascii:::show.asciidoc.table(m1)
 ```
-<!--Ripley (2004: `fortunes::fortune("machine learning")`)
 
-> To paraphrase provocatively, 'machine learning is statistics minus any checking of models and assumptions' 
--->
 Breiman [-@breiman_statistical_2001]
 
 > as data becomes more complex, the data models become more cumbersome  and are losing the advantage of presenting a simple and clear picture of nature's mechanism.
@@ -88,7 +168,7 @@ etc. etc. etc. ...
 ## Deciding on a model?
 * no free lunch
 * bias-variance tradeoff = under/overfitting
-* be **VERY, VERY** careful whenever you're using , especially if doing hypothesis testing (*data snooping*)
+* be **VERY, VERY** careful whenever you're using data to decide on a model, especially if doing hypothesis testing (*data snooping*)
 * in- vs out-of-sample prediction
     * bad in-sample prediction $\to$ bad model
     * good in-sample prediction: maybe overfitted?

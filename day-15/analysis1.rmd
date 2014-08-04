@@ -1,0 +1,248 @@
+Statistical analysis 1: linear models, wheel-building and randomization
+========================================================
+
+`r as.character(Sys.time())`
+
+```{r setup,echo=FALSE,message=FALSE,fig.ext="pdf"}
+opts_chunk$set(tidy=FALSE,echo=FALSE)
+library(ggplot2); theme_set(theme_bw())
+library(scales) ## for oob/squish
+library(reshape2)  ## melt/dcast
+library(plyr)     ## raply/aaply
+library(mgcv)    ## gam
+library(lmPerm)  ## lmp
+library(arm)     ## sim
+```
+
+## Linear models
+
+* Simple, but *extremely* widely applicable
+    * linear models: ANOVA, ANCOVA, regression, multiple regression
+    * generalized linear models: logistic, probit, binomial, Poisson regression
+    * mixed models and GLMMs
+    * generalized least squares: heteroscedasticity and correlation
+	* penalized regression (ridge, lasso, etc.)
+* can be embedded in more complex models
+* *model matrix*: $\boldsymbol{Y}=\boldsymbol{X} \boldsymbol{\beta}$, `model.matrix()` 
+* Wilkinson-Rogers notation `y~f+x`
+* a way to think about interactions and comparisons
+
+![model universe](pix/models.png)
+
+```{r linbasic,message=FALSE,warning=FALSE,echo=TRUE}
+tdat <- read.csv("tundra.csv",na.strings=c("-","NA"))
+tdat <- transform(tdat,cYear=Year-min(Year))
+ggplot(tdat,aes(cYear,GS.NEE))+geom_point()+geom_smooth(method="lm")+
+    labs(x="years since 1966",y="growing season\nnet ecosystem exchange\n")
+## use na.exclude to have NAs incorporated in predictions, simulations, etc.
+lm0 <- lm(GS.NEE~cYear,data=tdat,na=na.exclude)
+lm1 <- lm(GS.GPP~cYear,data=tdat,na=na.exclude)
+```
+
+## Wheel-building
+
+* Almost all statistical methods involve *optimizing* (min/max) a *loss function* (e.g. sum of squares, log-likelihood)
+* When should you make up your own statistical methods *vs.*
+taking something off the shelf?
+* **advantages**: better understanding, customization, flexibility, fame & glory
+* **disadvantages**: inefficiency (statistical & computational & programming); having to explain yourself
+* Basic tools (big overlap with Bolker [-@Bolker2008] chap. 5)
+    * writing functions in R
+    * optimization in R
+	* replicate and factorial simulation runs
+	* stochastic simulation
+
+## Randomization
+
+## Permutation tests
+
+* basic idea: simulate the null hypothesis
+* *if* data are independent samples, can just scramble the order of the response variable
+* `sample()` does this:
+```{r eval=FALSE,echo=TRUE}
+sim.data <- transform(orig.data,response=sample(response))
+```
+(alternatively you can use `sim.data <- orig.data; sim.data$response <- ...`)
+* need to replicate and store values of the test statistic
+* compute fraction of the values >= than the observed statistic:
+```{r eval=FALSE,echo=TRUE}
+mean(obs.stat >= perm.stat)
+```
+```{r permex,echo=FALSE}
+sumfun <- function() {
+    cc <- coef(summary(update(lm1,
+                  data=transform(tdat,GS.GPP=sample(GS.GPP)))))
+    cc[2,"t value"]
+}
+perm.stat <-
+    raply(500,sumfun())
+p.obs <- coef(summary(lm1))[2,"t value"]
+pd <- data.frame(p=perm.stat)
+pdtail <- subset(pd,abs(pd)>abs(p.obs))
+ggplot(pd,aes(p))+
+    geom_histogram(binwidth=0.2,aes(y=..density..),fill="grey")+
+    geom_histogram(data=pdtail,
+                   binwidth=0.2,aes(y=..density..*0.146),
+                   fill="lightblue")+
+    stat_function(fun=dt,arg=list(df=148),colour="red")+
+    geom_vline(xintercept=c(-p.obs,p.obs),lty=2,colour="blue")
+```
+
+* in principle any test statistic will do, may be easiest to use the equivalent of the classical test 
+* `str()`, `summary()` are helpful for digging out test statistics
+* functions for (1) resampling data, (2) fitting model, (3) extracting summary statistics (some might be combined)
+* only gives $p$ values -- not confidence intervals
+* tricky if data aren't independent -- e.g. may need to permute blocks instead
+* the `lmPerm` package implements permutation tests for linear models (`lmp` function)
+* classical tests are often *extremely* good (i.e. permutation tests weren't that needed after all)
+```{r lmpex,echo=TRUE,results="hide"}
+m1 <- lm(GS.GPP~cYear,data=tdat)
+m1P <- lmp(GS.GPP~cYear,data=tdat,Ca=0.001,maxIter=1e6)
+```
+```{r lmpout,echo=FALSE}
+rbind(lm=coef(summary(m1))["cYear",c(1,4)],
+      lmp=coef(summary(m1P))["cYear",c(1,3)])
+```
+* difficulties with extremely small $p$ values (e.g. bioinformatics)
+
+## Bootstrapping
+
+* basic idea: resample existing data *with replacement*
+* *if* data are independent samples, sampling with replacement is like doing a nonparametric "simulation"
+* `sample()` can sample with replacement too, but need to sample *entire* data set (maintain relationship between predictor & response variables):
+```{r eval=FALSE}
+sim.data <- orig.data[sample(nrow(sim.data),replace=TRUE),]
+```
+* need to replicate and store values of the estimates (usually `coef()`)
+* functions for (1) resampling data, (2) fitting model, (3) extracting coefficients
+* tricky if data aren't independent -- *block bootstrapping*
+* bootstrap confidence intervals: simplest possibilities are (1) Normal approximation (2) percentile/quantile
+* the `boot` package implements many possibilities, but I find it clunky (the main advantage is that you can turn on parallel computation easily)
+* as with permutation, bootstrap CI are often similar to classical CIs
+
+## Parametric bootstrapping/posterior predictive simulation
+
+* for goodness-of-fit testing and computing prediction intervals
+* like permutation tests, but (1) simulate under the fitted model, not the alternative; (2) more interesting summary statistics
+* for simple (linear or weakly nonlinear) predictions, can calculate mean and variance directly or approximate via [delta method](http://en.wikipedia.org/wiki/Delta_method) [@Bolker2008;@HilbornMangel1997]
+* for most R models can resample parameters via
+```{r eval=FALSE,echo=TRUE}
+MASS::mvrnorm(n.sim,
+              mu=coef(fitted.model),
+              Sigma=vcov(fitted.model))
+```
+or via `arm::sim()`.
+
+* *Example*: what fraction of the values were positive between 1990 and 2000?
+```{r ppsim,cache=TRUE,echo=TRUE}
+nineties <- subset(tdat,Year>=1990 & Year<2000)
+nval <- nrow(nineties)
+rfun <- function() {
+    ss <- arm::sim(lm0,1)  ## get one random value
+    vals <- rnorm(nval,mean=ss@coef[1]+ss@coef[2]*nineties$cYear,
+                  sd=ss@sigma)
+    mean(vals>0)
+}
+mvals <- rdply(100,rfun())
+summary(mvals$V1)
+(obs.val <- mean(nineties$GS.NEE>0,na.rm=TRUE))
+```
+```{r pphist}
+md <- data.frame(V1=obs.val)
+mtail <- subset(mvals,abs(V1)>abs(obs.val))
+ggplot(mvals,aes(V1))+
+    geom_histogram(binwidth=0.025,aes(y=..density..),fill="grey")+
+    geom_vline(xintercept=obs.val,lty=2,colour="blue")+
+    labs(x="fraction positive in 1990s")
+```
+
+* easy with MCMC approaches
+* unfortunately the `simulate()` method only incorporates process/measurement error, while
+`sim()` only incorporates estimation error
+
+
+## Method assessment and testing
+
+**precision** | **accuracy**
+--------------|--------------------
+variance      |  bias
+coefficient of variation | type I error rate
+CI width | type I error rate
+power                | *coverage*
+mean squared error   | mean squared error
+
+* power/performance analysis
+    * loop over variable(s) of interest (sample size, effect size, etc.)
+	    * loop over replicates
+		     * simulate data
+			 * analyze data (= fit model)
+			 * store results (parameter estimates, confidence intervals,
+			 $p$ value ...)
+    * analyze results
+
+
+```{r linsim,cache=TRUE,message=FALSE}
+simfun <- function(x) {
+    lm1 <- update(lm0,data=transform(tdat,GS.NEE=simulate(lm0)[[1]]))
+    cc <- cbind(coef(lm1),confint(lm1))
+    colnames(cc) <- c("est","lwr","upr")
+    cc
+}
+rr <- raply(100,simfun())
+```
+
+* *violin plot* (check for bias):
+
+```{r violinplot}
+true.vals <- data.frame(Var2=names(coef(lm0)),value=coef(lm0))
+ggplot(melt(rr),aes(x=Var2,y=value))+geom_violin(fill="gray")+
+    facet_wrap(~Var2,scale="free")+
+    geom_hline(data=true.vals,colour="red",lty=2,
+               aes(yintercept=value))
+```
+
+* *caterpillar plot* (check for coverage):
+
+```{r catplot}
+rr2 <- dcast(subset(melt(rr),Var2=="cYear",
+                    select=-Var2),Var1~Var3)
+rr2 <- transform(rr2,Var1=reorder(factor(Var1),est))
+ggplot(rr2,aes(x=as.numeric(Var1),y=est,ymin=lwr,ymax=upr))+
+    geom_pointrange()+
+    geom_hline(yintercept=coef(lm0)[2],colour="red")
+```
+
+```{r powerplot,cache=TRUE}
+simfun2 <- function(size) {
+    ## cat(size,"\n")
+    ## browser()
+    lm1 <- try(update(lm0,data=tdat[sample(nrow(tdat),replace=(size>nrow(tdat)),
+                      size=size),]),silent=TRUE)
+    if (inherits(lm1,"try-error")) return(NA)
+    r <- try(coef(summary(lm1))["cYear","Pr(>|t|)"],silent=TRUE)
+    if (inherits(r,"try-error")) return(NA)
+    r
+}
+set.seed(101)
+sres <- aaply(rbind(3:100),2,function(s) raply(100,simfun2(s)))
+```
+
+```{r power_anal}
+powres <- data.frame(n=3:100,pow=rowMeans(sres<0.05,na.rm=TRUE))
+ggplot(powres,aes(x=n,y=pow))+geom_point()+
+    scale_y_continuous(limit=c(0,1),oob=squish)+
+    geom_hline(yintercept=0.05,colour="red",lty=2)+
+    geom_smooth(method="loess")
+```
+
+
+## Tips for simulation studies
+
+* use `try()` in case things break; e.g. `try(x,silent=TRUE); if (inherits(x,"try-error")) return(NA)`
+* set random number seeds!  possibly sequentially
+* organize factorial experiment results as multi-dimensional arrays (with well-named dimensions), with "replicate" and "output variable" as two of the dimensions
+* save everything you think you might need for analysis
+* use `apply()` to collapse across dimensions (e.g. to get power, coverage, mean bias, MSE)
+* use `reshape2::melt` to get from array to long form data
+
+## References
