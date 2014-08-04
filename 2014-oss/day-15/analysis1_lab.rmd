@@ -30,6 +30,8 @@ library(reshape2)  ## melt/dcast
 library(plyr)     ## raply/aaply
 ## lmPerm is not available from CRAN, needs to be installed via
 ## library(devtools); install_version("lmPerm",version="1.1-2")
+## OR
+## download.file("http://cran.r-project.org/src/contrib/Archive/lmPerm/lmPerm_1.1-2.tar.gz",dest="lmPerm.tar.gz"); install.packages("lmPerm.tar.gz",repos=NULL,type="source")
 library(lmPerm)  ## lmp
 library(arm)     ## sim
 library(bbmle)
