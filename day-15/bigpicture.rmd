@@ -1,0 +1,109 @@
+Analysis: the big picture
+========================================================
+
+`r as.character(Sys.time())`
+
+```{r echo=FALSE}
+opts_chunk$set(tidy=FALSE)
+```
+
+## What are we trying to do when we analyze (model) data?
+
+* "learn from the data"; "answer scientific and management questions" (vague!)
+* describe (really?)
+* understand or explain something (slippery/subjective)
+
+```{r echo=FALSE,eval=FALSE}
+debug(ascii:::show.asciidoc.table)
+ascii:::show.asciidoc.table(m1)
+```
+<!--Ripley (2004: `fortunes::fortune("machine learning")`)
+
+> To paraphrase provocatively, 'machine learning is statistics minus any checking of models and assumptions' 
+-->
+Breiman [-@breiman_statistical_2001]
+
+> as data becomes more complex, the data models become more cumbersome  and are losing the advantage of presenting a simple and clear picture of nature's mechanism.
+
+## Paradigm conflict across fields
+
+* Platonists vs (?) Aristotelians; e.g. [constructive empiricists](http://plato.stanford.edu/entries/constructive-empiricism/)
+* Biology/ecology: Strong inference [@Platt1964]; Peters [-@Peters:1991] *Critique for Ecology*
+* linguistics: [Norvig vs Chomsky](http://norvig.com/chomsky.html)
+* arguments about [microfoundations](http://mainlymacro.blogspot.com/2012/08/arguments-for-ending-microfoundations.html) in economics; Big Data in econometrics
+* Chris Anderson: ["The End of Theory"](http://www.wired.com/science/discoveries/magazine/16-07/pb_theory)
+
+## Methods
+
+Models are *always* simplifications: otherwise they they don't help us understand, or predict, reality ([Borges](https://notes.utk.edu/bio/greenberg.nsf/0/f2d03252295e0d0585256e120009adab?OpenDocument))
+
+* constancy
+* linearity
+* independence
+* smoothness
+* discrete classes
+
+## Classical
+
+* Linear models: mostly model-based, but:
+    * least-squares/MVUE interpretation
+    * very efficient for Big Data (large-scale linear algebra) 
+* extended linear models: GLMs, correlations, zero-inflation, etc.
+    * more/different parametric assumptions in pursuit of efficiency & interpretability
+* hierarchical/mixed models 
+    * ancestor (ANOVA) mostly used for hypothesis testing
+    * relatively efficient way to do grouping
+    * works well for large $N$, small $n$ within clusters
+    * computationally challenging
+* classical (rank-based) nonparametrics [weak assumptions about conditional distributions]: mostly hypothesis-testing (provide *only* $p$-values)
+ 
+## Algorithmic
+
+* modern nonparametrics
+    * generalized additive models (technically still 'linear models', with attendant advantages)
+    * kernel density estimators (*smoothing*)
+    * quantile regression
+    * great for description, but difficult for decomposing descriptions (interpretability)
+    * interactions possible (tensor product splines, multidimensional KDEs) but comp. intensive
+* classification and regression trees (plus extensions: random forests/bagging/boosting etc.)
+    * mostly ignore interactions
+* support vector machines
+    * computationally powerful high-dimensional categorization
+* penalized/regularized approaches (ridge regression, lasso, ...)
+    * mostly description-oriented; confidence intervals etc still difficult
+
+
+## Model building
+
+Many tradeoffs [@Levins1966]:
+
+* Realism
+* Computational feasibility (especially if resampling)
+* Conformity with existing models
+* Interpretability
+* Flexibility
+
+etc. etc. etc. ...
+
+## Deciding on a model?
+* no free lunch
+* bias-variance tradeoff = under/overfitting
+* be **VERY, VERY** careful whenever you're using , especially if doing hypothesis testing (*data snooping*)
+* in- vs out-of-sample prediction
+    * bad in-sample prediction $\to$ bad model
+    * good in-sample prediction: maybe overfitted?
+
+## Model checking and diagnostics
+* Graphical tools
+* Goodness-of-fit measures (*avoid hypothesis testing!*)
+    * Compare to saturated and null model
+* Explore residuals
+* Posterior predictive sampling
+* Assessment of predictive skill:
+    * hold-out data
+    * cross-validation: [this document](http://www.unt.edu/rss/class/Jon/Benchmarks/CrossValidation1_JDS_May2011.pdf) points to `boot::cv.glm`; `rms::validate.*` (*But* see @wenger_assessing_2012)
+* Fit to simulated data
+    * Simulated from estimation model (= positive/negative controls)
+    * Simulated from a different model (robustness)
+
+## References

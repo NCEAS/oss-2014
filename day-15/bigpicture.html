@@ -1,0 +1,247 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link href="data:text/css,body%2C%20td%20%7B%0A%20%20%20font%2Dfamily%3A%20sans%2Dserif%3B%0A%20%20%20background%2Dcolor%3A%20white%3B%0A%20%20%20font%2Dsize%3A%2012px%3B%0A%20%20%20margin%3A%208px%3B%0A%7D%0A%0Att%2C%20code%2C%20pre%20%7B%0A%20%20%20font%2Dfamily%3A%20%27DejaVu%20Sans%20Mono%27%2C%20%27Droid%20Sans%20Mono%27%2C%20%27Lucida%20Console%27%2C%20Consolas%2C%20Monaco%2C%20monospace%3B%0A%7D%0A%0Ah1%20%7B%20%0A%20%20%20font%2Dsize%3A2%2E2em%3B%20%0A%7D%0A%0Ah2%20%7B%20%0A%20%20%20font%2Dsize%3A1%2E8em%3B%20%0A%7D%0A%0Ah3%20%7B%20%0A%20%20%20font%2Dsize%3A1%2E4em%3B%20%0A%7D%0A%0Ah4%20%7B%20%0A%20%20%20font%2Dsize%3A1%2E0em%3B%20%0A%7D%0A%0Ah5%20%7B%20%0A%20%20%20font%2Dsize%3A0%2E9em%3B%20%0A%7D%0A%0Ah6%20%7B%20%0A%20%20%20font%2Dsize%3A0%2E8em%3B%20%0A%7D%0A%0Aa%3Avisited%20%7B%0A%20%20%20color%3A%20rgb%2850%25%2C%200%25%2C%2050%25%29%3B%0A%7D%0A%0Apre%20%7B%09%0A%20%20%20margin%2Dtop%3A%200%3B%0A%20%20%20max%2Dwidth%3A%2095%25%3B%0A%20%20%20border%3A%201px%20solid%20%23ccc%3B%0A%20%20%20white%2Dspace%3A%20pre%2Dwrap%3B%0A%7D%0A%0Apre%20code%20%7B%0A%20%20%20display%3A%20block%3B%20padding%3A%200%2E5em%3B%0A%7D%0A%0Acode%2Er%2C%20code%2Ecpp%20%7B%0A%20%20%20background%2Dcolor%3A%20%23F8F8F8%3B%0A%7D%0A%0Atable%2C%20td%2C%20th%20%7B%0A%20%20border%3A%20none%3B%0A%7D%0A%0Ablockquote%20%7B%0A%20%20%20color%3A%23666666%3B%0A%20%20%20margin%3A0%3B%0A%20%20%20padding%2Dleft%3A%201em%3B%0A%20%20%20border%2Dleft%3A%200%2E5em%20%23EEE%20solid%3B%0A%7D%0A%0Ahr%20%7B%0A%20%20%20height%3A%200px%3B%0A%20%20%20border%2Dbottom%3A%20none%3B%0A%20%20%20border%2Dtop%2Dwidth%3A%20thin%3B%0A%20%20%20border%2Dtop%2Dstyle%3A%20dotted%3B%0A%20%20%20border%2Dtop%2Dcolor%3A%20%23999999%3B%0A%7D%0A%0A%40media%20print%20%7B%0A%20%20%20%2A%20%7B%20%0A%20%20%20%20%20%20background%3A%20transparent%20%21important%3B%20%0A%20%20%20%20%20%20color%3A%20black%20%21important%3B%20%0A%20%20%20%20%20%20filter%3Anone%20%21important%3B%20%0A%20%20%20%20%20%20%2Dms%2Dfilter%3A%20none%20%21important%3B%20%0A%20%20%20%7D%0A%0A%20%20%20body%20%7B%20%0A%20%20%20%20%20%20font%2Dsize%3A12pt%3B%20%0A%20%20%20%20%20%20max%2Dwidth%3A100%25%3B%20%0A%20%20%20%7D%0A%20%20%20%20%20%20%20%0A%20%20%20a%2C%20a%3Avisited%20%7B%20%0A%20%20%20%20%20%20text%2Ddecoration%3A%20underline%3B%20%0A%20%20%20%7D%0A%0A%20%20%20hr%20%7B%20%0A%20%20%20%20%20%20visibility%3A%20hidden%3B%0A%20%20%20%20%20%20page%2Dbreak%2Dbefore%3A%20always%3B%0A%20%20%20%7D%0A%0A%20%20%20pre%2C%20blockquote%20%7B%20%0A%20%20%20%20%20%20padding%2Dright%3A%201em%3B%20%0A%20%20%20%20%20%20page%2Dbreak%2Dinside%3A%20avoid%3B%20%0A%20%20%20%7D%0A%0A%20%20%20tr%2C%20img%20%7B%20%0A%20%20%20%20%20%20page%2Dbreak%2Dinside%3A%20avoid%3B%20%0A%20%20%20%7D%0A%0A%20%20%20img%20%7B%20%0A%20%20%20%20%20%20max%2Dwidth%3A%20100%25%20%21important%3B%20%0A%20%20%20%7D%0A%0A%20%20%20%40page%20%3Aleft%20%7B%20%0A%20%20%20%20%20%20margin%3A%2015mm%2020mm%2015mm%2010mm%3B%20%0A%20%20%20%7D%0A%20%20%20%20%20%0A%20%20%20%40page%20%3Aright%20%7B%20%0A%20%20%20%20%20%20margin%3A%2015mm%2010mm%2015mm%2020mm%3B%20%0A%20%20%20%7D%0A%0A%20%20%20p%2C%20h2%2C%20h3%20%7B%20%0A%20%20%20%20%20%20orphans%3A%203%3B%20widows%3A%203%3B%20%0A%20%20%20%7D%0A%0A%20%20%20h2%2C%20h3%20%7B%20%0A%20%20%20%20%20%20page%2Dbreak%2Dafter%3A%20avoid%3B%20%0A%20%20%20%7D%0A%7D%0A" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<h1 id="analysis-the-big-picture">Analysis: the big picture</h1>
+<p>2013-07-01 15:49:13</p>
+<h2 id="what-are-we-trying-to-do-when-we-analyze-model-data">What are we trying to do when we analyze (model) data?</h2>
+<ul>
+<li>&quot;learn from the data&quot;; &quot;answer scientific and management questions&quot; (vague!)</li>
+<li>describe (are we ever <em>really</em> interested in pure description?)</li>
+<li>understand or explain something (slippery)</li>
+<li>test one or more hypotheses (why?)</li>
+<li>predict (this at least is fairly clear)</li>
+<li>make a decision (ditto)</li>
+</ul>
+<p><sup><a href="#fn1" class="footnoteRef" id="fnref1">1</a></sup><sup><a href="#fn2" class="footnoteRef" id="fnref2">2</a></sup></p>
+<p>In a slightly narrower framework where we can isolate particular effects that we are interested in ... do we want to know</p>
+<ul>
+<li>if they are different from zero?</li>
+<li>whether they are positive or negative?</li>
+<li>what their magnitude (<em>point estimate</em>) is?</li>
+<li>how uncertain they are, or what their <em>interval estimate</em> is? (How do these more specific questions fit in with the bigger questions listed above?)</li>
+</ul>
+<p>In this context Gelman <span class="citation">(2000)</span> talks about &quot;type S&quot; errors (we estimated the wrong sign) and &quot;type M&quot; errors (we estimated the wrong magnitude), in contrast to the classical &quot;type I/type II&quot; (we incorrectly rejected/failed to reject the null hypothesis).</p>
+<p>All of the technical methods we often think about (model selection, parameter estimation, <span class="math"><em>p</em></span>-value estimation, statistical inference) ... are all <em>means, not ends</em>.</p>
+<h3 id="the-statistical-message-box">The statistical Message Box</h3>
+<p>Can we develop an analogue of the <a href="http://www.scribd.com/doc/139351833/The-COMPASS-Message-Box">Message Box</a> for connecting scientific questions with analytical methods??</p>
+<ul>
+<li><em>What is our scientific question?</em>
+<ul>
+<li>The goal/reason we are doing the analysis in the first place</li>
+<li>How concretely, precisely, and tersely can we state it?</li>
+</ul></li>
+<li><em>What data (observables) are we using?</em>
+<ul>
+<li>the input to the analysis</li>
+<li>What are we assuming about the relationship between our observables and the true (!!!) quantities and relationships of interest?</li>
+</ul></li>
+<li><em>What quantities or relationships are we estimating?</em>
+<ul>
+<li>The (proximal) output of the analysis</li>
+<li>Why? How do these quantities or relationships relate back to the scientific question?</li>
+</ul></li>
+<li><em>What analytical methods are we using?</em>
+<ul>
+<li>What assumptions do they embody about the form of the data and/or the causal relationships among entities?</li>
+</ul></li>
+</ul>
+<p><img src="data:image/png;base64,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" alt="plot of chunk messagebox" /></p>
+<h2 id="limiting-resources-for-analysis">Limiting resources for analysis</h2>
+<ul>
+<li>data</li>
+<li>signal</li>
+<li>brainpower (failure to simplify the question appropriately)</li>
+<li>analytical tools</li>
+<li>computational power</li>
+<li>conceptual framework (vague <em>or</em> misguided)</li>
+<li>independence (political pressure, academic or real-world; avoiding <a href="http://dynamicecology.wordpress.com/2012/09/11/statistical-machismo/">statistical machismo</a>)</li>
+<li>conformity (unwillingness to use prior art)</li>
+</ul>
+<h2 id="discussion">Discussion</h2>
+<p>In groups:</p>
+<ul>
+<li>what is your big-picture question?</li>
+<li>what does your message box look like?</li>
+<li>what is your most limiting resource?</li>
+</ul>
+<h2 id="paradigms">Paradigms</h2>
+<p>Associated with goals &amp; techniques, but not defined by them)</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left"><strong>algorithmic</strong></th>
+<th align="left"><strong>model-based</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">descriptive/phenomenological</td>
+<td align="left">mechanistic</td>
+</tr>
+<tr class="even">
+<td align="left">predictive</td>
+<td align="left">explanatory</td>
+</tr>
+<tr class="odd">
+<td align="left">exploratory</td>
+<td align="left">confirmatory</td>
+</tr>
+<tr class="even">
+<td align="left">large data</td>
+<td align="left">small/medium data</td>
+</tr>
+<tr class="odd">
+<td align="left">robust</td>
+<td align="left">efficient</td>
+</tr>
+<tr class="even">
+<td align="left">nonparametric</td>
+<td align="left">parametric</td>
+</tr>
+<tr class="odd">
+<td align="left">observational data</td>
+<td align="left">experimental data</td>
+</tr>
+<tr class="even">
+<td align="left">computational</td>
+<td align="left">analytical</td>
+</tr>
+<tr class="odd">
+<td align="left">field</td>
+<td align="left">lab</td>
+</tr>
+</tbody>
+</table>
+<p>Ripley (2004: <code>fortunes::fortune(&quot;machine learning&quot;)</code>)</p>
+<blockquote>
+<p>To paraphrase provocatively, 'machine learning is statistics minus any checking of models and assumptions'</p>
+</blockquote>
+<p>Breiman (2001)</p>
+<blockquote>
+<p>as data becomes more complex, the data models become more cumbersome and are losing the advantage of presenting a simple and clear picture of nature's mechanism.</p>
+</blockquote>
+<h3 id="paradigm-conflict-across-fields">Paradigm conflict across fields</h3>
+<ul>
+<li>Platonists vs (?) Aristotelians; e.g. <a href="http://plato.stanford.edu/entries/constructive-empiricism/">constructive empiricists</a></li>
+<li>Biology/ecology: Strong inference <span class="citation">(Platt 1964)</span>; Peters <span class="citation">(1991)</span> <em>Critique for Ecology</em></li>
+<li>linguistics: <a href="http://norvig.com/chomsky.html">Norvig vs Chomsky</a></li>
+<li>arguments about <a href="http://mainlymacro.blogspot.com/2012/08/arguments-for-ending-microfoundations.html">microfoundations</a> in economics; Big Data in econometrics</li>
+<li>Chris Anderson: <a href="http://www.wired.com/science/discoveries/magazine/16-07/pb_theory">&quot;The End of Theory&quot;</a></li>
+</ul>
+<h3 id="methods">Methods</h3>
+<p>Models are <em>always</em> simplified versions of reality: otherwise they they don't help us understand, or predict, reality (<a href="https://notes.utk.edu/bio/greenberg.nsf/0/f2d03252295e0d0585256e120009adab?OpenDocument">Borges</a>)</p>
+<ul>
+<li>constancy</li>
+<li>linearity</li>
+<li>independence</li>
+<li>smoothness</li>
+<li>discrete classes</li>
+</ul>
+<h4 id="classical">Classical</h4>
+<ul>
+<li>Linear models: mostly &quot;classical&quot;, but:
+<ul>
+<li>least-squares/MVUE interpretation</li>
+<li>very efficient for Big Data (large-scale linear algebra)</li>
+</ul></li>
+<li>extended linear models: GLMs, correlations, zero-inflation, etc.
+<ul>
+<li>more/different parametric assumptions in pursuit of efficiency &amp; interpretability</li>
+</ul></li>
+<li>hierarchical/mixed models
+<ul>
+<li>ancestor (ANOVA) mostly used for hypothesis testing</li>
+<li>relatively efficient way to do grouping</li>
+<li>works well for large <span class="math"><em>N</em></span>, small <span class="math"><em>n</em></span> within clusters</li>
+<li>computationally challenging</li>
+</ul></li>
+<li>classical (rank-based) nonparametrics [weak assumptions about conditional distributions]: mostly hypothesis-testing (provide <em>only</em> <span class="math"><em>p</em></span>-values)</li>
+</ul>
+<h4 id="algorithmic">Algorithmic</h4>
+<ul>
+<li>modern nonparametrics
+<ul>
+<li>generalized additive models (technically still 'linear models', with attendant advantages)</li>
+<li>kernel density estimators (<em>smoothing</em>)</li>
+<li>quantile regression</li>
+<li>great for description, but difficult for decomposing descriptions (interpretability)</li>
+<li>interactions possible (tensor product splines, multidimensional KDEs) but comp. intensive</li>
+</ul></li>
+<li>classification and regression trees (plus extensions: random forests/bagging/boosting etc.)
+<ul>
+<li>mostly ignore interactions</li>
+</ul></li>
+<li>support vector machines
+<ul>
+<li>computationally powerful high-dimensional categorization</li>
+</ul></li>
+<li>penalized/regularized approaches (ridge regression, lasso, ...)
+<ul>
+<li>mostly description-oriented; confidence intervals etc still difficult</li>
+</ul></li>
+</ul>
+<h2 id="model-building">Model building</h2>
+<p>Many tradeoffs <span class="citation">(Levins 1966)</span>:</p>
+<ul>
+<li>Realism</li>
+<li>Computational feasibility (especially if resampling)</li>
+<li>Conformity with existing models</li>
+<li>Interpretability</li>
+<li>Flexibility</li>
+</ul>
+<p>etc. etc. etc. ...</p>
+<h3 id="deciding-on-a-model">Deciding on a model?</h3>
+<ul>
+<li>no free lunch</li>
+<li>bias-variance tradeoff = under/overfitting</li>
+<li><strong>BE VERY, VERY CAREFUL WHEN USING THE DATA TO DECIDE ON A MODEL</strong>, especially if doing hypothesis testing (<em>data snooping</em>)</li>
+<li>in- vs out-of-sample prediction
+<ul>
+<li>bad in-sample prediction <span class="math"> → </span> bad model</li>
+<li>good in-sample prediction: maybe overfitted?</li>
+</ul></li>
+</ul>
+<h3 id="model-checking-and-diagnostics">Model checking and diagnostics</h3>
+<ul>
+<li>Graphical tools</li>
+<li>Goodness-of-fit measures (<em>avoid hypothesis testing!</em>)
+<ul>
+<li>Compare to saturated and null model</li>
+</ul></li>
+<li>Explore residuals</li>
+<li>Posterior predictive sampling</li>
+<li>Assessment of predictive skill:
+<ul>
+<li>hold-out data</li>
+<li>cross-validation: <a href="http://www.unt.edu/rss/class/Jon/Benchmarks/CrossValidation1_JDS_May2011.pdf">this document</a> points to <code>boot::cv.glm</code>; <code>rms::validate.*</code> (<em>But</em> see <span class="citation">Wenger and Olden (2012)</span>)</li>
+</ul></li>
+<li>Fit to simulated data
+<ul>
+<li>Simulated from estimation model (= positive/negative controls)</li>
+<li>Simulated from a different model (robustness)</li>
+</ul></li>
+</ul>
+<h2 id="references">References</h2>
+<p>Gelman, Andrew, and Francis Tuerlinckx. 2000. “Type S error rates for classical and Bayesian single and multiple comparison procedures.” <em>Computational Statistics</em> 15: 373–390.</p>
+<p>Harrell, Frank. 2001. <em>Regression Modeling Strategies</em>. Springer.</p>
+<p>Levins, R. 1966. “The Strategy of Model Building in Population Biology.” <em>American Scientist</em> 54: 421–431.</p>
+<p>Peters, R. H. 1991. <em>A Critique for Ecology</em>. Cambridge, UK: Cambridge University Press.</p>
+<p>Platt, John R. 1964. “Strong Inference.” <em>Science</em> 146 (oct): 347–353. <a href="http://links.jstor.org/sici?sici=0036-8075%2819641016%293%3A146%3A3642%3C347%3ASI%3E2.0.CO%3B2-K" title="http://links.jstor.org/sici?sici=0036-8075%2819641016%293%3A146%3A3642%3C347%3ASI%3E2.0.CO%3B2-K">http://links.jstor.org/sici?sici=0036-8075%2819641016%293%3A146%3A3642%3C347%3ASI%3E2.0.CO%3B2-K</a>.</p>
+<p>Wenger, Seth J., and Julian D. Olden. 2012. “Assessing transferability of ecological models: an underappreciated aspect of statistical validation.” <em>Methods in Ecology and Evolution</em> 3 (2) (apr): 260–267. doi:10.1111/j.2041-210X.2011.00170.x. <a href="http://doi.wiley.com/10.1111/j.2041-210X.2011.00170.x" title="http://doi.wiley.com/10.1111/j.2041-210X.2011.00170.x">http://doi.wiley.com/10.1111/j.2041-210X.2011.00170.x</a>.</p>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>Harrell has a nice (somewhat more concrete) discussion of analytical goals in the context of model reduction <span class="citation">(Harrell 2001)</span><a href="#fnref1">↩</a></p></li>
+<li id="fn2"><p>The relative clarity of prediction and decision-making helps to explain scientific philosophies such as logical positivism (compare with the real-life messiness of Lakatos and Feyerabend ...).<a href="#fnref2">↩</a></p></li>
+</ol>
+</div>
+</body>
+</html>
