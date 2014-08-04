@@ -4,6 +4,7 @@ Statistical analysis 1: linear models, wheel-building and randomization
 `r as.character(Sys.time())`
 
 ```{r setup,echo=FALSE,message=FALSE,fig.ext="pdf"}
+library (knitr)
 opts_chunk$set(tidy=FALSE,echo=FALSE)
 library(ggplot2); theme_set(theme_bw())
 library(scales) ## for oob/squish
