@@ -24,14 +24,17 @@ R knowledge prerequisites:
 * basic use of `apply`
 
 Load packages:
-```{r pkgs}
+```{r pkgs,message=FALSE}
 library(ggplot2); theme_set(theme_bw())
 library(reshape2)  ## melt/dcast
 library(plyr)     ## raply/aaply
+## lmPerm is not available from CRAN, needs to be installed via
+## library(devtools); install_version("lmPerm",version="1.1-2")
 library(lmPerm)  ## lmp
 library(arm)     ## sim
 library(bbmle)
 library(rbenchmark)
+library(boot)
 ```
 
 Read data:
