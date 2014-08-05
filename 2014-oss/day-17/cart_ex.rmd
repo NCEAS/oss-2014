@@ -1,0 +1,131 @@
+Classification and Regression Tree Example
+----------------------------------------------
+
+```{r opts,echo=FALSE}
+## internal bookkeeping: you may ignore this
+opts_chunk$set(results="hide",tidy=FALSE,fig.height=4,
+              fig.width=6)
+knit_hooks$set(treefig=function(before, options, envir) {
+     par(xpd=NA,cex=0.9)})
+```
+
+## Packages used
+```{r pkglist,echo=FALSE}
+usedpkgs <- sort(c("rpart","ade4","mvpart","vegan"))
+i1 <- installed.packages()
+print(i1[usedpkgs,"Version"],quote=FALSE)
+```
+
+## Data
+
+```{r rpart,message=FALSE}
+library(rpart)
+summary(cu.summary)
+```
+
+(note: be careful *not* to load the `mvpart` package in this section -- it will load a different version of the `rpart()` function)
+
+## Grow tree
+
+```{r}
+(fit <- rpart(Mileage~Price + Country + Reliability + Type,
+        method="anova", xval =100, data=cu.summary))
+```
+(if you know you want to use all the variables other than
+the response variable as input variables,
+`rpart(response~.,...)` will work)
+Note: If your data are binary and you are interested in performing a classification tree, method = “class”
+
+```{r treefig=TRUE}
+printcp(fit) # display the results
+plotcp(fit) # visualize cross-validation results
+summary(fit) # detailed summary of splits
+```
+
+# plot
+```{r treefig=TRUE}
+plot(fit)
+text(fit)
+```
+
+## prune
+
+```{r}
+cpval <- fit$cptable[which.min(fit$cptable[,"xerror"]),"CP"]
+pfit<- prune(fit, cp=cpval)
+```
+
+```{r  treefig=TRUE}
+plot(pfit)
+text(pfit)
+summary(pfit)
+```
+
+# Pick your own tree size
+
+```{r}
+dfit <- rpart(Mileage~., method="anova", 
+              maxdepth=2, data=cu.summary)
+```
+
+```{r  treefig=TRUE}
+plot(dfit)
+text(dfit)
+summary(dfit)
+```
+
+(Code modified from [Quick-R: Accessing the Power of R](http://www.statmethods.net))
+
+# Multivariate Regression Tree Example
+
+## Data 
+
+[Data Information](http://www.inside-r.org/packages/cran/ade4/docs/doubs)
+
+```{r ade4,message=FALSE}
+library(ade4)
+data(doubs)
+env=doubs$env
+spe = doubs$fish
+```
+
+## Transform response variables
+
+The transformation consists of expressing each fish density as a proportion of the sum of all densities in the analytical unit and taking the square root of the resulting value (Legendre and Gallagher 2001).The square-root portion of the transformation decreases the importance of the most abundant species.
+
+```{r vegan,message=FALSE}
+library(vegan)
+spe.norm=decostand(spe, "hellinger")
+```
+
+## Multivariate Regression Tree 
+
+```{r mvpart,warning=FALSE,message=FALSE}
+library(mvpart)
+spe.ch.mvpart<-mvpart(data.matrix(spe.norm) ~., env,  
+                      xv="1se", xval=nrow(spe), 
+                      xvmult=100, which=4)
+summary(spe.ch.mvpart)
+printcp(spe.ch.mvpart)
+```
+
+Or we can use `pick`
+```{r eval=FALSE}
+spe.ch.mvpart<-mvpart(data.matrix(spe.norm) ~., env,  
+                      xv="pick", xval=nrow(spe), 
+                      xvmult=100, which=4)
+summary(spe.ch.mvpart)
+printcp(spe.ch.mvpart)
+```
+
+* `xv` = Selection of tree by cross-validation: 
+    * `"1se"` - gives best tree within one SE of the overall best,
+    * `"min"` - the best tree
+    * `"pick"` - pick the tree size interactively, 
+    * `"none"` - no cross-validation.
+* `xval` = Number of cross-validations or vector defining cross-validation groups (here we use as many rows there are in the dataset because it is a small dataset)
+* `xvmult` = Number of multiple cross-validations.
+* `which` = Which split labels and where to plot them, 1=centered, 2 = left, 3 = right and 4 = both.
+
+(Modified R Code from “Numerical Ecology with R” by Borcard et al. 2012
+
