@@ -6,11 +6,37 @@ library(knitr)
 opts_chunk$set(tidy=FALSE,fig.width=4,fig.height=6,echo=FALSE)
 ```
 
-Huge topic!
+* Huge topic! Lots of different kinds of data that fall under the big umbrella.
+* Related to time-series analysis
 
-## Key references
+## Not-really-spatial models
 
-Diggle [-@diggle_statistical_2003] (point patterns); Cressie [-@cressie_statistics_1991] (everything); Diggle and Ribeiro [-@diggle_model-based_2007] (geostatistics); Dormann et al [-@dormann_methods_2007] (GLMMs for species presence/abundance); Haining [-@haining_spatial_2003] (general spatial analysis from a geography perspective); Pinheiro and Bates [-@pinheiro_mixed-effects_2000] (LMMs with spatially correlated residuals); Rousset and Ferdy [-@rousset_testing_2014] (spatial GLMMs)
+Two kinds of models that I don't classify as spatial models:
+
+* Models where the samples are taken spatially (i.e. measuring diversity vs rainfall from a bunch of plots, or environment and community samples in many plots (ordination etc.), but we just use space as a grouping factor, not considering which plots are closer to each other
+* As above, but with $x$/$y$ (lat/long, eastings/northings etc.) included as input variables, possibly with quadratic terms (`poly(x,y,degree=2)`) - in spatial statistics this is called
+*trend surface analysis*.
+* in other words, truly spatial analyses take spatial *relationships* among points into account
+
+## Trend vs correlation
+
+* stationarity, isotropy
+* large- vs small-scale patterns
+* mean models vs variance models
+* (fitting small-scale spatial pattern via splines)
+   
+
+## Avoiding spatial analysis
+
+* Non-spatial analysis; show that residual pattern is insignificant, biologically and statistically (maps, or e.g. Moran's $I$)
+* Aggregate data (buffering etc.) until aggregated observations are approximately independent, or thin it
+* Claim that spatial correlations don't bias your estimates (true for *linear* models) and/or that the adjustment to the confidence intervals is not important (McGill)
+* Dutilleul's method [-@dutilleul_modifying_1993]
+
+## Spatial diagnostics
+
+* graphical: maps of residuals (e.g. size=absolute magnitude, red vs blue = positive/negative, or diverging color scale)
+* semi-graphical: *semivariogram* or *autocorrelation function*
 
 ## Point processes
  
@@ -38,11 +64,12 @@ invisible(capture.output(plot(rMatClust(10, 0.05, 4),
 * tests of *complete spatial randomness* (CSR)
 
 ## Lattices
-I don't have much to say here: data are often *sampled* this way but we more typically model them in continuous space, or on a graph
+
+Don't have much to say here: data are often *sampled* this way but we more typically model them in continuous space, or on a graph
 
 ## Graphs/networks
 
-* Really more general than space: don't even need to satisfy "spatial" properties (e.g. could be a social network rather than a spatial graph)
+* More general than space: don't even need to satisfy "spatial" properties (e.g. could be a social network rather than a spatial graph)
 * different ways to represent spatial networks
     * neighbor list (with weights)
     * adjacency matrix (weighted)
@@ -63,41 +90,18 @@ tv   <- deldir(x,y,list(ndx=2,ndy=2),c(0,10,0,10))
 plot(tv)
 ```
 
-
 ## Random fields
-* Random fields
-   * Point samples of a continuously varying field
-   * *Gaussian* random fields (multivariate normal with specified spatial correlation function)
-   * build non-Gaussian random fields on top of Gaussian RF; hierarchical models
 
-## Trend vs correlation
+* Point samples of a continuously varying field
+* most often *Gaussian* random fields (multivariate normal with specified spatial correlation function)
+* non-Gaussian random fields built on top of Gaussian RF ("spatial GLMM"); hierarchical models, e.g.
+$$
+\begin{split}
+\boldsymbol \eta & \sim \textrm{MVN}(\boldsymbol \mu, \Sigma) \\
+y_i & \sim Poisson(\eta_i)
+\end{split}
+$$
 
-* stationarity, isotropy
-* large- vs small-scale patterns
-* mean models vs variance models
-* (fitting small-scale spatial pattern via splines)
-   
-## Not-really-spatial models
-
-Two kinds of models that I don't classify as spatial models:
-
-* Models where the samples are taken spatially (i.e. measuring diversity vs rainfall from a bunch of plots, or environment and community samples in many plots (ordination etc.), but we just use space as a grouping factor, not considering which plots are closer to each other
-* As above, but with $x$/$y$ (lat/long, eastings/northings etc.) included as input
-variables, possibly with quadratic terms (`poly(x,y,degree=2)`) - in spatial statistics this is called
-*trend surface analysis*.
-* in other words, truly spatial analyses take spatial *relationships* among points into account
-
-## Avoiding spatial analysis
-
-* Non-spatial analysis; show that residual pattern is insignificant, biologically and statistically (maps, or e.g. Moran's $I$)
-* Aggregate data (buffering etc.) until aggregated observations are approximately independent, or thin it
-* Claim that spatial correlations don't bias your estimates (true for *linear* models) and/or that the adjustment to the confidence intervals is not important (McGill)
-* Dutilleul's method [-@dutilleul_modifying_1993]
-
-## Spatial diagnostics
-
-* graphical: maps of residuals (e.g. size=absolute magnitude, red vs blue = positive/negative, or diverging color scale)
-* semi-graphical: *semivariogram* or *autocorrelation function*
 
 ## Analyses based on weight matrices
 
@@ -149,6 +153,7 @@ curve(RFcov(m3+mn,x),col=4,add=TRUE)
 
 ```{r echo=FALSE,message=FALSE,fig.width=10,fig.height=4}
 xvec <- seq(0,5,length=101)
+library(RandomFields)
 RFoptions(spConform=FALSE)
 g1 <- RFsimulate(m1+mn,x=xvec,y=xvec,grid=TRUE)
 g2 <- RFsimulate(m2+mn,x=xvec,y=xvec,grid=TRUE)
@@ -167,6 +172,16 @@ image(g3,axes=FALSE,useRaster=TRUE,main="Gaussian")
     * spatial *variogram* or *semivariogram*; equivalent information but easier to compute
 
 * spatial prediction: *kriging*
+
+## Key references
+
+* Diggle [-@diggle_statistical_2003] (point patterns)
+* Cressie [-@cressie_statistics_1991] (everything); 
+* Diggle and Ribeiro [-@diggle_model-based_2007] (geostatistics)
+* Dormann et al [-@dormann_methods_2007] (GLMMs for species presence/abundance)
+* Haining [-@haining_spatial_2003] (general spatial analysis from a geography perspective)
+* Pinheiro and Bates [-@pinheiro_mixed-effects_2000] (LMMs with spatially correlated residuals)
+* Rousset and Ferdy [-@rousset_testing_2014] (spatial GLMMs)
 
 ## R packages
 
