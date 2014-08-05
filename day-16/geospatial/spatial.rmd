@@ -1,0 +1,186 @@
+Spatial analysis
+=========================================
+
+```{r opts,echo=FALSE}
+library(knitr)
+opts_chunk$set(tidy=FALSE,fig.width=4,fig.height=6,echo=FALSE)
+```
+
+Huge topic!
+
+## Key references
+
+Diggle [-@diggle_statistical_2003] (point patterns); Cressie [-@cressie_statistics_1991] (everything); Diggle and Ribeiro [-@diggle_model-based_2007] (geostatistics); Dormann et al [-@dormann_methods_2007] (GLMMs for species presence/abundance); Haining [-@haining_spatial_2003] (general spatial analysis from a geography perspective); Pinheiro and Bates [-@pinheiro_mixed-effects_2000] (LMMs with spatially correlated residuals); Rousset and Ferdy [-@rousset_testing_2014] (spatial GLMMs)
+
+## Point processes
+ 
+```{r pp,message=FALSE,fig.width=8}
+library(spatstat)
+nr   <- 1e5
+nv  <- 5000
+ns <- 200
+mod01 <- list(cif="strauss",par=list(beta=2,gamma=0.2,r=0.7),
+              w=c(0,10,0,10))
+mod02 <- list(cif="Poisson",par=list(beta=2,gamma=0.2,r=0.7),
+              w=c(0,10,0,10))
+par(mfrow=c(1,3))
+invisible(capture.output(plot(rmh(model=mod01,start=list(n.start=ns),
+         control=list(nrep=nr,nverb=nv),verbose=FALSE),main="regular")))
+invisible(capture.output(plot(rpoispp(lambda=1,win=c(0,10,0,10)),
+                              main="Poisson")))
+invisible(capture.output(plot(rMatClust(10, 0.05, 4),
+                              main="clustered")))
+```
+
+* distribution of (unmarked) points; are they clustered, random, or regular ("overdispersed")?
+* standard summary: Ripley's $K$ (number of points within radius $r$ of a randomly chosen point, divided by the overall density); $L=\sqrt{K/\pi}$ should be linear ...
+    * have to deal with *edge corrections*: corrected estimators, null distributions via permutation tests   
+* tests of *complete spatial randomness* (CSR)
+
+## Lattices
+I don't have much to say here: data are often *sampled* this way but we more typically model them in continuous space, or on a graph
+
+## Graphs/networks
+
+* Really more general than space: don't even need to satisfy "spatial" properties (e.g. could be a social network rather than a spatial graph)
+* different ways to represent spatial networks
+    * neighbor list (with weights)
+    * adjacency matrix (weighted)
+* Deriving weights matrix $W$ from spatial data  (from [Bannerjee presentation](http://www.unc.edu/~rls/s940/Areal.pdf)):
+    * =1 if nearest neighbor (or $n^{\text{th}}$ nearest neighbor?), 0 otherwise
+    * polygons: "neighbor"="share a boundary", then as above?
+    * =1 if distance < threshold
+    * inverse-distance weighted, e.g. *gravity model* (cutoff beyond some distance to make the matrix *sparse*?)
+    * exponential weighting (but need to choose decay parameter ...)
+    * $W$ doesn't need to be symmetric
+* Voronoi diagrams/Delaunay/Dirichlet tesselations
+
+```{r deldir,message=FALSE,results="hide"}
+library(deldir)
+x    <- c(2.3,3.0,7.0,1.0,3.0,8.0)
+y    <- c(2.3,3.0,2.0,5.0,8.0,9.0)
+tv   <- deldir(x,y,list(ndx=2,ndy=2),c(0,10,0,10))
+plot(tv)
+```
+
+
+## Random fields
+* Random fields
+   * Point samples of a continuously varying field
+   * *Gaussian* random fields (multivariate normal with specified spatial correlation function)
+   * build non-Gaussian random fields on top of Gaussian RF; hierarchical models
+
+## Trend vs correlation
+
+* stationarity, isotropy
+* large- vs small-scale patterns
+* mean models vs variance models
+* (fitting small-scale spatial pattern via splines)
+   
+## Not-really-spatial models
+
+Two kinds of models that I don't classify as spatial models:
+
+* Models where the samples are taken spatially (i.e. measuring diversity vs rainfall from a bunch of plots, or environment and community samples in many plots (ordination etc.), but we just use space as a grouping factor, not considering which plots are closer to each other
+* As above, but with $x$/$y$ (lat/long, eastings/northings etc.) included as input
+variables, possibly with quadratic terms (`poly(x,y,degree=2)`) - in spatial statistics this is called
+*trend surface analysis*.
+* in other words, truly spatial analyses take spatial *relationships* among points into account
+
+## Avoiding spatial analysis
+
+* Non-spatial analysis; show that residual pattern is insignificant, biologically and statistically (maps, or e.g. Moran's $I$)
+* Aggregate data (buffering etc.) until aggregated observations are approximately independent, or thin it
+* Claim that spatial correlations don't bias your estimates (true for *linear* models) and/or that the adjustment to the confidence intervals is not important (McGill)
+* Dutilleul's method [-@dutilleul_modifying_1993]
+
+## Spatial diagnostics
+
+* graphical: maps of residuals (e.g. size=absolute magnitude, red vs blue = positive/negative, or diverging color scale)
+* semi-graphical: *semivariogram* or *autocorrelation function*
+
+## Analyses based on weight matrices
+
+* Neighborhood structure assumed known
+* Moran's $I$ (analogue of lagged autocorrelation), Geary's $C$
+* Assume we are willing to specify the weight matrix $W$ *a priori*
+* Efficient matrix-based solutions: [Conditional and simultaneous autoregression](http://stats.stackexchange.com/questions/277/spatial-statistics-models-car-vs-sar):
+    * *Non-spatial model*: my house value is a function of my home gardening investment.
+    * *Conditional autoregression*: my house value is a function of the gardening investment of my neighbours.
+    * *Simultaneous autoregression*: my house value is a function of the house values of my neighbours.
+
+## Geostatistical models
+
+## Correlation models
+
+(Semi)variance: $S(r_{ij})=(x_i-\bar x)(x_j-\bar x)/2$.
+
+* starts at the *nugget*; continues out to the *sill*
+* Useful for exploration (mostly not for model fitting nowadays)
+* Usually makes a giant, uninterpretable point cloud
+unless one bins the data or fits some kind of smooth curve
+
+```{r echo=FALSE,fig.width=8,message=FALSE}
+par(las=1,bty="l")
+par(mfrow=c(1,2))
+library(RandomFields)
+param1 <- c(mean=0,variance=2,nugget=0.5,scale=1,nu=1/2)
+param2 <- c(mean=0,variance=2,nugget=0.5,scale=1,nu=2)
+param3 <- c(mean=0,variance=2,nugget=0.5,scale=1,nu=10000)
+## how can I specify a nugget??
+m1 <- RMwhittle(nu=1/2,var=2,scale=1)
+m2 <- RMmatern(nu=2,var=2,scale=1)
+m3 <- RMmatern(nu=1e5,var=2,scale=1)
+mn <- RMnugget(var=0.5)
+curve(RFvariogram(m1+mn,x),from=0,
+      to=5,ylab="variogram",n=101)
+curve(RFvariogram(m2+mn,x),col=2,add=TRUE)
+curve(RFvariogram(m3+mn,x),col=4,add=TRUE)
+legend("bottomright",
+       lty=1,col=c(1,2,4),
+       c("exponential (s=0.5)",
+         "s=2",
+         "s=10000"))
+curve(RFcov(m1+mn,x),
+      from=0,to=5,ylab="covariance",n=101)
+curve(RFcov(m2+mn,x),col=2,add=TRUE)
+curve(RFcov(m3+mn,x),col=4,add=TRUE)
+```
+
+```{r echo=FALSE,message=FALSE,fig.width=10,fig.height=4}
+xvec <- seq(0,5,length=101)
+RFoptions(spConform=FALSE)
+g1 <- RFsimulate(m1+mn,x=xvec,y=xvec,grid=TRUE)
+g2 <- RFsimulate(m2+mn,x=xvec,y=xvec,grid=TRUE)
+g3 <- RFsimulate(m3+mn,x=xvec,y=xvec,grid=TRUE)
+par(mfrow=c(1,3),mar=c(1,0.5,3,0.5))
+image(g1,axes=FALSE,useRaster=TRUE,main="exponential")
+image(g2,axes=FALSE,useRaster=TRUE,main="s=2")
+image(g3,axes=FALSE,useRaster=TRUE,main="Gaussian")
+```
+
+* must obey constraints: *positive definiteness* (equivalent to 'no negative variances' or 'no impossible correlation geometries')
+* typically use a small set of well-studied possibilities
+    * classical: spherical, linear, exponential, Gaussian: each have a
+    * newer: Matérn (includes exponential and Gaussian as special cases), powered exponential
+    * all start at 1 (unless there's a *nugget effect*), decrease eventually to zero; most are positive everywhere
+    * spatial *variogram* or *semivariogram*; equivalent information but easier to compute
+
+* spatial prediction: *kriging*
+
+## R packages
+
+See the [spatial task view](http://cran.r-project.org/web/views/Spatial.html) for both spatial data management and analysis.
+
+* `spdep`: weight matrices, Moran's $I$, CAR/SAR
+* `RandomFields`: simulating Gaussian RF of all types
+* `nlme`: `g[n]ls` and `[n]lme` can handle standard spatial autocorrelation structures (only within blocks)
+* `ramps`: Bayesian MCMC fitting of geostatistical models.  Also lots of additional spatial correlation structures, including basing correlation on great-circle distances                      
+* `geoR`: spatial LMs and GLMMs (but without additional grouping structures)
+* `ape`: correlation classes for phylogenetic correlations
+* `spaMM`: spatial mixed models [@rousset_testing_2014]
+* `INLA`: complex but powerful package for spatial (among others) fitting
+
+Other tools: [AD Model Builder](http://www.admb-project.org/examples/spatial-models), [GeoBUGS](http://www.mrc-bsu.cam.ac.uk/software/bugs/thebugs-project-geobugs/)
+
+## References
