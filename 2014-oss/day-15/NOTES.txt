@@ -1,0 +1,8 @@
+
+* generally went well.
+* bigpicture
+    * message box: provide on-line tools for entering results?  (probably not. flip charts are fine.)
+    * add Crome quotation?  (probably not)
+    * M Schildauer wants to know, can we discuss Bayes/frequentist? (probably not)
+* lab: too long.  Split into main section (linear regression 3 ways) and keep randomization/permutation test stuff as "auxiliary" material?
+
