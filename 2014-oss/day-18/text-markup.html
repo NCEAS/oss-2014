@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Text Markup (an adventure)</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <style type="text/css">
+      @import url(http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+      @import url(http://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
+      @import url(http://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+      body {
+        font-family: 'Droid Serif';
+      }
+      h1, h2, h3 {
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: 400;
+        margin-bottom: 0;
+      }
+      .remark-slide-content h1 { font-size: 3em; }
+      .remark-slide-content h2 { font-size: 2em; }
+      .remark-slide-content h3 { font-size: 1.6em; }
+      .footnote {
+        position: absolute;
+        bottom: 3em;
+      }
+      li p { line-height: 1.25em; }
+      .red { color: #fa0000; }
+      .large { font-size: 2em; }
+      a, a > code {
+        color: rgb(50, 150, 250);
+        text-decoration: none;
+      }
+      code {
+        -moz-border-radius: 5px;
+        -web-border-radius: 5px;
+        background: #e7e8e2;
+        border-radius: 5px;
+      }
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+      .remark-code-line-highlighted     { background-color: #373832; }
+      .pull-left {
+        float: left;
+        width: 47%;
+      }
+      .pull-right {
+        float: right;
+        width: 47%;
+      }
+      .pull-right ~ p {
+        clear: both;
+      }
+      #slideshow .slide .content code {
+        font-size: 0.8em;
+      }
+      #slideshow .slide .content pre code {
+        font-size: 0.9em;
+        padding: 15px;
+      }
+      .inverse {
+        background: #272822;
+        color: #777872;
+        text-shadow: 0 0 20px #333;
+      }
+      .inverse h1, .inverse h2 {
+        color: #f3f3f3;
+        line-height: 0.8em;
+      }
+
+      /* Slide-specific styling */
+      #slide-inverse .footnote {
+        bottom: 12px;
+        left: 20px;
+      }
+      #slide-how .slides {
+        font-size: 0.9em;
+        position: absolute;
+        top:  151px;
+        right: 140px;
+      }
+      #slide-how .slides h3 {
+        margin-top: 0.2em;
+      }
+      #slide-how .slides .first, #slide-how .slides .second {
+        padding: 1px 20px;
+        height: 90px;
+        width: 120px;
+        -moz-box-shadow: 0 0 10px #777;
+        -webkit-box-shadow: 0 0 10px #777;
+        box-shadow: 0 0 10px #777;
+      }
+      #slide-how .slides .first {
+        background: #fff;
+        position: absolute;
+        top: 20%;
+        left: 20%;
+        z-index: 1;
+      }
+      #slide-how .slides .second {
+        position: relative;
+        background: #fff;
+        z-index: 0;
+      }
+
+      /* Two-column layout */
+      .left-column {
+        color: #777;
+        width: 20%;
+        height: 92%;
+        float: left;
+      }
+      .left-column h2:last-of-type, .left-column h3:last-child {
+        color: #000;
+      }
+      .right-column {
+        width: 75%;
+        float: right;
+        padding-top: 1em;
+      }
+
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+
+class: center, middle, inverse
+
+# Text Markup (an adventure)
+
+<br ><br ><br >
+Terrell Russell
+
+[Renaissance Computing Institute (RENCI)](http://www.renci.org)
+
+<br ><br >
+August 7, 2014
+
+<br >
+[Open Science for Synthesis](https://www.nceas.ucsb.edu/OSS)
+
+---
+
+# We're going to play a game
+
+--
+
+- an adventure game
+
+--
+
+- "A Pie Adventure"
+
+--
+
+- markup some text and images in different formats
+
+--
+
+- but before we do that... some context
+
+---
+
+# This is really about standards
+
+--
+
+- Internet is best effort
+
+--
+
+- built on packet switching
+
+--
+
+- agreement to try hard and forward things in a standard way
+
+--
+
+- built and continues to run on community consensus and good behavior
+
+--
+
+- markup languages are just another set of standards
+
+---
+
+# Standards and Open Source
+
+--
+
+- de jure (concerning law)
+
+--
+
+- de facto (concerning fact)
+
+--
+
+- much of open source is built on 'rough consensus and running code'
+
+--
+
+- from '[The Tao of IETF: A Novice's Guide to the Internet Engineering Task Force](http://www.ietf.org/tao.html)':
+> In many ways, the IETF runs on the beliefs of its participants. One of the "founding beliefs" is embodied in an early quote about the IETF from David Clark: "We reject kings, presidents and voting. We believe in *rough consensus and running code*". Another early quote that has become a commonly-held belief in the IETF comes from Jon Postel: "Be conservative in what you send and liberal in what you accept".
+
+---
+class: center, middle, inverse
+
+# Back to the adventure
+
+---
+.left-column[
+  ## Adventure
+  ### - plain text
+]
+.right-column[
+The initial text is basic and has no markup -- it just has whitespace:
+
+```html
+Pie               <-- Title / Header
+
+I do love pie.    <-- Paragraph of text
+
+So delicious.     <-- Image with a title tag
+
+Because:
+ - Reasons
+ - Fruit          <-- Unordered list
+ - Crust
+ - Ice Cream
+```
+
+We're going to take this snippet of text and save it into properly formatted markup of a few different flavors.
+
+Are you ready?
+]
+
+---
+.left-column[
+  ## Adventure
+  ### - plain text
+  ### - HTML
+]
+.right-column[
+Let's try it in HTML...
+
+```html
+Pie
+
+I do love pie.
+
+So delicious.
+
+Because:
+ - Reasons
+ - Fruit
+ - Crust
+ - Ice Cream
+```
+]
+
+---
+.left-column[
+  ## Adventure
+  ### - plain text
+  ### - HTML
+]
+.right-column[
+Let's try it in HTML...
+
+```html
+<h1 id="pie">Pie</h1>
+
+I do love pie.
+
+So delicious.
+
+Because:
+ - Reasons
+ - Fruit
+ - Crust
+ - Ice Cream
+```
+]
+
+---
+.left-column[
+  ## Adventure
+  ### - plain text
+  ### - HTML
+]
+.right-column[
+Let's try it in HTML...
+
+```html
+<h1 id="pie">Pie</h1>
+<p>I <em>do</em> <strong>love</strong> pie.</p>
+<div class="figure">
+<img src="pie.jpg" title="So delicious." />
+</div>
+<p>Because:</p>
+<ul>
+<li>Reasons</li>
+<li>Fruit</li>
+<li>Crust</li>
+<li>Ice Cream</li>
+</ul>
+```
+]
+
+---
+.left-column[
+  ## Adventure
+  ### - plain text
+  ### - HTML
+  ### - Markdown
+]
+.right-column[
+Let's try it in Markdown...
+
+```html
+Pie
+
+I do love pie.
+
+So delicious.
+
+Because:
+ - Reasons
+ - Fruit
+ - Crust
+ - Ice Cream
+```
+]
+
+---
+.left-column[
+  ## Adventure
+  ### - plain text
+  ### - HTML
+  ### - Markdown
+]
+.right-column[
+Let's try it in Markdown...
+
+```markdown
+Pie
+===
+
+I *do* **love** pie.
+
+![](pie.jpg "So delicious.")
+
+Because:
+
+-   Reasons
+-   Fruit
+-   Crust
+-   Ice Cream
+```
+]
+
+---
+.left-column[
+  ## Adventure
+  ### - plain text
+  ### - HTML
+  ### - Markdown
+  ### - Textile
+]
+.right-column[
+Let's try it in Textile...
+
+```html
+Pie
+
+I do love pie.
+
+So delicious.
+
+Because:
+ - Reasons
+ - Fruit
+ - Crust
+ - Ice Cream
+```
+]
+
+---
+.left-column[
+  ## Adventure
+  ### - plain text
+  ### - HTML
+  ### - Markdown
+  ### - Textile
+]
+.right-column[
+Let's try it in Textile...
+
+```textile
+h1. Pie
+
+I _do_ *love* pie.
+
+!pie.jpg(So delicious.)!
+
+Because:
+
+* Reasons
+* Fruit
+* Crust
+* Ice Cream
+```
+]
+
+
+---
+class: center, middle, inverse
+
+## Let's convert between these automatically
+
+### (because they're standards and nerds have worked this out)
+
+---
+class: center, middle
+
+# Pandoc
+
+a universal document converter
+
+http://johnmacfarlane.net/pandoc/
+
+
+
+---
+
+from HTML to Markdown
+```bash
+pandoc pie.html -o pie.md
+```
+
+--
+
+and back!
+```bash
+pandoc pie.md -o pie.html
+```
+
+--
+
+from HTML to ReStructuredText
+```bash
+pandoc pie.html -o pie.rst
+```
+
+--
+
+from HTML to Textile
+```bash
+pandoc pie.html -t textile -o pie.textile
+```
+
+--
+
+from HTML to pdf
+```bash
+pandoc pie.html -o pie.pdf
+```
+
+---
+ 
+# Caveats
+
+- round-tripping may lose some information
+ - pie.html -> pie.rst -> pie.html (loss of title text)
+
+- some markups do not support features you need
+ - iRODS manual needed lists within table cells
+
+- tools are always evolving
+  - *usually* for the better
+
+---
+
+# Flavors and Engines
+
+Markup
+
+- Markdown - http://daringfireball.net/projects/markdown/
+- reStructuredText - http://docutils.sourceforge.net/rst.html
+- HTML - HyperText Markup Language
+- XML - Extensible Markup Language
+- LaTeX - http://www.latex-project.org/
+- DocBook - XML schema for documentation
+- Textile - http://en.wikipedia.org/wiki/Textile_(markup_language)
+- YAML - YAML Ain't Markup Language - Config files
+- OPML - Outline Processor Markup Language - XML schema for outlines
+
+Tools
+
+- pandoc - http://johnmacfarlane.net/pandoc/
+- Jekyll - Static Site Rendering (md->html)
+- grip - GitHub Readme Instant Preview (md->html)
+- rst2pdf - (rst->pdf)
+- https://stackedit.io/
+
+---
+
+### Last Slide Stuff
+
+These slides licensed under Creative Commons
+ - !["Creative Commons Attribution-ShareAlike 4.0"](https://i.creativecommons.org/l/by-sa/4.0/88x31.png) http://creativecommons.org/licenses/by-sa/4.0/
+
+These slides made with http://remarkjs.com/
+
+    </textarea>
+    <script src="http://gnab.github.io/remark/downloads/remark-latest.min.js" type="text/javascript">
+    </script>
+    <script type="text/javascript">
+      var slideshow = remark.create();
+    </script>
+  </body>
+</html>
