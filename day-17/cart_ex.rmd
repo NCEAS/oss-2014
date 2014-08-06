@@ -96,6 +96,11 @@ summary(dfit)
 
 (Code modified from [Quick-R: Accessing the Power of R](http://www.statmethods.net))
 
+We can also make predictions:
+```{r}
+dotchart(predict(dfit))
+```
+
 # Multivariate Regression Tree Example
 
 ## Data 
