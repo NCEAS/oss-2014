@@ -117,12 +117,14 @@
         padding-top: 1em;
       }
 
+      .alignright { text-align: right; }
+
     </style>
   </head>
   <body>
     <textarea id="source">
 
-class: center, middle
+class: center, middle, inverse
 
 # iRODS and Provenance
 
@@ -139,37 +141,78 @@ August 7, 2014
 
 ---
 
-# Agenda
+# Provenance
 
-1. Introduction
-2. Deep-dive
-3. ...
+> Provenance (from the French provenir, "to come from"), is the chronology of the ownership, custody or location of a historical object.
 
----
+> The primary purpose of tracing the provenance of an object or entity is normally to provide contextual and circumstantial evidence for its original production or discovery, by establishing, as far as practicable, its later history, especially the sequences of its formal ownership, custody, and places of storage.
 
-# Introduction
+> The practice has a particular value in helping authenticate objects. Comparative techniques, expert opinions, and the results of scientific tests may also be used to these ends, but **establishing provenance is essentially a matter of documentation**.
 
---
-
-1. before
-
---
-
-1. after
-
---
-
-1. then
-
---
-
-1. later
+.right[ -- [Wikipedia](http://en.wikipedia.org/wiki/Provenance) ]
 
 ---
 
-# bam
+# iRODS
 
-more text!
+> A middleware comprised of a rule engine atop a virtual filesystem.
+
+> These two components allow machine-actionable policies to be executed on data across a wide variety of locations and technologies.
+
+--
+
+> When an event occurs in the system (a file is ingested, a user logs in, a replica is created), iRODS runs rules and microservices associated with that event trigger (or policy enforcement point).
+
+--
+
+> - Replicable
+
+> - Automated
+
+> - Policy-Driven
+
+> - Independent of underlying storage
+
+---
+
+# Policies in iRODS
+> Express community goals for data access and sharing, management, long-term preservation, uses, etc.
+
+--
+
+- Examples
+
+ - Run a particular workflow when a "set of files" is ingested into a collection (e.g. make thumbnails of images, post to website).
+--
+
+ - Automatically replicate a file added to a collection into 3 geographically distributed sites.
+--
+
+ - Automatically extract metadata for a file of a certain type and store in the metadata catalog.
+--
+
+ - Periodically check integrity of files in a collection and repair/replace if needed/possible.
+--
+
+ - Automatically pick a certain storage location based on user or collection or size or type (or any combination thereof).
+--
+
+ - Let a user access a collection only if using certificate-based login.
+--
+
+ - Send a notification when a certain file is ingested.
+
+---
+class: middle
+
+## With full transaction history, credentialed logins, and integrity checks (via checksums), iRODS can provide an environment in which data provenance can be validated and verified.
+
+---
+class: center, middle, inverse
+
+## Tremendous command-line demo
+
+### (how exciting)
 
 ---
 
