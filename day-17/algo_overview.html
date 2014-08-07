@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link href="data:text/css,body%2C%20td%20%7B%0A%20%20%20font%2Dfamily%3A%20sans%2Dserif%3B%0A%20%20%20background%2Dcolor%3A%20white%3B%0A%20%20%20font%2Dsize%3A%2013px%3B%0A%7D%0A%0Abody%20%7B%0A%20%20max%2Dwidth%3A%20800px%3B%0A%20%20margin%3A%20auto%3B%0A%20%20padding%3A%201em%3B%0A%20%20line%2Dheight%3A%2020px%3B%0A%7D%0A%0Att%2C%20code%2C%20pre%20%7B%0A%20%20%20font%2Dfamily%3A%20%27DejaVu%20Sans%20Mono%27%2C%20%27Droid%20Sans%20Mono%27%2C%20%27Lucida%20Console%27%2C%20Consolas%2C%20Monaco%2C%20monospace%3B%0A%7D%0A%0Ah1%20%7B%0A%20%20%20font%2Dsize%3A2%2E2em%3B%0A%7D%0A%0Ah2%20%7B%0A%20%20%20font%2Dsize%3A1%2E8em%3B%0A%7D%0A%0Ah3%20%7B%0A%20%20%20font%2Dsize%3A1%2E4em%3B%0A%7D%0A%0Ah4%20%7B%0A%20%20%20font%2Dsize%3A1%2E0em%3B%0A%7D%0A%0Ah5%20%7B%0A%20%20%20font%2Dsize%3A0%2E9em%3B%0A%7D%0A%0Ah6%20%7B%0A%20%20%20font%2Dsize%3A0%2E8em%3B%0A%7D%0A%0Aa%3Avisited%20%7B%0A%20%20%20color%3A%20rgb%2850%25%2C%200%25%2C%2050%25%29%3B%0A%7D%0A%0Apre%2C%20img%20%7B%0A%20%20max%2Dwidth%3A%20100%25%3B%0A%7D%0A%0Apre%20code%20%7B%0A%20%20%20display%3A%20block%3B%20padding%3A%200%2E5em%3B%0A%7D%0A%0Acode%20%7B%0A%20%20font%2Dsize%3A%2092%25%3B%0A%20%20border%3A%201px%20solid%20%23ccc%3B%0A%7D%0A%0Acode%5Bclass%5D%20%7B%0A%20%20background%2Dcolor%3A%20%23F8F8F8%3B%0A%7D%0A%0Atable%2C%20td%2C%20th%20%7B%0A%20%20border%3A%20none%3B%0A%7D%0A%0Ablockquote%20%7B%0A%20%20%20color%3A%23666666%3B%0A%20%20%20margin%3A0%3B%0A%20%20%20padding%2Dleft%3A%201em%3B%0A%20%20%20border%2Dleft%3A%200%2E5em%20%23EEE%20solid%3B%0A%7D%0A%0Ahr%20%7B%0A%20%20%20height%3A%200px%3B%0A%20%20%20border%2Dbottom%3A%20none%3B%0A%20%20%20border%2Dtop%2Dwidth%3A%20thin%3B%0A%20%20%20border%2Dtop%2Dstyle%3A%20dotted%3B%0A%20%20%20border%2Dtop%2Dcolor%3A%20%23999999%3B%0A%7D%0A%0A%40media%20print%20%7B%0A%20%20%20%2A%20%7B%0A%20%20%20%20%20%20background%3A%20transparent%20%21important%3B%0A%20%20%20%20%20%20color%3A%20black%20%21important%3B%0A%20%20%20%20%20%20filter%3Anone%20%21important%3B%0A%20%20%20%20%20%20%2Dms%2Dfilter%3A%20none%20%21important%3B%0A%20%20%20%7D%0A%0A%20%20%20body%20%7B%0A%20%20%20%20%20%20font%2Dsize%3A12pt%3B%0A%20%20%20%20%20%20max%2Dwidth%3A100%25%3B%0A%20%20%20%7D%0A%0A%20%20%20a%2C%20a%3Avisited%20%7B%0A%20%20%20%20%20%20text%2Ddecoration%3A%20underline%3B%0A%20%20%20%7D%0A%0A%20%20%20hr%20%7B%0A%20%20%20%20%20%20visibility%3A%20hidden%3B%0A%20%20%20%20%20%20page%2Dbreak%2Dbefore%3A%20always%3B%0A%20%20%20%7D%0A%0A%20%20%20pre%2C%20blockquote%20%7B%0A%20%20%20%20%20%20padding%2Dright%3A%201em%3B%0A%20%20%20%20%20%20page%2Dbreak%2Dinside%3A%20avoid%3B%0A%20%20%20%7D%0A%0A%20%20%20tr%2C%20img%20%7B%0A%20%20%20%20%20%20page%2Dbreak%2Dinside%3A%20avoid%3B%0A%20%20%20%7D%0A%0A%20%20%20img%20%7B%0A%20%20%20%20%20%20max%2Dwidth%3A%20100%25%20%21important%3B%0A%20%20%20%7D%0A%0A%20%20%20%40page%20%3Aleft%20%7B%0A%20%20%20%20%20%20margin%3A%2015mm%2020mm%2015mm%2010mm%3B%0A%20%20%20%7D%0A%0A%20%20%20%40page%20%3Aright%20%7B%0A%20%20%20%20%20%20margin%3A%2015mm%2010mm%2015mm%2020mm%3B%0A%20%20%20%7D%0A%0A%20%20%20p%2C%20h2%2C%20h3%20%7B%0A%20%20%20%20%20%20orphans%3A%203%3B%20widows%3A%203%3B%0A%20%20%20%7D%0A%0A%20%20%20h2%2C%20h3%20%7B%0A%20%20%20%20%20%20page%2Dbreak%2Dafter%3A%20avoid%3B%0A%20%20%20%7D%0A%7D%0A" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<h1 id="algorithmic-approaches-overview">Algorithmic approaches: overview</h1>
+<ul>
+<li>&quot;algorithmic approach&quot;, &quot;machine learning&quot;, &quot;data mining&quot;</li>
+<li>dominated by computer scientists, business analysts, ...</li>
+<li>Big Data</li>
+<li>Goals: predictive power, robustness, computational efficiency</li>
+<li>&quot;Develop an algorithm&quot; rather than &quot;build a model&quot;</li>
+<li>Techniques:
+<ul>
+<li><strong>ensembles</strong> (bootstrap, cross-validation, random forests)</li>
+<li><strong>regularization</strong> or <strong>penalization</strong> (ridge regression, lasso)</li>
+<li><strong>smoothing</strong> (additive models)</li>
+</ul></li>
+</ul>
+<p><strong>Key references</strong>: <span class="citation">(De’ath and Fabricius 2000; Hastie, Tibshirani, and Friedman 2009; Borcard and Legendre 2011; P. Legendre and Legendre 2012)</span></p>
+<p><code>{r} fortunes::fortune(&quot;machine learning&quot;)</code></p>
+<div class="references">
+<p>Borcard, Daniel, and Pierre Legendre. 2011. <em>Numerical Ecology with R</em>. 2011 edition. New York: Springer.</p>
+<p>De’ath, Glenn, and Katharina E. Fabricius. 2000. “Classification and Regression Trees: a Powerful yet Simple Technique for Ecological Data Analysis.” <em>Ecology</em> 81 (11) (November): 3178–3192. doi:<a href="http://dx.doi.org/10.1890/0012-9658(2000)081[3178:CARTAP]2.0.CO;2">10.1890/0012-9658(2000)081[3178:CARTAP]2.0.CO;2</a>. <a href="http://www.esajournals.org/doi/abs/10.1890/0012-9658(2000)081%5B3178:CARTAP%5D2.0.CO%3B2">http://www.esajournals.org/doi/abs/10.1890/0012-9658(2000)081%5B3178:CARTAP%5D2.0.CO%3B2</a>.</p>
+<p>Hastie, Trevor, Robert Tibshirani, and J. H Friedman. 2009. <em>The Elements of Statistical Learning Data Mining, Inference, and Prediction</em>. New York: Springer. <a href="http://public.eblib.com/EBLPublic/PublicView.do?ptiID=437866">http://public.eblib.com/EBLPublic/PublicView.do?ptiID=437866</a>.</p>
+<p>Legendre, P., and Loic F. J. Legendre. 2012. <em>Numerical Ecology</em>. 3 edition. Elsevier.</p>
+</div>
+</body>
+</html>

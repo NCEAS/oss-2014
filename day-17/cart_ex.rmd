@@ -2,15 +2,16 @@ Classification and Regression Tree Example
 ----------------------------------------------
 
 ```{r opts,echo=FALSE}
+library("knitr")
 ## internal bookkeeping: you may ignore this
 opts_chunk$set(results="hide",tidy=FALSE,fig.height=4,
               fig.width=6)
 knit_hooks$set(treefig=function(before, options, envir) {
-     par(xpd=NA,cex=0.9)})
+     par(las=1,bty="l",xpd=NA,cex=0.9)})
 ```
 
 ## Packages used
-```{r pkglist,echo=FALSE}
+```{r pkglist,echo=FALSE,results="markup"}
 usedpkgs <- sort(c("rpart","ade4","mvpart","vegan"))
 i1 <- installed.packages()
 print(i1[usedpkgs,"Version"],quote=FALSE)
@@ -18,43 +19,62 @@ print(i1[usedpkgs,"Version"],quote=FALSE)
 
 ## Data
 
-```{r rpart,message=FALSE}
+Load the `rpart` package and take 
+a look at data on cars from *Consumer Reports*
+(price, reliability, mileage, etc.):
+```{r rpart,message=FALSE,results="hide"}
 library(rpart)
 summary(cu.summary)
 ```
 
-(note: be careful *not* to load the `mvpart` package in this section -- it will load a different version of the `rpart()` function)
+(n.b.: do **not** load the `mvpart` package in this section -- it will load a different version of the `rpart()` function.  If you load it by accident, use `det
+ach("package:mvpart")` to get rid of it)
 
 ## Grow tree
 
-```{r}
+```{r results="hide"}
 (fit <- rpart(Mileage~Price + Country + Reliability + Type,
         method="anova", xval =100, data=cu.summary))
 ```
-(if you know you want to use all the variables other than
-the response variable as input variables,
-`rpart(response~.,...)` will work)
-Note: If your data are binary and you are interested in performing a classification tree, method = “class”
+If you know you want to use all the variables other than
+the response variable (`Mileage` in this case)
+as predictors, you can use the formula
+`Mileage~.`.
 
+If your data are binary and so you want to build a classification
+tree rather than a regression tree, use `method="class"`.
+
+Display results (basic information plus a table of "complexity parameter" CP, number of splits, relative error, cross-validation error (`xerror`) and the standard deviation of the cross-validation error (`xstd`).
+```{r printcp,results="markup"}
+printcp(fit)
+```
+
+We can plot the cross-validation error as a function of the number of splits:
 ```{r treefig=TRUE}
-printcp(fit) # display the results
-plotcp(fit) # visualize cross-validation results
+plotcp(fit)
+```
+
+Or get detailed information about the tree:
+```{r fitsum}
 summary(fit) # detailed summary of splits
 ```
 
-# plot
+We can also plot the tree itself (`plot` gives just the branches, `text` adds labels):
 ```{r treefig=TRUE}
 plot(fit)
 text(fit)
 ```
 
-## prune
+Now we can prune the tree back to its optimal size (based on
+cross-validation error):
 
-```{r}
-cpval <- fit$cptable[which.min(fit$cptable[,"xerror"]),"CP"]
-pfit<- prune(fit, cp=cpval)
+```{r prune}
+best.tree <- which.min(fit$cptable[,"xerror"])
+cpval <- fit$cptable[best.tree,"CP"]
+pfit <- prune(fit, cp=cpval)
 ```
 
+The resulting tree is simpler (only 4 splits; note that all the trees above 3 splits have about the same `xerror`):
 ```{r  treefig=TRUE}
 plot(pfit)
 text(pfit)
@@ -76,17 +96,22 @@ summary(dfit)
 
 (Code modified from [Quick-R: Accessing the Power of R](http://www.statmethods.net))
 
+We can also make predictions:
+```{r}
+dotchart(predict(dfit))
+```
+
 # Multivariate Regression Tree Example
 
 ## Data 
 
-[Data Information](http://www.inside-r.org/packages/cran/ade4/docs/doubs)
+[Data information](http://www.inside-r.org/packages/cran/ade4/docs/doubs)
 
 ```{r ade4,message=FALSE}
 library(ade4)
 data(doubs)
-env=doubs$env
-spe = doubs$fish
+env <- doubs$env   ## site (row) * env variable (column)
+spe <- doubs$fish  ## site (row) * species (column)
 ```
 
 ## Transform response variables
@@ -95,21 +120,23 @@ The transformation consists of expressing each fish density as a proportion of t
 
 ```{r vegan,message=FALSE}
 library(vegan)
-spe.norm=decostand(spe, "hellinger")
+spe.norm <- as.matrix(decostand(spe, "hellinger"))
 ```
 
 ## Multivariate Regression Tree 
 
 ```{r mvpart,warning=FALSE,message=FALSE}
 library(mvpart)
-spe.ch.mvpart<-mvpart(data.matrix(spe.norm) ~., env,  
-                      xv="1se", xval=nrow(spe), 
+spe.ch.mvpart<-mvpart(spe.norm ~ ., env,  
+                      xv="1se",
+                      xval=nrow(spe), 
                       xvmult=100, which=4)
 summary(spe.ch.mvpart)
 printcp(spe.ch.mvpart)
+plotcp(spe.ch.mvpart)
 ```
 
-Or we can use `pick`
+Or we can use `"pick"`
 ```{r eval=FALSE}
 spe.ch.mvpart<-mvpart(data.matrix(spe.norm) ~., env,  
                       xv="pick", xval=nrow(spe), 
@@ -123,9 +150,9 @@ printcp(spe.ch.mvpart)
     * `"min"` - the best tree
     * `"pick"` - pick the tree size interactively, 
     * `"none"` - no cross-validation.
-* `xval` = Number of cross-validations or vector defining cross-validation groups (here we use as many rows there are in the dataset because it is a small dataset)
+* `xval` = Number of cross-validations or vector defining cross-validation groups (here we use as many rows there are in the dataset (*leave-one-out cross-validation*) because it is a small dataset)
 * `xvmult` = Number of multiple cross-validations.
-* `which` = Which split labels and where to plot them, 1=centered, 2 = left, 3 = right and 4 = both.
+* `which` = Which split labels and where to plot them: 1=centered, 2 = left, 3 = right and 4 = both.
 
-(Modified R Code from “Numerical Ecology with R” by Borcard et al. 2012
+(Modified R Code from *Numerical Ecology with R*, Borcard et al. 2012)
 
