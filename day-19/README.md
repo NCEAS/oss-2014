@@ -2,7 +2,7 @@ Training materials for Day 19.
 
 ## Revised Schedule for Day 19
 
-- 8:35am: RENCI Group 1: Marine Population Dynamics and Collapse
+- 8:35am: RENCI Group 1: <a href="https://github.com/NCEAS/training/blob/master/2014-oss/day-19/Fisheries_Collapse_Renci_OSS2014.pptx">Marine Population Dynamics and Collapse</a>
 - 9:00am: NCEAS Group 1: Marine Community Dynamics
 - 9:30-10: RENCI Lunch
 - 10:00: RENCI Group 2: Land-use Intensity and Ecosystem Services
