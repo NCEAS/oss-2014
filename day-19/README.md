@@ -8,7 +8,7 @@ Training materials for Day 19.
 - 10:00: RENCI Group 2: Land-use Intensity and Ecosystem Services
 - 10:25: NCEAS Group 2: Macrosystems Drought
 - 10:50: RENCI Group 3: Dimensions of Biodiversity (so what?)
-- 11:15: NCEAS Group 3: Plant Community Dynamics
+- 11:15: NCEAS Group 3: <a href="https://github.com/NCEAS/training/blob/master/2014-oss/day-19/IntroPlantcom.pptx">Plant Community Dynamics</a>
 - 11:40: RENCI Group 4: <a href="https://github.com/NCEAS/training/blob/master/2014-oss/day-19/RENCI_Ecohydro.md">Multi-scale Ecohydrology</a>
 - 12:05: NCEAS Lunch
 - 12:35: Post assessment
